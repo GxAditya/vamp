@@ -12,7 +12,7 @@
  * render directory names. Spaces and Unicode must stay legal.
  */
 
-import { mkdirSync, mkdtempSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, readdirSync, realpathSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
@@ -32,7 +32,7 @@ afterEach(() => {
 });
 
 function makeHarness(): { base: string; root: string; store: ProjectStore } {
-  const base = mkdtempSync(join(tmpdir(), 'vamp-security-project-'));
+  const base = realpathSync.native(mkdtempSync(join(tmpdir(), 'vamp-security-project-')));
   temporaryDirectories.push(base);
   const root = join(base, 'projects');
   mkdirSync(root);

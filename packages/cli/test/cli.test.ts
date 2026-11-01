@@ -30,7 +30,7 @@ const packageJson = JSON.parse(
 const temporaryDirectories: string[] = [];
 
 function tempDirectory(prefix = 'vamp-cli-'): string {
-  const directory = realpathSync(mkdtempSync(join(tmpdir(), prefix)));
+  const directory = realpathSync.native(mkdtempSync(join(tmpdir(), prefix)));
   temporaryDirectories.push(directory);
   return directory;
 }

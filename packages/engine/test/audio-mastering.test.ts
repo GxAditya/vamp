@@ -1,4 +1,4 @@
-import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
+import { mkdtempSync, readFileSync, realpathSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
@@ -11,7 +11,7 @@ import { parseWav } from './audio-helpers.js';
 const temporaryDirectories: string[] = [];
 
 function tempDirectory(): string {
-  const directory = mkdtempSync(join(tmpdir(), 'vamp-mastering-test-'));
+  const directory = realpathSync.native(mkdtempSync(join(tmpdir(), 'vamp-mastering-test-')));
   temporaryDirectories.push(directory);
   return directory;
 }

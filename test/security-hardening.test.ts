@@ -64,7 +64,7 @@ afterAll(() => {
 });
 
 function tempRoot(prefix = 'vamp-security-'): string {
-  const root = realpathSync(mkdtempSync(join(tmpdir(), prefix)));
+  const root = realpathSync.native(mkdtempSync(join(tmpdir(), prefix)));
   temporaryRoots.push(root);
   return root;
 }

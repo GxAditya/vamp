@@ -17,7 +17,7 @@
  */
 
 import { readFileSync } from 'node:fs';
-import { mkdtempSync, readdirSync, rmSync } from 'node:fs';
+import { mkdtempSync, readdirSync, realpathSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -171,7 +171,7 @@ function pcmBytes(audio: StereoAudioBuffer): Uint8Array {
 const temporaryRoots: string[] = [];
 
 function tempRoot(): string {
-  const root = mkdtempSync(join(tmpdir(), 'vamp-regression-'));
+  const root = realpathSync.native(mkdtempSync(join(tmpdir(), 'vamp-regression-')));
   temporaryRoots.push(root);
   return root;
 }

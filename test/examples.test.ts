@@ -18,7 +18,7 @@
  * without giving the workspace root a direct dependency on shared packages.
  */
 
-import { readFileSync } from 'node:fs';
+import { readFileSync, realpathSync } from 'node:fs';
 import { mkdtemp, rm, stat } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -202,7 +202,7 @@ describe('offline built-in renders of the short examples', () => {
   const rendered = EXAMPLES.filter((example) => example.renderedOffline);
 
   it('renders the built-in path with no native dependency', async () => {
-    const outputRoot = await mkdtemp(join(tmpdir(), 'vamp-examples-render-'));
+    const outputRoot = realpathSync.native(await mkdtemp(join(tmpdir(), 'vamp-examples-render-')));
     try {
       for (const example of rendered) {
         const song = loadSong(example.file);

@@ -1,6 +1,6 @@
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, realpathSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
 
 import { afterAll, describe, expect, it } from 'vitest';
 
@@ -10,7 +10,7 @@ import { buildHealthReport } from '../src/health.js';
 const temporaryDirectories: string[] = [];
 
 function tempDirectory(prefix = 'vamp-mcp-config-'): string {
-  const directory = mkdtempSync(join(tmpdir(), prefix));
+  const directory = realpathSync.native(mkdtempSync(join(tmpdir(), prefix)));
   temporaryDirectories.push(directory);
   return directory;
 }
@@ -49,9 +49,9 @@ describe('MCP server configuration', () => {
     ]);
     expect(config.projectRoot).toEqual({ path: '/tmp/vamp-projects', source: 'argument' });
     expect(config.fluidSynth).toEqual({
-      binaryPath: '/opt/bin/fluidsynth',
+      binaryPath: resolve('/opt/bin/fluidsynth'),
       binarySource: 'argument',
-      soundFontPath: '/sounds/FluidR3_GM.sf2',
+      soundFontPath: resolve('/sounds/FluidR3_GM.sf2'),
       soundFontSource: 'argument',
     });
     expect(config.jobs).toEqual(MCP_JOB_SETTINGS.defaults);
@@ -65,12 +65,12 @@ describe('MCP server configuration', () => {
     };
     const fromEnvironment = runConfig([], environment);
     expect(fromEnvironment.projectRoot).toEqual({ path: '/env/projects', source: 'environment' });
-    expect(fromEnvironment.fluidSynth.binaryPath).toBe('/env/fluidsynth');
-    expect(fromEnvironment.fluidSynth.soundFontPath).toBe('/env/sound.sf2');
+    expect(fromEnvironment.fluidSynth.binaryPath).toBe(resolve('/env/fluidsynth'));
+    expect(fromEnvironment.fluidSynth.soundFontPath).toBe(resolve('/env/sound.sf2'));
 
     const mixed = runConfig(['--project-root', '/arg/projects'], environment);
     expect(mixed.projectRoot).toEqual({ path: '/arg/projects', source: 'argument' });
-    expect(mixed.fluidSynth.binaryPath).toBe('/env/fluidsynth');
+    expect(mixed.fluidSynth.binaryPath).toBe(resolve('/env/fluidsynth'));
   });
 
   it('starts without a configured project root', () => {

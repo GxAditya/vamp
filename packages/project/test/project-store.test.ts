@@ -44,7 +44,7 @@ interface Harness {
 }
 
 function makeHarness(limits: Partial<typeof DEFAULT_PROJECT_LIMITS> = {}): Harness {
-  const base = realpathSync(mkdtempSync(join(tmpdir(), 'vamp-project-test-')));
+  const base = realpathSync.native(mkdtempSync(join(tmpdir(), 'vamp-project-test-')));
   temporaryDirectories.push(base);
   const root = join(base, 'projects');
   mkdirSync(root);

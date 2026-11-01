@@ -2,16 +2,16 @@
 
 ## Macro forms (bar counts in 4/4)
 
-| Form | Map | Good for |
-| --- | --- | --- |
-| ABA' | intro 2-4 · A 8 · B 8 · A' 8 · coda 2-4 | lyrical pieces, themes, 60-100 s |
-| AABA (32-bar) | A 8 · A 8 · B 8 · A 8 (+ tag) | jazz-ish, standards, game music |
-| Verse-chorus | intro 4 · V 8 · PC 4 · C 8 · V 8 · PC 4 · C 8 · bridge 8 · C 8 (lifted) · outro 4 | pop, rock, anthems |
-| Loop music | intro 8 · A 16 · B 16 · breakdown 8 · A' 16 · outro 8 | electronic, lo-fi, house |
-| Theme and variations | theme 8-16, then 3-5 variations changing one dimension each | showcasing one idea, études |
-| Game loop | A 8-16 · B 8-16 · back to A, with the last bar leading seamlessly to bar 1 | background loops |
-| Through-composed cue | sections follow a story with a recurring motif | film-like pieces, trailers |
-| Short sting / jingle | 2-4 bars: setup → hook → button | logos, notifications |
+| Form                 | Map                                                                               | Good for                         |
+| -------------------- | --------------------------------------------------------------------------------- | -------------------------------- |
+| ABA'                 | intro 2-4 · A 8 · B 8 · A' 8 · coda 2-4                                           | lyrical pieces, themes, 60-100 s |
+| AABA (32-bar)        | A 8 · A 8 · B 8 · A 8 (+ tag)                                                     | jazz-ish, standards, game music  |
+| Verse-chorus         | intro 4 · V 8 · PC 4 · C 8 · V 8 · PC 4 · C 8 · bridge 8 · C 8 (lifted) · outro 4 | pop, rock, anthems               |
+| Loop music           | intro 8 · A 16 · B 16 · breakdown 8 · A' 16 · outro 8                             | electronic, lo-fi, house         |
+| Theme and variations | theme 8-16, then 3-5 variations changing one dimension each                       | showcasing one idea, études      |
+| Game loop            | A 8-16 · B 8-16 · back to A, with the last bar leading seamlessly to bar 1        | background loops                 |
+| Through-composed cue | sections follow a story with a recurring motif                                    | film-like pieces, trailers       |
+| Short sting / jingle | 2-4 bars: setup → hook → button                                                   | logos, notifications             |
 
 Length check: `seconds = bars * barBeats * 60 / bpm`. At 88 BPM, 4/4, a bar is 2.73 s; 30 bars ≈ 82 s.
 
@@ -30,15 +30,15 @@ intro 3 | V1 4 | PC 6 | C1 7 | V2 5 | PC 7 | C2 8 | bridge 5 | C3 10 | outro 3
 
 ## Section contrast (change at least two per boundary)
 
-| Dimension | Lower energy | Higher energy |
-| --- | --- | --- |
-| Register | narrow, middle | wide, melody up an octave, bass down an octave |
-| Density | 2-3 parts | 5-6 parts, doublings |
-| Rhythm | long notes, half-time | 8ths and 16ths, syncopation, fills |
-| Harmony | slow harmonic rhythm, tonic pedal | faster changes, secondary dominants, modulation |
-| Timbre | soft (EP, nylon, flute low, pads) | bright (piano high, strings, brass, open hats) |
-| Dynamics | velocities 40-65 | velocities 75-105 |
-| Space | drier, closer | wider pan, more reverb on the leads |
+| Dimension | Lower energy                      | Higher energy                                   |
+| --------- | --------------------------------- | ----------------------------------------------- |
+| Register  | narrow, middle                    | wide, melody up an octave, bass down an octave  |
+| Density   | 2-3 parts                         | 5-6 parts, doublings                            |
+| Rhythm    | long notes, half-time             | 8ths and 16ths, syncopation, fills              |
+| Harmony   | slow harmonic rhythm, tonic pedal | faster changes, secondary dominants, modulation |
+| Timbre    | soft (EP, nylon, flute low, pads) | bright (piano high, strings, brass, open hats)  |
+| Dynamics  | velocities 40-65                  | velocities 75-105                               |
+| Space     | drier, closer                     | wider pan, more reverb on the leads             |
 
 Transitions: a fill or pickup in the last bar, a dropout (remove drums or bass for 1 bar or 2 beats), a riser (`filterCutoffHz` or volume swell), or a harp/mallet run into the downbeat.
 
@@ -55,13 +55,13 @@ Layers (use only what the piece needs):
 
 Register map (avoid two parts in the same register **and** the same rhythm):
 
-| Part | Range (MIDI) | Comfortable GM choices |
-| --- | --- | --- |
-| Sub / bass | 28-50 | upright 32, finger 33, picked 34, fretless 35, synth 38, cello 42, bassoon 70 |
-| Low harmony | 45-60 | cello 42, horn 60, strings 48 (low), piano LH |
-| Mid harmony | 52-72 | piano 0, EP 4/5, nylon 24, strings 48, organ 16, poly pad 90 |
-| Melody | 60-84 | flute 73, clarinet 71, oboe 68, violin 40, trumpet 56, vibraphone 11, piano RH, fifths lead 86 |
-| High colour | 72-96 | harp 46, kalimba 108, crystal 98, marimba 12, glock-like mallets |
+| Part        | Range (MIDI) | Comfortable GM choices                                                                         |
+| ----------- | ------------ | ---------------------------------------------------------------------------------------------- |
+| Sub / bass  | 28-50        | upright 32, finger 33, picked 34, fretless 35, synth 38, cello 42, bassoon 70                  |
+| Low harmony | 45-60        | cello 42, horn 60, strings 48 (low), piano LH                                                  |
+| Mid harmony | 52-72        | piano 0, EP 4/5, nylon 24, strings 48, organ 16, poly pad 90                                   |
+| Melody      | 60-84        | flute 73, clarinet 71, oboe 68, violin 40, trumpet 56, vibraphone 11, piano RH, fifths lead 86 |
+| High colour | 72-96        | harp 46, kalimba 108, crystal 98, marimba 12, glock-like mallets                               |
 
 Instrument notes:
 
@@ -91,17 +91,17 @@ Instrument notes:
 
 ## Producing in Vamp
 
-| Goal | Vamp move |
-| --- | --- |
-| Push a part back | lower `volume`, raise reverb `mix` (0.3-0.4), `lowpass` 3-5 kHz |
-| Bring a part forward | higher `volume`, drier (`mix` 0.1-0.15), `eq` `midGainDb` +1 to +2 |
-| Warmth | `eq` `highGainDb` -2, `lowpass` 6-8 kHz on keys and pads |
-| Clarity | `eq` `lowGainDb` -2 to -4 on non-bass parts to clear the low end |
-| Width | pan supporting parts ±0.2-0.5, keep bass / kick / lead centered |
-| Build | `automation.filterCutoffHz` 800 → 9000 over 2-4 bars (add points that grow ×1.3) |
-| Swell | `automation.volume` 0.2 → 1.0 over 1-2 bars on strings or pads |
-| Echo | `delay` at `45000/bpm` ms (dotted 8th), feedback 0.3, mix 0.2 on one lead |
-| Shared room | similar reverb `decaySeconds` on all tracks (for example 2.0-2.4 s), different `mix` per depth |
-| Ending | let tails finish inside `durationHint`; check `vamp info --json` |
+| Goal                 | Vamp move                                                                                      |
+| -------------------- | ---------------------------------------------------------------------------------------------- |
+| Push a part back     | lower `volume`, raise reverb `mix` (0.3-0.4), `lowpass` 3-5 kHz                                |
+| Bring a part forward | higher `volume`, drier (`mix` 0.1-0.15), `eq` `midGainDb` +1 to +2                             |
+| Warmth               | `eq` `highGainDb` -2, `lowpass` 6-8 kHz on keys and pads                                       |
+| Clarity              | `eq` `lowGainDb` -2 to -4 on non-bass parts to clear the low end                               |
+| Width                | pan supporting parts ±0.2-0.5, keep bass / kick / lead centered                                |
+| Build                | `automation.filterCutoffHz` 800 → 9000 over 2-4 bars (add points that grow ×1.3)               |
+| Swell                | `automation.volume` 0.2 → 1.0 over 1-2 bars on strings or pads                                 |
+| Echo                 | `delay` at `45000/bpm` ms (dotted 8th), feedback 0.3, mix 0.2 on one lead                      |
+| Shared room          | similar reverb `decaySeconds` on all tracks (for example 2.0-2.4 s), different `mix` per depth |
+| Ending               | let tails finish inside `durationHint`; check `vamp info --json`                               |
 
 The master has no limiter or bus; normalization brings the peak to -1 dBFS with at most +9 dB. If the report shows the +9 dB cap, raise track volumes.

@@ -12,9 +12,9 @@
 
 `gain = 10^(dB / 20)`
 
-| dB | 0 | -1.5 | -3 | -4.5 | -6 | -9 | -12 | -15 | -18 | -20 | -24 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| gain | 1.0 | 0.84 | 0.71 | 0.6 | 0.5 | 0.35 | 0.25 | 0.18 | 0.13 | 0.1 | 0.063 |
+| dB   | 0   | -1.5 | -3   | -4.5 | -6  | -9   | -12  | -15  | -18  | -20 | -24   |
+| ---- | --- | ---- | ---- | ---- | --- | ---- | ---- | ---- | ---- | --- | ----- |
+| gain | 1.0 | 0.84 | 0.71 | 0.6  | 0.5 | 0.35 | 0.25 | 0.18 | 0.13 | 0.1 | 0.063 |
 
 ## Speech-safe recipe (inside the song)
 
@@ -53,14 +53,14 @@ Ramps start slightly before speech (0.5 beat = 250 ms at 120 BPM) so the first s
 
 ## Report checks
 
-| Field | Good | Fix when |
-| --- | --- | --- |
-| `duration.actualSeconds` / `deltaSeconds` | equals the video length, delta 0 | longer: end notes earlier or shorten reverb/delay tails; shorter: raise `durationHint` |
-| `audio.clipping.clipped` | false | true: lower track volumes or velocities (rare with normalization) |
-| `audio.mastering.gainDb` | 0 to +6 | at +9 (the cap): the mix is very quiet; raise volumes so the arrangement survives |
-| `audio.loudness.integratedLufs` | about -20 to -14 for a bed | compare takes only; it is an approximation, not a delivery measurement |
-| `warnings.validation` / `warnings.audio` | empty | read each and repair the data |
-| `backend.id` | `fluidsynth-sf2-v1` for GM instruments | `builtin-synth-v1`: samples not active; say so |
+| Field                                     | Good                                   | Fix when                                                                               |
+| ----------------------------------------- | -------------------------------------- | -------------------------------------------------------------------------------------- |
+| `duration.actualSeconds` / `deltaSeconds` | equals the video length, delta 0       | longer: end notes earlier or shorten reverb/delay tails; shorter: raise `durationHint` |
+| `audio.clipping.clipped`                  | false                                  | true: lower track volumes or velocities (rare with normalization)                      |
+| `audio.mastering.gainDb`                  | 0 to +6                                | at +9 (the cap): the mix is very quiet; raise volumes so the arrangement survives      |
+| `audio.loudness.integratedLufs`           | about -20 to -14 for a bed             | compare takes only; it is an approximation, not a delivery measurement                 |
+| `warnings.validation` / `warnings.audio`  | empty                                  | read each and repair the data                                                          |
+| `backend.id`                              | `fluidsynth-sf2-v1` for GM instruments | `builtin-synth-v1`: samples not active; say so                                         |
 
 ## Level in the final video
 

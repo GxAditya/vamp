@@ -5,6 +5,7 @@ import {
   mkdtempSync,
   readFileSync,
   readdirSync,
+  realpathSync,
   rmSync,
   statSync,
   writeFileSync,
@@ -47,7 +48,7 @@ import { baseSong, clipNote, clipTrack } from './helpers.js';
 const temporaryRoots: string[] = [];
 
 function tempRoot(prefix = 'vamp-artifacts-'): string {
-  const root = mkdtempSync(join(tmpdir(), prefix));
+  const root = realpathSync.native(mkdtempSync(join(tmpdir(), prefix)));
   temporaryRoots.push(root);
   return root;
 }
@@ -579,7 +580,14 @@ describe('unwritable paths and cancellation', () => {
     expect(underFile.ok).toBe(false);
     if (!underFile.ok) {
       expect(underFile.stage).toBe('artifacts');
-      expect(underFile.errors[0]?.code).toBe('audio.artifacts.unwritable');
+      // POSIX reports ENOTDIR for a path beneath a file (unwritable); Windows
+      // reports ENOENT instead, so the parent-directory check classifies it as
+      // an invalid output there.
+      expect(underFile.errors[0]?.code).toBe(
+        process.platform === 'win32'
+          ? 'audio.artifacts.output_invalid'
+          : 'audio.artifacts.unwritable',
+      );
     }
 
     const asFile = await renderSongArtifacts(multiTrackSong(), {

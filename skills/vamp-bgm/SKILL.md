@@ -34,14 +34,14 @@ Then call `get_schema_guide` once per session and `list_presets` if a preset mig
 
 Gather facts before choosing a note. Infer them from the project first and ask only for what you cannot find:
 
-| Fact | Where to find it |
-| --- | --- |
-| Exact length and fps | Remotion: `<Composition durationInFrames fps>` in `Root.tsx`. Any file: `ffprobe -v error -show_entries format=duration -of csv=p=0 video.mp4` |
-| Scenes and cuts | Remotion `<Sequence from durationInFrames>` / `<Series.Sequence>` boundaries (seconds = frames / fps). Footage: `ffmpeg -i video.mp4 -vf "select='gt(scene,0.4)',showinfo" -f null - 2>&1 \| grep pts_time` |
-| Narration timing | Captions (SRT/VTT/JSON), the script, or `ffmpeg -i vo.wav -af silencedetect=noise=-35dB:d=0.4 -f null -` (speech = the gaps between silences) |
-| Hit points | Logo reveal, title card, product shot, CTA, punchline, transition frames |
-| Mood and brand | User's words, script tone, visual pace (cuts per minute), colour palette, audience |
-| Platform | YouTube / social short / product page / conference / ad (sets loudness and length) |
+| Fact                 | Where to find it                                                                                                                                                                                            |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Exact length and fps | Remotion: `<Composition durationInFrames fps>` in `Root.tsx`. Any file: `ffprobe -v error -show_entries format=duration -of csv=p=0 video.mp4`                                                              |
+| Scenes and cuts      | Remotion `<Sequence from durationInFrames>` / `<Series.Sequence>` boundaries (seconds = frames / fps). Footage: `ffmpeg -i video.mp4 -vf "select='gt(scene,0.4)',showinfo" -f null - 2>&1 \| grep pts_time` |
+| Narration timing     | Captions (SRT/VTT/JSON), the script, or `ffmpeg -i vo.wav -af silencedetect=noise=-35dB:d=0.4 -f null -` (speech = the gaps between silences)                                                               |
+| Hit points           | Logo reveal, title card, product shot, CTA, punchline, transition frames                                                                                                                                    |
+| Mood and brand       | User's words, script tone, visual pace (cuts per minute), colour palette, audience                                                                                                                          |
+| Platform             | YouTube / social short / product page / conference / ad (sets loudness and length)                                                                                                                          |
 
 Write the cue sheet down (in your reply or a scratch file) before composing:
 
@@ -92,14 +92,14 @@ If no tempo fits, you have two honest levers: start the cue earlier or later in 
 
 Map scenes to an energy curve. A good default for a narrated 15-60 s cue:
 
-| Section | Picture | What plays |
-| --- | --- | --- |
-| Intro (1-2 bars) | logo / cold open | pad or keys alone, a sparkle on beat 1 |
-| Establish | first narration | add bass and the lightest groove; keep it thin |
-| Body | demo / main points | ostinato and full groove at low velocity; change one element every 4 or 8 bars |
-| Lift (1-2 bars) | build before the reveal | shaker 16ths, filter riser, drum fill, then an air gap |
-| Hit | reveal / CTA | crash + kick + full chord on the downbeat, music swells once the voice stops |
-| Button | end card | final chord rings, reverb tail finishes before the cut |
+| Section          | Picture                 | What plays                                                                     |
+| ---------------- | ----------------------- | ------------------------------------------------------------------------------ |
+| Intro (1-2 bars) | logo / cold open        | pad or keys alone, a sparkle on beat 1                                         |
+| Establish        | first narration         | add bass and the lightest groove; keep it thin                                 |
+| Body             | demo / main points      | ostinato and full groove at low velocity; change one element every 4 or 8 bars |
+| Lift (1-2 bars)  | build before the reveal | shaker 16ths, filter riser, drum fill, then an air gap                         |
+| Hit              | reveal / CTA            | crash + kick + full chord on the downbeat, music swells once the voice stops   |
+| Button           | end card                | final chord rings, reverb tail finishes before the cut                         |
 
 - **Build by addition and subtraction, not by volume.** Every 4 or 8 bars, add or remove one layer (hats, ostinato, pad octave). A loop that never changes is wallpaper; one that changes every bar is distracting.
 - **Phrase in 4 and 8 bars**, and put the change on the downbeat that matches a cut.
@@ -110,14 +110,14 @@ Map scenes to an energy curve. A good default for a narrated 15-60 s cue:
 
 Give every part its own register and job. Pitches are MIDI keys (C4 = 60).
 
-| Role | Register | Job and rules |
-| --- | --- | --- |
-| Bass | 28-50 (E1-D3) | Root on beat 1, motion on the "and"s, a fifth or octave pickup into the next chord. Short notes (0.4-0.9 beats) for upbeat, long for ambient. Bass and kick on the same beat 1. |
-| Chords / keys | lowest note ≥ 48, mostly 52-72 | Spread voicings: wide intervals low, close intervals high; no thirds below C3 (48), no clusters below C4. Smooth voice leading: move each voice by the smallest step. Drop the root (the bass has it) and use 7ths, 9ths, 6ths. |
-| Pad | 43-67, low-passed | Whole-bar sustains at velocity 45-62 to glue the harmony. Low-pass 2-4 kHz under narration. |
-| Ostinato / pulse | 64-79, off-center | Repeated 8th-note pattern on chord tones (muted guitar 28, kalimba 108, harp 46, pizzicato 45, marimba 12). It carries momentum without asking for attention. Velocity 40-60. |
-| Melody / answers | 72-91, off-center | Sparse: 2-4 note answers in narration gaps, or a real hook only in music-only sections. Never a continuous line under speech. |
-| Drums | GM keys | Groove from the style grid; velocities vary per hit. Under speech: kick 85-105, snare/clap 55-75, closed hats 30-48, open hats/crash 50-70. |
+| Role             | Register                       | Job and rules                                                                                                                                                                                                                   |
+| ---------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Bass             | 28-50 (E1-D3)                  | Root on beat 1, motion on the "and"s, a fifth or octave pickup into the next chord. Short notes (0.4-0.9 beats) for upbeat, long for ambient. Bass and kick on the same beat 1.                                                 |
+| Chords / keys    | lowest note ≥ 48, mostly 52-72 | Spread voicings: wide intervals low, close intervals high; no thirds below C3 (48), no clusters below C4. Smooth voice leading: move each voice by the smallest step. Drop the root (the bass has it) and use 7ths, 9ths, 6ths. |
+| Pad              | 43-67, low-passed              | Whole-bar sustains at velocity 45-62 to glue the harmony. Low-pass 2-4 kHz under narration.                                                                                                                                     |
+| Ostinato / pulse | 64-79, off-center              | Repeated 8th-note pattern on chord tones (muted guitar 28, kalimba 108, harp 46, pizzicato 45, marimba 12). It carries momentum without asking for attention. Velocity 40-60.                                                   |
+| Melody / answers | 72-91, off-center              | Sparse: 2-4 note answers in narration gaps, or a real hook only in music-only sections. Never a continuous line under speech.                                                                                                   |
+| Drums            | GM keys                        | Groove from the style grid; velocities vary per hit. Under speech: kick 85-105, snare/clap 55-75, closed hats 30-48, open hats/crash 50-70.                                                                                     |
 
 **Humanize everything.** Never use one flat velocity. Accent downbeats (+8 to +14), alternate strong and weak hats, rise into fills. For swing, push offbeat 8ths from `+0.5` to `+0.58` (light), `+0.62` (lo-fi) or `+0.667` (triplet shuffle) within each beat. Keep chord notes in one hit within about 6 velocity of each other, top note slightly louder or softer by role.
 

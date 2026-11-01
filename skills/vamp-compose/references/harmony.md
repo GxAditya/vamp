@@ -1,21 +1,21 @@
 # Harmony
 
-Harmony sets the emotional weather; the melody moves through it. Choose a harmonic *language* that matches the direction card, then make two or three moves that a listener will remember.
+Harmony sets the emotional weather; the melody moves through it. Choose a harmonic _language_ that matches the direction card, then make two or three moves that a listener will remember.
 
 ## Emotion → harmonic language
 
-| Feeling | Mode / colour | Progressions to start from |
-| --- | --- | --- |
-| Hopeful, open | major, add9, sus2, IV and vi | I - V/3 - vi7 - IVadd9 · IV - I/3 - ii7 - V |
-| Warm, nostalgic | major with borrowed iv or bVII, maj7 chords | Imaj7 - vi7 - IVmaj7 - iv6 · I - iii7 - IV - iv |
-| Bittersweet, tender | major ↔ relative minor, suspensions | vi - IV - I - V · I - V/7 - vi - iii - IV - I/3 - ii - V |
-| Melancholy, reflective | natural minor, minor 7ths and 9ths | i9 - VImaj7 - IIImaj7 - VII · i - v7 - VI - VII |
-| Dreamy, floating | Lydian (#4), maj7#11, planing | Imaj7 - II (Lydian II) loop · Imaj9 - IVmaj9 with a pedal |
-| Mysterious, uneasy | Phrygian (b2), minor with chromatic bass | i - bII - i · i - bVI - bII - V |
-| Heroic, defiant | Aeolian / minor with major bVI-bVII | i - bVI - bIII - bVII · bVI - bVII - i |
-| Soulful, cool | Dorian (major IV in minor), extended chords | i9 - IV9 · ii9 - V13 - Imaj9 |
-| Playful | major, chromatic passing chords, short notes | I - vi - ii - V7 · I - I+ - I6 - I7 |
-| Tense, suspenseful | pedal + chromatic upper chords, diminished | i - bII/1 - i · i(add b9) cluster swells |
+| Feeling                | Mode / colour                                | Progressions to start from                                |
+| ---------------------- | -------------------------------------------- | --------------------------------------------------------- |
+| Hopeful, open          | major, add9, sus2, IV and vi                 | I - V/3 - vi7 - IVadd9 · IV - I/3 - ii7 - V               |
+| Warm, nostalgic        | major with borrowed iv or bVII, maj7 chords  | Imaj7 - vi7 - IVmaj7 - iv6 · I - iii7 - IV - iv           |
+| Bittersweet, tender    | major ↔ relative minor, suspensions          | vi - IV - I - V · I - V/7 - vi - iii - IV - I/3 - ii - V  |
+| Melancholy, reflective | natural minor, minor 7ths and 9ths           | i9 - VImaj7 - IIImaj7 - VII · i - v7 - VI - VII           |
+| Dreamy, floating       | Lydian (#4), maj7#11, planing                | Imaj7 - II (Lydian II) loop · Imaj9 - IVmaj9 with a pedal |
+| Mysterious, uneasy     | Phrygian (b2), minor with chromatic bass     | i - bII - i · i - bVI - bII - V                           |
+| Heroic, defiant        | Aeolian / minor with major bVI-bVII          | i - bVI - bIII - bVII · bVI - bVII - i                    |
+| Soulful, cool          | Dorian (major IV in minor), extended chords  | i9 - IV9 · ii9 - V13 - Imaj9                              |
+| Playful                | major, chromatic passing chords, short notes | I - vi - ii - V7 · I - I+ - I6 - I7                       |
+| Tense, suspenseful     | pedal + chromatic upper chords, diminished   | i - bII/1 - i · i(add b9) cluster swells                  |
 
 ## Function and cadences
 
@@ -55,19 +55,19 @@ Harmony sets the emotional weather; the melody moves through it. Choose a harmon
 
 Key of C, upper-structure voicings to put over a bass root:
 
-| Chord | Voicing | Bass |
-| --- | --- | --- |
-| Cmaj9 | 52 55 59 62 (E G B D) | 36 |
-| Dm9 | 53 57 60 64 (F A C E) | 38 |
-| Em7 | 55 59 62 64 (G B D E) | 40 |
-| Fmaj7 | 53 57 60 64 (F A C E) | 41 |
-| Fm6 (borrowed iv) | 53 56 60 62 (F Ab C D) | 41 |
-| G13 | 53 59 64 (F B E) | 43 |
-| G7sus4 | 55 60 62 65 (G C D F) | 43 |
-| Am9 | 55 60 64 71 (G C E B) | 45 |
-| Bbmaj7 (bVII) | 53 57 62 65 (F A D F) | 46 |
-| E7 (V/vi) | 56 62 64 68 (G# D E G#) | 40 |
-| A7 (V/ii) | 55 61 64 67 (G C# E G) | 45 |
+| Chord             | Voicing                 | Bass |
+| ----------------- | ----------------------- | ---- |
+| Cmaj9             | 52 55 59 62 (E G B D)   | 36   |
+| Dm9               | 53 57 60 64 (F A C E)   | 38   |
+| Em7               | 55 59 62 64 (G B D E)   | 40   |
+| Fmaj7             | 53 57 60 64 (F A C E)   | 41   |
+| Fm6 (borrowed iv) | 53 56 60 62 (F Ab C D)  | 41   |
+| G13               | 53 59 64 (F B E)        | 43   |
+| G7sus4            | 55 60 62 65 (G C D F)   | 43   |
+| Am9               | 55 60 64 71 (G C E B)   | 45   |
+| Bbmaj7 (bVII)     | 53 57 62 65 (F A D F)   | 46   |
+| E7 (V/vi)         | 56 62 64 68 (G# D E G#) | 40   |
+| A7 (V/ii)         | 55 61 64 67 (G C# E G)  | 45   |
 
 Transpose by adding the same number of semitones to every note. Re-check the low-interval rule after transposing down.
 

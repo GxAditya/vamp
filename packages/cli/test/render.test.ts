@@ -31,7 +31,7 @@ const nativeAvailable = existsSync(nativeBinary) && existsSync(nativeSoundFont);
 const temporaryDirectories: string[] = [];
 
 function tempDirectory(prefix = 'vamp-cli-render-'): string {
-  const directory = realpathSync(mkdtempSync(join(tmpdir(), prefix)));
+  const directory = realpathSync.native(mkdtempSync(join(tmpdir(), prefix)));
   temporaryDirectories.push(directory);
   return directory;
 }
@@ -717,59 +717,67 @@ describe('vamp render errors', () => {
 });
 
 describe('vamp render cancellation', () => {
-  it('aborts on SIGINT, cleans up job output, and returns one JSON error', async () => {
-    const workspace = tempDirectory();
-    writeJson(workspace, 'gm.json', gmSong());
-    const soundFont = fakeSoundFont(workspace);
-    const binary = join(workspace, 'slow-fluidsynth');
-    writeFileSync(binary, '#!/bin/sh\nsleep 2\nexit 1\n', 'utf8');
-    chmodSync(binary, 0o755);
+  // The fake FluidSynth is a POSIX shell script, and Windows cannot deliver a
+  // graceful SIGINT to a spawned child, so this scenario is POSIX-only.
+  it.skipIf(process.platform === 'win32')(
+    'aborts on SIGINT, cleans up job output, and returns one JSON error',
+    async () => {
+      const workspace = tempDirectory();
+      writeJson(workspace, 'gm.json', gmSong());
+      const soundFont = fakeSoundFont(workspace);
+      const binary = join(workspace, 'slow-fluidsynth');
+      writeFileSync(binary, '#!/bin/sh\nsleep 2\nexit 1\n', 'utf8');
+      chmodSync(binary, 0o755);
 
-    const child = spawn(
-      process.execPath,
-      [
-        cliBin,
-        'render',
-        'gm.json',
-        '--out',
-        'cancel-out',
-        '--backend',
-        'fluidsynth',
-        '--fluidsynth-path',
-        binary,
-        '--soundfont',
-        soundFont,
-        '--json',
-      ],
-      { cwd: workspace, stdio: ['ignore', 'pipe', 'pipe'] },
-    );
+      const child = spawn(
+        process.execPath,
+        [
+          cliBin,
+          'render',
+          'gm.json',
+          '--out',
+          'cancel-out',
+          '--backend',
+          'fluidsynth',
+          '--fluidsynth-path',
+          binary,
+          '--soundfont',
+          soundFont,
+          '--json',
+        ],
+        { cwd: workspace, stdio: ['ignore', 'pipe', 'pipe'] },
+      );
 
-    const stdout: Buffer[] = [];
-    const stderr: Buffer[] = [];
-    child.stdout.on('data', (chunk: Buffer) => stdout.push(chunk));
-    child.stderr.on('data', (chunk: Buffer) => stderr.push(chunk));
+      const stdout: Buffer[] = [];
+      const stderr: Buffer[] = [];
+      child.stdout.on('data', (chunk: Buffer) => stdout.push(chunk));
+      child.stderr.on('data', (chunk: Buffer) => stderr.push(chunk));
 
-    await new Promise((resolve) => setTimeout(resolve, 600));
-    child.kill('SIGINT');
-    const exitCode = await new Promise<number | null>((resolve, reject) => {
-      child.once('error', reject);
-      child.once('exit', (code) => resolve(code));
-    });
+      await new Promise((resolve) => setTimeout(resolve, 600));
+      child.kill('SIGINT');
+      const exitCode = await new Promise<number | null>((resolve, reject) => {
+        child.once('error', reject);
+        child.once('exit', (code) => resolve(code));
+      });
 
-    expect(exitCode).toBe(1);
-    expect(Buffer.concat(stderr).toString('utf8')).toBe('');
-    const envelope = JSON.parse(Buffer.concat(stdout).toString('utf8')) as Record<string, unknown>;
-    expect(envelope).toMatchObject({
-      command: 'render',
-      ok: false,
-      error: { code: 'cli.render.cancelled' },
-    });
-    expect(String(errorOf(envelope).hint)).toContain('No partial artifacts');
+      expect(exitCode).toBe(1);
+      expect(Buffer.concat(stderr).toString('utf8')).toBe('');
+      const envelope = JSON.parse(Buffer.concat(stdout).toString('utf8')) as Record<
+        string,
+        unknown
+      >;
+      expect(envelope).toMatchObject({
+        command: 'render',
+        ok: false,
+        error: { code: 'cli.render.cancelled' },
+      });
+      expect(String(errorOf(envelope).hint)).toContain('No partial artifacts');
 
-    expect(existsSync(join(workspace, 'cancel-out'))).toBe(false);
-    const leftovers = readdirSync(workspace).filter((name) => name.startsWith('.vamp-render-'));
-    expect(leftovers).toEqual([]);
-  });
+      expect(existsSync(join(workspace, 'cancel-out'))).toBe(false);
+      const leftovers = readdirSync(workspace).filter((name) => name.startsWith('.vamp-render-'));
+      expect(leftovers).toEqual([]);
+    },
+  );
 });
 
 describe('vamp render native FluidSynth smoke', () => {

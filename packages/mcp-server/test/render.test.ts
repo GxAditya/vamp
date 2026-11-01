@@ -52,7 +52,7 @@ const TUTORIAL_LENGTH_BEATS = 67.5;
 const temporaryDirectories: string[] = [];
 
 function tempDirectory(prefix = 'vamp-render-test-'): string {
-  const directory = realpathSync(mkdtempSync(join(tmpdir(), prefix)));
+  const directory = realpathSync.native(mkdtempSync(join(tmpdir(), prefix)));
   temporaryDirectories.push(directory);
   return directory;
 }
@@ -861,86 +861,92 @@ function spawnRaw(
 }
 
 describe('render_song lifecycle over stdio: shutdown aborts an active render', () => {
-  it('aborts the in-flight render, keeps stdout protocol-only, and exits cleanly', async () => {
-    const root = tempDirectory('vamp-render-shutdown-');
-    // A ten-minute render at 48 kHz cannot finish before the signal arrives.
-    const longSong = tutorialBgm();
-    (longSong['meta'] as Record<string, unknown>)['durationHint'] = 900;
-    const store = new ProjectStore({ root, validation: INSTRUMENT_REGISTRY_VALIDATION });
-    const created = await store.create({ projectId: 'long-bgm', song: longSong });
-    expect(created.ok).toBe(true);
+  // Windows cannot deliver a graceful SIGTERM to a spawned child (kill()
+  // terminates the process outright), so the abort-and-clean-exit path this
+  // test exercises exists only on POSIX platforms.
+  it.skipIf(process.platform === 'win32')(
+    'aborts the in-flight render, keeps stdout protocol-only, and exits cleanly',
+    async () => {
+      const root = tempDirectory('vamp-render-shutdown-');
+      // A ten-minute render at 48 kHz cannot finish before the signal arrives.
+      const longSong = tutorialBgm();
+      (longSong['meta'] as Record<string, unknown>)['durationHint'] = 900;
+      const store = new ProjectStore({ root, validation: INSTRUMENT_REGISTRY_VALIDATION });
+      const created = await store.create({ projectId: 'long-bgm', song: longSong });
+      expect(created.ok).toBe(true);
 
-    const server = spawnRaw(['--project-root', root], deterministicEnvironment);
-    try {
-      await server.request('initialize', {
-        protocolVersion: '2025-11-25',
-        capabilities: {},
-        clientInfo: { name: 'vamp-render-raw', version: '1.0.0' },
-      });
-      server.notify('notifications/initialized');
-
-      const render = server.request('tools/call', {
-        name: 'render_song',
-        arguments: { projectId: 'long-bgm', renderName: 'interrupted' },
-      });
-      // Give the render time to start writing into its job directory.
-      await new Promise((resolve) => setTimeout(resolve, 750));
-      const renderDirectory = join(root, 'long-bgm', 'renders', 'interrupted');
-      server.child.kill('SIGTERM');
-
-      const exit = await server.waitForExit();
-      expect(exit).toEqual({ code: 0, signal: null });
-
-      // The aborted render either reported its cancellation before the server
-      // closed or lost its response when the process exited; both are clean.
-      let reported: Record<string, unknown> | null = null;
+      const server = spawnRaw(['--project-root', root], deterministicEnvironment);
       try {
-        const message = await render;
-        reported = (message['result'] ?? null) as Record<string, unknown> | null;
-      } catch {
-        reported = null;
-      }
-      if (reported !== null) {
-        expect(reported['isError']).toBe(true);
-        expect(reported['structuredContent']).toBeUndefined();
-        const content = reported['content'] as { type: string; text: string }[];
-        const payload = content
-          .filter((item) => item.type === 'text' && item.text.trimStart().startsWith('{'))
-          .map((item) => JSON.parse(item.text) as Record<string, unknown>);
-        expect(payload[0]).toMatchObject({ error: { code: 'render.cancelled' } });
-      }
+        await server.request('initialize', {
+          protocolVersion: '2025-11-25',
+          capabilities: {},
+          clientInfo: { name: 'vamp-render-raw', version: '1.0.0' },
+        });
+        server.notify('notifications/initialized');
 
-      const stderr = server.stderr();
-      expect(stderr).toContain('shutting down (SIGTERM)');
-      expect(stderr).toContain('aborting');
-      expect(stderr).not.toContain(SECRET_VALUE);
+        const render = server.request('tools/call', {
+          name: 'render_song',
+          arguments: { projectId: 'long-bgm', renderName: 'interrupted' },
+        });
+        // Give the render time to start writing into its job directory.
+        await new Promise((resolve) => setTimeout(resolve, 750));
+        const renderDirectory = join(root, 'long-bgm', 'renders', 'interrupted');
+        server.child.kill('SIGTERM');
 
-      // No published artifacts: the atomic publisher never ran, and the render
-      // directory holds at most the private job directory the engine cleans up.
-      const published = existsSync(renderDirectory) ? readdirSync(renderDirectory) : [];
-      expect(published.filter((name) => !name.startsWith('.vamp-render-'))).toEqual([]);
+        const exit = await server.waitForExit();
+        expect(exit).toEqual({ code: 0, signal: null });
 
-      // Stdout stayed protocol-only for the whole session.
-      expect(server.lines.length).toBeGreaterThan(0);
-      for (const line of server.lines) {
-        const message = JSON.parse(line) as Record<string, unknown>;
-        expect(message['jsonrpc']).toBe('2.0');
-        expect(typeof message['id'] === 'number' || typeof message['method'] === 'string').toBe(
-          true,
-        );
+        // The aborted render either reported its cancellation before the server
+        // closed or lost its response when the process exited; both are clean.
+        let reported: Record<string, unknown> | null = null;
+        try {
+          const message = await render;
+          reported = (message['result'] ?? null) as Record<string, unknown> | null;
+        } catch {
+          reported = null;
+        }
+        if (reported !== null) {
+          expect(reported['isError']).toBe(true);
+          expect(reported['structuredContent']).toBeUndefined();
+          const content = reported['content'] as { type: string; text: string }[];
+          const payload = content
+            .filter((item) => item.type === 'text' && item.text.trimStart().startsWith('{'))
+            .map((item) => JSON.parse(item.text) as Record<string, unknown>);
+          expect(payload[0]).toMatchObject({ error: { code: 'render.cancelled' } });
+        }
+
+        const stderr = server.stderr();
+        expect(stderr).toContain('shutting down (SIGTERM)');
+        expect(stderr).toContain('aborting');
+        expect(stderr).not.toContain(SECRET_VALUE);
+
+        // No published artifacts: the atomic publisher never ran, and the render
+        // directory holds at most the private job directory the engine cleans up.
+        const published = existsSync(renderDirectory) ? readdirSync(renderDirectory) : [];
+        expect(published.filter((name) => !name.startsWith('.vamp-render-'))).toEqual([]);
+
+        // Stdout stayed protocol-only for the whole session.
+        expect(server.lines.length).toBeGreaterThan(0);
+        for (const line of server.lines) {
+          const message = JSON.parse(line) as Record<string, unknown>;
+          expect(message['jsonrpc']).toBe('2.0');
+          expect(typeof message['id'] === 'number' || typeof message['method'] === 'string').toBe(
+            true,
+          );
+        }
+        expect(server.lines.join('\n')).not.toContain('vamp-mcp:');
+
+        // The stored project survived the aborted render untouched.
+        const reread = await store.get('long-bgm');
+        expect(reread.ok).toBe(true);
+        if (reread.ok) {
+          expect(reread.value.revision).toBe(1);
+        }
+      } finally {
+        server.stop();
       }
-      expect(server.lines.join('\n')).not.toContain('vamp-mcp:');
-
-      // The stored project survived the aborted render untouched.
-      const reread = await store.get('long-bgm');
-      expect(reread.ok).toBe(true);
-      if (reread.ok) {
-        expect(reread.value.revision).toBe(1);
-      }
-    } finally {
-      server.stop();
-    }
-  });
+    },
+  );
 });
 
 describe('MCP preset authoring and sampled render', () => {

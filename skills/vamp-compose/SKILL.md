@@ -95,14 +95,14 @@ Pick a form and write the bar map with an energy value (1-10) per section (`refe
 
 Give every part a job and a register. Map the texture:
 
-| Layer | Job | Typical register | Notes |
-| --- | --- | --- | --- |
-| Melody | the idea | 60-84 | one at a time; double at the octave for the big return |
+| Layer          | Job          | Typical register               | Notes                                                                                                    |
+| -------------- | ------------ | ------------------------------ | -------------------------------------------------------------------------------------------------------- |
+| Melody         | the idea     | 60-84                          | one at a time; double at the octave for the big return                                                   |
 | Counter-melody | conversation | a 3rd-6th below or in the gaps | moves when the melody holds, holds when it moves; guide tones (3rds and 7ths) make perfect counter-lines |
-| Harmony | the chords | 48-72 | spread voicings; arpeggiated, comped or sustained |
-| Bass | foundation | 28-50 | roots on strong beats, approach notes into chord changes |
-| Rhythm | motion | drums / ostinato | groove follows the genre DNA |
-| Colour | sparkle, air | above 72 or pads | harp, mallets, FX, used at transitions |
+| Harmony        | the chords   | 48-72                          | spread voicings; arpeggiated, comped or sustained                                                        |
+| Bass           | foundation   | 28-50                          | roots on strong beats, approach notes into chord changes                                                 |
+| Rhythm         | motion       | drums / ostinato               | groove follows the genre DNA                                                                             |
+| Colour         | sparkle, air | above 72 or pads               | harp, mallets, FX, used at transitions                                                                   |
 
 Keep at most 4-5 layers active most of the time, and save the full texture for the peak. Choose timbres for the emotion (warm: piano, nylon, clarinet, horn, cello; bright: bright piano, flute, marimba, pizzicato; dark: low strings, tremolo, choir; modern: poly pad, synth bass, EP). Panning creates the stage: bass, kick and lead centered, everything else placed left or right so parts do not sit on top of each other.
 
@@ -140,16 +140,16 @@ Give the user: the direction card, a short walk-through ("bar 9 is the peak: A5 
 
 ## Critique rubric (score 1-5, fix anything below 4)
 
-| Area | 5 looks like |
-| --- | --- |
-| Identity | One memorable idea you could hum; it returns and develops |
-| Melody | Clear contour, single well-placed peak, breaths, steps balanced with purposeful leaps |
-| Harmony | Fits the emotion, cadences of the right strength, one or two colour moves, smooth voice leading |
-| Rhythm and groove | Genre-correct feel, varied velocities, ghost notes, nothing robotic |
-| Form and contrast | Sections differ in at least two dimensions; one main peak; a real ending |
-| Arrangement | Every part has a job and register; ≤ 5 layers outside the peak; nothing masks the melody |
-| Production | Consistent space, sensible pan, report is clean, normalization under the cap |
-| Direction fit | Matches the emotional core, tempo, palette and avoid-list on the card |
+| Area              | 5 looks like                                                                                    |
+| ----------------- | ----------------------------------------------------------------------------------------------- |
+| Identity          | One memorable idea you could hum; it returns and develops                                       |
+| Melody            | Clear contour, single well-placed peak, breaths, steps balanced with purposeful leaps           |
+| Harmony           | Fits the emotion, cadences of the right strength, one or two colour moves, smooth voice leading |
+| Rhythm and groove | Genre-correct feel, varied velocities, ghost notes, nothing robotic                             |
+| Form and contrast | Sections differ in at least two dimensions; one main peak; a real ending                        |
+| Arrangement       | Every part has a job and register; ≤ 5 layers outside the peak; nothing masks the melody        |
+| Production        | Consistent space, sensible pan, report is clean, normalization under the cap                    |
+| Direction fit     | Matches the emotional core, tempo, palette and avoid-list on the card                           |
 
 ## Avoid by default
 

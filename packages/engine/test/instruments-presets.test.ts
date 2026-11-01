@@ -1,4 +1,4 @@
-import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, realpathSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
@@ -22,7 +22,7 @@ import {
 const temporaryDirectories: string[] = [];
 
 function tempDirectory(): string {
-  const directory = mkdtempSync(join(tmpdir(), 'vamp-preset-test-'));
+  const directory = realpathSync.native(mkdtempSync(join(tmpdir(), 'vamp-preset-test-')));
   temporaryDirectories.push(directory);
   return directory;
 }

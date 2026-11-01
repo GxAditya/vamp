@@ -13,7 +13,7 @@
  * Everything is offline and confined to temporary directories.
  */
 
-import { existsSync, mkdtempSync, rmSync } from 'node:fs';
+import { existsSync, mkdtempSync, realpathSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
@@ -43,7 +43,7 @@ vi.setConfig({ testTimeout: 60_000 });
 const temporaryDirectories: string[] = [];
 
 function tempDirectory(prefix = 'vamp-render-jobs-'): string {
-  const directory = mkdtempSync(join(tmpdir(), prefix));
+  const directory = realpathSync.native(mkdtempSync(join(tmpdir(), prefix)));
   temporaryDirectories.push(directory);
   return directory;
 }
@@ -406,7 +406,12 @@ describe('render_song bounded lifecycle through the SDK client', () => {
     );
     try {
       const started = harness.call({ projectId: 'lifecycle', renderName: 'interrupted' });
-      await new Promise((resolve) => setTimeout(resolve, 25));
+      // Poll rather than sleeping a fixed interval: under load (e.g. Windows
+      // CI runners) the job can take well over 25 ms to become active.
+      const deadline = Date.now() + 10_000;
+      while (harness.queue.activeCount === 0 && Date.now() < deadline) {
+        await new Promise((resolve) => setTimeout(resolve, 10));
+      }
       expect(harness.queue.activeCount).toBe(1);
       expect(gate.signals.length).toBe(1);
       expect(gate.signals[0]?.aborted).toBe(false);

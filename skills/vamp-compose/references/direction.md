@@ -1,6 +1,6 @@
 # Direction: from a request to a plan you can be held to
 
-A producer's first job happens before any sound: deciding what the track *is*. Every later decision (tempo, key, instruments, form) gets measured against that answer.
+A producer's first job happens before any sound: deciding what the track _is_. Every later decision (tempo, key, instruments, form) gets measured against that answer.
 
 ## Interview the brief (ask only what you cannot infer)
 
@@ -32,16 +32,16 @@ References translated into parameters:
 
 ## Translate references into parameters (never copy)
 
-Describe *why* a reference works, then write something new with the same ingredients:
+Describe _why_ a reference works, then write something new with the same ingredients:
 
-| They say | Translate to |
-| --- | --- |
-| "Like Ghibli / Hisaishi" | lyrical piano melody, woodwind and strings answers, major with borrowed iv and secondary dominants, rubato feel (long notes at phrase ends), 70-92 BPM, wide dynamic arc |
-| "Lo-fi like study streams" | 70-90 BPM swung 8ths, Rhodes / tine EP with 7ths and 9ths, upright or finger bass, dusty boom-bap kit at low velocity, low-pass everything above 6 kHz |
-| "Hans Zimmer-ish" | ostinato-driven, minor, slow harmonic rhythm with pedal tones, low brass + strings, building layers every 4-8 bars, percussion hits at section changes |
-| "Daft Punk / French house" | 118-124 BPM four-on-the-floor, filtered chord loop (low-pass automation), syncopated bass, disco-derived 7th chords |
-| "Pokémon / RPG town" | bright major, 100-130 BPM, simple memorable melody in 2- and 4-bar phrases, pizzicato or marimba, light bouncing bass |
-| "Coldplay-style anthem" | 4-chord major loop with sus colour, eighth-note piano pulse, big drums only at the chorus, octave-doubled melody, lift by adding layers |
+| They say                   | Translate to                                                                                                                                                             |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| "Like Ghibli / Hisaishi"   | lyrical piano melody, woodwind and strings answers, major with borrowed iv and secondary dominants, rubato feel (long notes at phrase ends), 70-92 BPM, wide dynamic arc |
+| "Lo-fi like study streams" | 70-90 BPM swung 8ths, Rhodes / tine EP with 7ths and 9ths, upright or finger bass, dusty boom-bap kit at low velocity, low-pass everything above 6 kHz                   |
+| "Hans Zimmer-ish"          | ostinato-driven, minor, slow harmonic rhythm with pedal tones, low brass + strings, building layers every 4-8 bars, percussion hits at section changes                   |
+| "Daft Punk / French house" | 118-124 BPM four-on-the-floor, filtered chord loop (low-pass automation), syncopated bass, disco-derived 7th chords                                                      |
+| "Pokémon / RPG town"       | bright major, 100-130 BPM, simple memorable melody in 2- and 4-bar phrases, pizzicato or marimba, light bouncing bass                                                    |
+| "Coldplay-style anthem"    | 4-chord major loop with sus colour, eighth-note piano pulse, big drums only at the chorus, octave-doubled melody, lift by adding layers                                  |
 
 Never reproduce an existing melody, or an existing chord-and-melody combination, or a recognisable arrangement. Genre and feel are shared; tunes are not.
 
@@ -70,14 +70,14 @@ When presenting, speak in musical terms tied to moments ("bar 13: the bass walks
 
 When the user reacts, translate vague notes into parameters:
 
-| They say | Usually means | Try |
-| --- | --- | --- |
-| "Too busy" | too many layers or notes in the middle register | remove a part, simplify the comping, lengthen notes |
-| "Boring" | no contrast or development | add a B section, change register or groove at the 8-bar mark, develop the motif |
-| "Too sad" | minor mode, slow tempo, falling lines | major or Dorian, +8-12 BPM, rising contours, brighter timbres |
-| "Cheesy" | obvious progression, stock melody, over-bright timbre | richer chords (add9, sus, borrowed), less predictable rhythm, warmer instruments |
-| "Needs more punch" | weak downbeats, soft kick and bass | stronger kick/bass on 1, crash at section starts, dropout before the peak |
-| "Not memorable" | no clear motif or too little repetition | one short motif, repeated with small variations; put it on the strongest timbre |
-| "Sounds like a computer" | flat velocities, rigid timing | phrase dynamics, rolled chords, swing, ghost notes, varied repeats |
+| They say                 | Usually means                                         | Try                                                                              |
+| ------------------------ | ----------------------------------------------------- | -------------------------------------------------------------------------------- |
+| "Too busy"               | too many layers or notes in the middle register       | remove a part, simplify the comping, lengthen notes                              |
+| "Boring"                 | no contrast or development                            | add a B section, change register or groove at the 8-bar mark, develop the motif  |
+| "Too sad"                | minor mode, slow tempo, falling lines                 | major or Dorian, +8-12 BPM, rising contours, brighter timbres                    |
+| "Cheesy"                 | obvious progression, stock melody, over-bright timbre | richer chords (add9, sus, borrowed), less predictable rhythm, warmer instruments |
+| "Needs more punch"       | weak downbeats, soft kick and bass                    | stronger kick/bass on 1, crash at section starts, dropout before the peak        |
+| "Not memorable"          | no clear motif or too little repetition               | one short motif, repeated with small variations; put it on the strongest timbre  |
+| "Sounds like a computer" | flat velocities, rigid timing                         | phrase dynamics, rolled chords, swing, ghost notes, varied repeats               |
 
 Treat contradictory feedback as hypotheses: make two short variants and let the user choose.

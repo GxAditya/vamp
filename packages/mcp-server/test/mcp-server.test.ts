@@ -1,5 +1,5 @@
 import { spawn, type ChildProcessWithoutNullStreams } from 'node:child_process';
-import { existsSync, mkdtempSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdtempSync, realpathSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createInterface } from 'node:readline';
@@ -27,7 +27,7 @@ const SECRET_VALUE = 'vamp-mcp-test-secret-never-report';
 const temporaryDirectories: string[] = [];
 
 function tempDirectory(prefix = 'vamp-mcp-test-'): string {
-  const directory = mkdtempSync(join(tmpdir(), prefix));
+  const directory = realpathSync.native(mkdtempSync(join(tmpdir(), prefix)));
   temporaryDirectories.push(directory);
   return directory;
 }
@@ -996,8 +996,15 @@ describe('Vamp MCP protocol safety and process lifecycle', () => {
         await initializeRaw(server);
         server.child.kill(signal);
         const exit = await server.waitForExit();
-        expect(exit).toEqual({ code: 0, signal: null });
-        expect(server.stderr()).toContain(`shutting down (${signal})`);
+        if (process.platform === 'win32') {
+          // Windows has no POSIX signal delivery to a spawned child: kill()
+          // terminates the process outright, so there is no graceful shutdown
+          // path to assert.
+          expect(exit).toEqual({ code: null, signal });
+        } else {
+          expect(exit).toEqual({ code: 0, signal: null });
+          expect(server.stderr()).toContain(`shutting down (${signal})`);
+        }
       } finally {
         server.stop();
       }

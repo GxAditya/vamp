@@ -14,13 +14,13 @@ Store it as data: `[(pitch, onsetBeats, durationBeats), ...]`, then derive every
 
 ## Contour
 
-| Shape | Effect | Use |
-| --- | --- | --- |
-| Arch (rise, peak, fall) | complete, satisfying | the default for themes and choruses |
-| Rising | building, hopeful, questioning | pre-chorus, builds, antecedent phrases |
-| Falling | release, resolution, sadness | endings, consequent phrases, laments |
-| Wave | conversational | verses, accompaniment-like melodies |
-| Level / static | rhythmic focus, chant, tension | rap-like hooks, minimalist pulses, suspense |
+| Shape                   | Effect                         | Use                                         |
+| ----------------------- | ------------------------------ | ------------------------------------------- |
+| Arch (rise, peak, fall) | complete, satisfying           | the default for themes and choruses         |
+| Rising                  | building, hopeful, questioning | pre-chorus, builds, antecedent phrases      |
+| Falling                 | release, resolution, sadness   | endings, consequent phrases, laments        |
+| Wave                    | conversational                 | verses, accompaniment-like melodies         |
+| Level / static          | rhythmic focus, chant, tension | rap-like hooks, minimalist pulses, suspense |
 
 Rules of thumb (defaults, not laws):
 
@@ -58,24 +58,24 @@ Rules of thumb (defaults, not laws):
 
 Use these to make returns fresh while keeping identity:
 
-| Technique | What changes | Example from C-D-G (quarter, quarter, half) |
-| --- | --- | --- |
-| Repetition | nothing (use sparingly) | C-D-G |
-| Sequence | pitch level, diatonically | D-E-A, E-F-B |
-| Interval change | one interval (often the last) | C-D-A (the leap grows) |
-| Rhythm change | durations, not pitches | dotted: C. D G |
-| Fragmentation | only part of it | C-D, C-D, C-D-E |
-| Extension | adds notes at the end | C-D-G-F-E |
-| Expansion | inserts notes inside | C-D-E-F-G |
-| Compression | removes inner notes | C-G |
-| Inversion | directions flip | C-B-F |
-| Retrograde | order reverses | G-D-C |
-| Augmentation | durations doubled | C (half), D (half), G (whole) |
-| Diminution | durations halved | C-D-G in 8ths |
-| Ornamentation | adds neighbour/passing notes | C-D-E-D-G |
-| Thinning | keeps only the strong notes | C . G |
-| Re-harmonisation | same tune, new chords underneath | C-D-G over Am7 instead of C |
-| Re-orchestration | same tune, new timbre/register | piano → flute an octave up |
+| Technique        | What changes                     | Example from C-D-G (quarter, quarter, half) |
+| ---------------- | -------------------------------- | ------------------------------------------- |
+| Repetition       | nothing (use sparingly)          | C-D-G                                       |
+| Sequence         | pitch level, diatonically        | D-E-A, E-F-B                                |
+| Interval change  | one interval (often the last)    | C-D-A (the leap grows)                      |
+| Rhythm change    | durations, not pitches           | dotted: C. D G                              |
+| Fragmentation    | only part of it                  | C-D, C-D, C-D-E                             |
+| Extension        | adds notes at the end            | C-D-G-F-E                                   |
+| Expansion        | inserts notes inside             | C-D-E-F-G                                   |
+| Compression      | removes inner notes              | C-G                                         |
+| Inversion        | directions flip                  | C-B-F                                       |
+| Retrograde       | order reverses                   | G-D-C                                       |
+| Augmentation     | durations doubled                | C (half), D (half), G (whole)               |
+| Diminution       | durations halved                 | C-D-G in 8ths                               |
+| Ornamentation    | adds neighbour/passing notes     | C-D-E-D-G                                   |
+| Thinning         | keeps only the strong notes      | C . G                                       |
+| Re-harmonisation | same tune, new chords underneath | C-D-G over Am7 instead of C                 |
+| Re-orchestration | same tune, new timbre/register   | piano → flute an octave up                  |
 
 A strong piece usually uses 3-5 of these: sequence and fragmentation inside phrases, inversion or re-harmonisation for a B section, augmentation or re-orchestration for the ending.
 

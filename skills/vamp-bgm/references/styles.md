@@ -10,19 +10,19 @@ How to read the tables:
 
 Quick picker:
 
-| Brief | Style |
-| --- | --- |
-| Coding tutorial, dev tool walkthrough, docs video | 1 Tech explainer or 2 Lo-fi |
-| Product launch, feature reel, SaaS promo | 3 Launch pop |
-| Company intro, B2B, onboarding | 4 Corporate clean |
-| Beauty shots, focus, meditative intro, slow product turntable | 5 Ambient |
-| Data story, research, documentary, case study | 6 Documentary underscore |
-| Trailer, keynote opener, big reveal | 7 Cinematic build |
-| Testimonial, mission, thank-you, retrospective | 8 Emotional piano |
-| Kids, comedy, quirky how-to | 9 Playful |
-| Gaming, retro tech, night city, hacker aesthetic | 10 Synthwave |
-| Small business, travel, craft, food | 11 Acoustic folk |
-| Problem statement, security incident, mystery | 12 Tension |
+| Brief                                                         | Style                       |
+| ------------------------------------------------------------- | --------------------------- |
+| Coding tutorial, dev tool walkthrough, docs video             | 1 Tech explainer or 2 Lo-fi |
+| Product launch, feature reel, SaaS promo                      | 3 Launch pop                |
+| Company intro, B2B, onboarding                                | 4 Corporate clean           |
+| Beauty shots, focus, meditative intro, slow product turntable | 5 Ambient                   |
+| Data story, research, documentary, case study                 | 6 Documentary underscore    |
+| Trailer, keynote opener, big reveal                           | 7 Cinematic build           |
+| Testimonial, mission, thank-you, retrospective                | 8 Emotional piano           |
+| Kids, comedy, quirky how-to                                   | 9 Playful                   |
+| Gaming, retro tech, night city, hacker aesthetic              | 10 Synthwave                |
+| Small business, travel, craft, food                           | 11 Acoustic folk            |
+| Problem statement, security incident, mystery                 | 12 Tension                  |
 
 ---
 
@@ -141,11 +141,11 @@ Quick picker:
 
 ## Swapping instruments by role
 
-| Role | Warm / organic | Clean / modern | Cinematic |
-| --- | --- | --- | --- |
-| Chords | tine EP 4, nylon 24, grand 0 | soft EP 5, electric grand 2, bright piano 1 | string ensemble 48, horn 60 |
-| Pad | warm pad 89, drawbar organ 16 (low) | poly pad 90, new age 88 | choir aahs 52, halo 94 |
-| Bass | upright 32, finger 33 | picked 34, synth 38 | cello 42, bassoon 70 |
-| Pulse | kalimba 108, harp 46 | muted guitar 28, marimba 12 | tremolo 44, pizzicato 45 |
-| Melody | vibraphone 11, clarinet 71 | flute 73, fifths lead 86 | French horn 60, violin 40 |
-| Sparkle | harp 46, kalimba 108 | crystal 98 | harp 46, soundtrack 97 |
+| Role    | Warm / organic                      | Clean / modern                              | Cinematic                   |
+| ------- | ----------------------------------- | ------------------------------------------- | --------------------------- |
+| Chords  | tine EP 4, nylon 24, grand 0        | soft EP 5, electric grand 2, bright piano 1 | string ensemble 48, horn 60 |
+| Pad     | warm pad 89, drawbar organ 16 (low) | poly pad 90, new age 88                     | choir aahs 52, halo 94      |
+| Bass    | upright 32, finger 33               | picked 34, synth 38                         | cello 42, bassoon 70        |
+| Pulse   | kalimba 108, harp 46                | muted guitar 28, marimba 12                 | tremolo 44, pizzicato 45    |
+| Melody  | vibraphone 11, clarinet 71          | flute 73, fifths lead 86                    | French horn 60, violin 40   |
+| Sparkle | harp 46, kalimba 108                | crystal 98                                  | harp 46, soundtrack 97      |

@@ -1,4 +1,4 @@
-import { mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, readFileSync, readdirSync, realpathSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
@@ -63,7 +63,7 @@ function song(title: string): SongSchemaV1 {
 
 describe('two-file project commit failure', () => {
   it('restores the previous song and revision when metadata cannot be published', async () => {
-    const base = mkdtempSync(join(tmpdir(), 'vamp-project-commit-failure-'));
+    const base = realpathSync.native(mkdtempSync(join(tmpdir(), 'vamp-project-commit-failure-')));
     temporaryDirectories.push(base);
     const root = join(base, 'projects');
     mkdirSync(root);
