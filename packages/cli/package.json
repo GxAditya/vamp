@@ -1,0 +1,34 @@
+{
+  "name": "@gxaditya/vamp-cli",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Vamp command-line interface with init, validate, info, render, schema, and agent-friendly JSON output.",
+  "license": "AGPL-3.0-only",
+  "bin": {
+    "vamp": "./bin/vamp.js"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node ../../scripts/copy-file.mjs ../../docs/schema-guide.md dist/schema-guide.md && node ../../scripts/copy-file.mjs ../../THIRD_PARTY_NOTICES.md THIRD_PARTY_NOTICES.md && node ../../scripts/make-executable.mjs dist/index.js && node ../../scripts/make-executable.mjs bin/vamp.js"
+  },
+  "dependencies": {
+    "@gxaditya/vamp-engine": "workspace:*",
+    "@gxaditya/vamp-project": "workspace:*",
+    "@gxaditya/vamp-schema": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GxAditya/vamp.git",
+    "directory": "packages/cli"
+  }
+}

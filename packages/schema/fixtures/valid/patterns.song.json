@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "1.0.0",
+  "meta": {
+    "title": "Patterns and Placements",
+    "bpm": 112,
+    "timeSignature": {
+      "numerator": 4,
+      "denominator": 4
+    },
+    "key": {
+      "tonic": "A",
+      "mode": "minor"
+    },
+    "seed": 2026,
+    "durationHint": 32
+  },
+  "patterns": [
+    {
+      "id": "pulse",
+      "name": "Eighth-note pulse",
+      "lengthBeats": 4,
+      "notes": [
+        {
+          "pitch": 69,
+          "start": 0,
+          "duration": 0.5
+        },
+        {
+          "pitch": 72,
+          "start": 0.5,
+          "duration": 0.5
+        },
+        {
+          "pitch": 76,
+          "start": 1,
+          "duration": 0.5
+        },
+        {
+          "pitch": 72,
+          "start": 1.5,
+          "duration": 0.5
+        },
+        {
+          "pitch": 69,
+          "start": 2,
+          "duration": 0.5
+        },
+        {
+          "pitch": 72,
+          "start": 2.5,
+          "duration": 0.5
+        },
+        {
+          "pitch": 76,
+          "start": 3,
+          "duration": 0.5
+        },
+        {
+          "pitch": 79,
+          "start": 3.5,
+          "duration": 0.5
+        }
+      ]
+    },
+    {
+      "id": "bassline",
+      "name": "Repeating bass figure",
+      "notes": [
+        {
+          "pitch": 45,
+          "start": 0,
+          "duration": 1.5
+        },
+        {
+          "pitch": 45,
+          "start": 2,
+          "duration": 1.5
+        },
+        {
+          "pitch": 48,
+          "start": 4,
+          "duration": 1.5
+        },
+        {
+          "pitch": 43,
+          "start": 6,
+          "duration": 1.5
+        }
+      ]
+    }
+  ],
+  "tracks": [
+    {
+      "id": "arp",
+      "name": "Arpeggio",
+      "kind": "midi",
+      "channel": 0,
+      "instrument": {
+        "type": "builtin",
+        "id": "keys.soft"
+      },
+      "placements": [
+        {
+          "pattern": "pulse",
+          "start": 0,
+          "repeat": 4
+        },
+        {
+          "pattern": "pulse",
+          "start": 16,
+          "repeat": 4
+        }
+      ]
+    },
+    {
+      "id": "bass",
+      "name": "Bass",
+      "kind": "midi",
+      "channel": 1,
+      "instrument": {
+        "type": "builtin",
+        "id": "bass.sub"
+      },
+      "placements": [
+        {
+          "pattern": "bassline",
+          "start": 0,
+          "repeat": 4
+        }
+      ]
+    }
+  ]
+}

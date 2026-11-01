@@ -1,0 +1,838 @@
+{
+  "format": "vamp.compat-baseline",
+  "formatVersion": 1,
+  "frozenSchemaVersion": "1.0.0",
+  "regenerate": "pnpm compat:freeze (after pnpm build)",
+  "policy": "These entries describe what v1 produces for representative saved songs. Re-freeze only for a reviewed, intentional schema/MIDI/audio change. A future schema version must replay every source here through its migration and re-derive these fields; a mismatch is data loss, not a re-baseline.",
+  "determinismScope": "Built-in audio digests are byte-deterministic for one engine build on one platform, matching the Task 18 golden policy. The noteNativeFluidSynth48000 entry is same-machine only and is never a cross-platform claim.",
+  "api": {
+    "song.schema.json": {
+      "sha256": "55702810c9b9ae4c040a135d770a42572ca0e311d44ece88b3c29aac91840166",
+      "bytes": 39831
+    },
+    "generated.song-v1.ts": {
+      "sha256": "33a6abda4a4b5b636bcc8562afcaca120c4ea64232d03ed53a61f9e1b2272d1d",
+      "bytes": 2844
+    },
+    "python.vamp_schema": {
+      "__init__.py": {
+        "sha256": "bbf1d4c50038d5bd4a5f0dee90f1a2f2b276e90f96ad9c423a7eae0d022c53c1",
+        "bytes": 315
+      },
+      "song_v1.py": {
+        "sha256": "e738c64ef5b0bbda82b65d625a4cff1a222c5dd18e9a5c40ecb95431689a217f",
+        "bytes": 4465
+      }
+    },
+    "instrument-registry.json": {
+      "sha256": "bc75c37208dc2c9bbb456a393c7a3b0d8250c0459545c8b0f8edc37806fb9929",
+      "bytes": 16774
+    }
+  },
+  "songs": [
+    {
+      "source": "packages/schema/fixtures/valid/automation.song.json",
+      "song": {
+        "sha256": "28db4929fc584cd399f627e679427be02fee6ec6e33673aed01c4d75198a257b",
+        "bytes": 2027
+      },
+      "validation": {
+        "schemaVersion": "1.0.0",
+        "warningCount": 1,
+        "capabilityCheck": "not_checked"
+      },
+      "normalized": {
+        "sha256": "de83ef311764fbbe98e5918c1e778b59ffa6cb4a44340030732d035e8a8a76a8",
+        "bytes": 2253
+      },
+      "duration": {
+        "secondsPerBeat": 0.7142857142857143,
+        "hintSeconds": 17.142857142857142,
+        "lastSoundSeconds": 13.82857142857143,
+        "renderedSeconds": 17.142857142857142,
+        "tracks": [
+          {
+            "trackIndex": 0,
+            "trackId": "synth",
+            "audible": true,
+            "contentEndBeats": 16,
+            "contentEndSeconds": 11.428571428571429,
+            "tailSeconds": 2.4,
+            "endSeconds": 13.82857142857143
+          }
+        ]
+      },
+      "timeline48000": {
+        "sha256": "79a279d6982276c9a84efcec81108e839b186c81d1556585aa7fd5a768a987de",
+        "bytes": 4258
+      },
+      "midi": {
+        "sha256": "dc205e175d058bc436c5c902f20be486a433547b9f79ad7a55d9c90ee66f4a95",
+        "bytes": 148
+      },
+      "audioBuiltin48000": {
+        "sha256": "b488782a45567c3388c9ffc2e6f9bf7b6f10aab3f004efac9bb32a696a3e9639",
+        "bytes": 3291476
+      }
+    },
+    {
+      "source": "packages/schema/fixtures/valid/drums.song.json",
+      "song": {
+        "sha256": "b1352bc194a9eb688b77039085fc570ce138c45ac3f05841572f3a952f5e3f87",
+        "bytes": 1468
+      },
+      "validation": {
+        "schemaVersion": "1.0.0",
+        "warningCount": 0,
+        "capabilityCheck": "not_checked"
+      },
+      "normalized": {
+        "sha256": "4eaa23fe740823fdcae3ada27ba5b4a16009a2a532b4551f1bca3bff7dd1ba36",
+        "bytes": 1669
+      },
+      "duration": {
+        "secondsPerBeat": 0.5,
+        "hintSeconds": 4,
+        "lastSoundSeconds": 1.875,
+        "renderedSeconds": 4,
+        "tracks": [
+          {
+            "trackIndex": 0,
+            "trackId": "drums",
+            "audible": true,
+            "contentEndBeats": 3.75,
+            "contentEndSeconds": 1.875,
+            "tailSeconds": 0,
+            "endSeconds": 1.875
+          }
+        ]
+      },
+      "timeline48000": {
+        "sha256": "d42582d65ab9e62478776df67d7b48ea9ac1c9d0adc87e55b724cf5cc6b90d20",
+        "bytes": 4487
+      },
+      "midi": {
+        "sha256": "c39a4a1d5785e841cc879676dd7040c1e1cbdd4fe35cd05872adf4cf795f1fa5",
+        "bytes": 184
+      },
+      "audioBuiltin48000": "not-frozen"
+    },
+    {
+      "source": "packages/schema/fixtures/valid/effects.song.json",
+      "song": {
+        "sha256": "ecd5cf9cdf7cdd1a0b5c37a8950f0c3b1668ba37c90686e50aa977ad1208c443",
+        "bytes": 1446
+      },
+      "validation": {
+        "schemaVersion": "1.0.0",
+        "warningCount": 0,
+        "capabilityCheck": "not_checked"
+      },
+      "normalized": {
+        "sha256": "e928a2d114400aca223a07c3157e619fef88c63666714b8f3936ac5847b01cd0",
+        "bytes": 1655
+      },
+      "duration": {
+        "secondsPerBeat": 0.625,
+        "hintSeconds": 15,
+        "lastSoundSeconds": 7.8875,
+        "renderedSeconds": 15,
+        "tracks": [
+          {
+            "trackIndex": 0,
+            "trackId": "guitar",
+            "audible": true,
+            "contentEndBeats": 5.5,
+            "contentEndSeconds": 3.4375,
+            "tailSeconds": 4.45,
+            "endSeconds": 7.8875
+          }
+        ]
+      },
+      "timeline48000": {
+        "sha256": "ac767ddf3cf13ec91a532517ad1ea3a9bdab379d298219cbc2456b8d3643de13",
+        "bytes": 3323
+      },
+      "midi": {
+        "sha256": "a15a10837cac97435cf0be8178883aa6727baf544921ea1df2772d3213731a01",
+        "bytes": 136
+      },
+      "audioBuiltin48000": {
+        "sha256": "19a8920e2784d18d4ea19e3912551027fafb25408fbc07321a17b525a6d985a0",
+        "bytes": 2880044
+      }
+    },
+    {
+      "source": "packages/schema/fixtures/valid/free-notes.song.json",
+      "song": {
+        "sha256": "c53795e7a2c4c6316beb5a3a6dc5b7f72cab0bd13a32b3e7de95511fb75b601c",
+        "bytes": 1639
+      },
+      "validation": {
+        "schemaVersion": "1.0.0",
+        "warningCount": 0,
+        "capabilityCheck": "not_checked"
+      },
+      "normalized": {
+        "sha256": "7d78b4f1c3976e508054a0fa4d4aaa92f4fe055f2b44736efdfa4ac5a6a0e706",
+        "bytes": 1920
+      },
+      "duration": {
+        "secondsPerBeat": 0.6,
+        "hintSeconds": 9.6,
+        "lastSoundSeconds": 4.5,
+        "renderedSeconds": 9.6,
+        "tracks": [
+          {
+            "trackIndex": 0,
+            "trackId": "lead",
+            "audible": true,
+            "contentEndBeats": 7.5,
+            "contentEndSeconds": 4.5,
+            "tailSeconds": 0,
+            "endSeconds": 4.5
+          },
+          {
+            "trackIndex": 1,
+            "trackId": "pad",
+            "audible": false,
+            "contentEndBeats": 8,
+            "contentEndSeconds": 4.8,
+            "tailSeconds": 0,
+            "endSeconds": 4.8
+          }
+        ]
+      },
+      "timeline48000": {
+        "sha256": "36942022b6c0e723d175e0caaa3482cff049e8737fc6149494ddf06cc3bc2bad",
+        "bytes": 4505
+      },
+      "midi": {
+        "sha256": "874001566393922c29d17ed3fa176916649633e92f2fde9aed351550b4106929",
+        "bytes": 132
+      },
+      "audioBuiltin48000": {
+        "sha256": "33f4fc3d2a96c50d509efdc06ef73298ed191d1ea6dfe5a8aeaae02db357b959",
+        "bytes": 1843244
+      }
+    },
+    {
+      "source": "packages/schema/fixtures/valid/instruments.song.json",
+      "song": {
+        "sha256": "f62010c3cc234e283af595eb9d6044f99cfbd26bcd351b0063b58770d4ca510f",
+        "bytes": 1665
+      },
+      "validation": {
+        "schemaVersion": "1.0.0",
+        "warningCount": 0,
+        "capabilityCheck": "not_checked"
+      },
+      "normalized": {
+        "sha256": "9665f31ac7474894ddfa984bee239c942ff7139080890d7a1d895c0f64c0274f",
+        "bytes": 2237
+      },
+      "duration": {
+        "secondsPerBeat": 0.6818181818181818,
+        "hintSeconds": 8.181818181818182,
+        "lastSoundSeconds": 6.136363636363636,
+        "renderedSeconds": 8.181818181818182,
+        "tracks": [
+          {
+            "trackIndex": 0,
+            "trackId": "piano",
+            "audible": true,
+            "contentEndBeats": 3,
+            "contentEndSeconds": 2.0454545454545454,
+            "tailSeconds": 0,
+            "endSeconds": 2.0454545454545454
+          },
+          {
+            "trackIndex": 1,
+            "trackId": "strings",
+            "audible": true,
+            "contentEndBeats": 6,
+            "contentEndSeconds": 4.090909090909091,
+            "tailSeconds": 0,
+            "endSeconds": 4.090909090909091
+          },
+          {
+            "trackIndex": 2,
+            "trackId": "flute",
+            "audible": true,
+            "contentEndBeats": 9,
+            "contentEndSeconds": 6.136363636363636,
+            "tailSeconds": 0,
+            "endSeconds": 6.136363636363636
+          }
+        ]
+      },
+      "timeline48000": {
+        "sha256": "ad4237b54d9ead2286cec9703314bdcdedbd7221baf99a98ab4414421014f213",
+        "bytes": 5282
+      },
+      "midi": {
+        "sha256": "35915de6d74ef14383e333f1148ca2b2399f817f261954e1c3987957d13f73d2",
+        "bytes": 237
+      },
+      "audioBuiltin48000": "not-frozen"
+    },
+    {
+      "source": "packages/schema/fixtures/valid/minimal.song.json",
+      "song": {
+        "sha256": "f78483e1fb3055cf0eb1bc36451f9a9ba51fd4c638e666b81e5559ec95315f44",
+        "bytes": 882
+      },
+      "validation": {
+        "schemaVersion": "1.0.0",
+        "warningCount": 0,
+        "capabilityCheck": "not_checked"
+      },
+      "normalized": {
+        "sha256": "45649fc474bacd10471e9fae7fbbf8bffb9ff31d39a379f6c2db1a7bf5ca95d7",
+        "bytes": 1102
+      },
+      "duration": {
+        "secondsPerBeat": 0.6666666666666666,
+        "hintSeconds": 5.333333333333333,
+        "lastSoundSeconds": 5,
+        "renderedSeconds": 5.333333333333333,
+        "tracks": [
+          {
+            "trackIndex": 0,
+            "trackId": "keys",
+            "audible": true,
+            "contentEndBeats": 7.5,
+            "contentEndSeconds": 5,
+            "tailSeconds": 0,
+            "endSeconds": 5
+          }
+        ]
+      },
+      "timeline48000": {
+        "sha256": "39327887f00db907a9c8343cb42a6c7efaf8fc93ff0922f5dccfc4fd83836b0b",
+        "bytes": 2818
+      },
+      "midi": {
+        "sha256": "92faa5cd3fa194888921492cedab069a7e67157dffae2e6c65afe6703ced4d0c",
+        "bytes": 124
+      },
+      "audioBuiltin48000": {
+        "sha256": "ec8bcbd1db48b71be19d17cf8d5c0023bc73cd1d1253862f8f803cfdf659d475",
+        "bytes": 1024044
+      }
+    },
+    {
+      "source": "packages/schema/fixtures/valid/patterns.song.json",
+      "song": {
+        "sha256": "dad318cce78a01779e91e0bdf8c57f848b22a5f5c5a04470062192519bcf913a",
+        "bytes": 2360
+      },
+      "validation": {
+        "schemaVersion": "1.0.0",
+        "warningCount": 0,
+        "capabilityCheck": "not_checked"
+      },
+      "normalized": {
+        "sha256": "6228734ec2fcdd1ea3545ebe3c867f158b4a09c9d46d3d3e1bc861699b0d88db",
+        "bytes": 2985
+      },
+      "duration": {
+        "secondsPerBeat": 0.5357142857142857,
+        "hintSeconds": 17.142857142857142,
+        "lastSoundSeconds": 17.142857142857142,
+        "renderedSeconds": 17.142857142857142,
+        "tracks": [
+          {
+            "trackIndex": 0,
+            "trackId": "arp",
+            "audible": true,
+            "contentEndBeats": 32,
+            "contentEndSeconds": 17.142857142857142,
+            "tailSeconds": 0,
+            "endSeconds": 17.142857142857142
+          },
+          {
+            "trackIndex": 1,
+            "trackId": "bass",
+            "audible": true,
+            "contentEndBeats": 30,
+            "contentEndSeconds": 16.07142857142857,
+            "tailSeconds": 0,
+            "endSeconds": 16.07142857142857
+          }
+        ]
+      },
+      "timeline48000": {
+        "sha256": "9db3a607f905206a9ab328a9fae2280b3fd98dfc0964d9677ef75fc9de3c918a",
+        "bytes": 43835
+      },
+      "midi": {
+        "sha256": "180746d681e2cc7081ca34b090ccf68f6e5ae552396669e5c0a4c0e7755e5b7f",
+        "bytes": 855
+      },
+      "audioBuiltin48000": {
+        "sha256": "7d637e40c22e1e8832990868bd255554d8989457bc5d4c1d7bfe8091328048a5",
+        "bytes": 3291476
+      }
+    },
+    {
+      "source": "examples/songs/ambient-focus-bed.song.json",
+      "song": {
+        "sha256": "fee5f522d4ebdeb0c7c56b3278256575baa09f94d466829720352e086ac408c1",
+        "bytes": 3744
+      },
+      "validation": {
+        "schemaVersion": "1.0.0",
+        "warningCount": 0,
+        "capabilityCheck": "not_checked"
+      },
+      "normalized": {
+        "sha256": "6431bcf589eb21d09124283948d3e9ba5f24397c7a55fc232b5ef071356f9a6e",
+        "bytes": 5744
+      },
+      "duration": {
+        "secondsPerBeat": 1,
+        "hintSeconds": 60,
+        "lastSoundSeconds": 59.8,
+        "renderedSeconds": 60,
+        "tracks": [
+          {
+            "trackIndex": 0,
+            "trackId": "pad",
+            "audible": true,
+            "contentEndBeats": 57,
+            "contentEndSeconds": 57,
+            "tailSeconds": 2.8,
+            "endSeconds": 59.8
+          },
+          {
+            "trackIndex": 1,
+            "trackId": "drone",
+            "audible": true,
+            "contentEndBeats": 56,
+            "contentEndSeconds": 56,
+            "tailSeconds": 0,
+            "endSeconds": 56
+          },
+          {
+            "trackIndex": 2,
+            "trackId": "bells",
+            "audible": true,
+            "contentEndBeats": 53,
+            "contentEndSeconds": 53,
+            "tailSeconds": 3.2,
+            "endSeconds": 56.2
+          }
+        ]
+      },
+      "timeline48000": {
+        "sha256": "9b63eb639eae396ea5fd6788f83fcf4ec21a526619e1bfdec27759588f0bcc34",
+        "bytes": 13456
+      },
+      "midi": {
+        "sha256": "d192c4afb9b5fe8f5c1e6abab228eea9ea9cea71f55c26bf718a8f73876874a1",
+        "bytes": 390
+      },
+      "audioBuiltin48000": {
+        "sha256": "c3c3aada2abb7463e5fe2304b1fcacd6387c1a30527a42257f17ccd8ab6e2f3c",
+        "bytes": 11520044
+      }
+    },
+    {
+      "source": "examples/songs/corporate-bed.song.json",
+      "song": {
+        "sha256": "8e158f9113b9f308f122e9c2a54858d785915e6b4ddc54d1b5ec3ea7eb1c1dd0",
+        "bytes": 8173
+      },
+      "validation": {
+        "schemaVersion": "1.0.0",
+        "warningCount": 0,
+        "capabilityCheck": "not_checked"
+      },
+      "normalized": {
+        "sha256": "b524ad66af265f14c7c3971db2d933838217d0e81d82a043656e739b0916f2f5",
+        "bytes": 12890
+      },
+      "duration": {
+        "secondsPerBeat": 0.5555555555555556,
+        "hintSeconds": 30,
+        "lastSoundSeconds": 29.855555555555558,
+        "renderedSeconds": 30,
+        "tracks": [
+          {
+            "trackIndex": 0,
+            "trackId": "piano",
+            "audible": true,
+            "contentEndBeats": 50.5,
+            "contentEndSeconds": 28.055555555555557,
+            "tailSeconds": 1.8,
+            "endSeconds": 29.855555555555558
+          },
+          {
+            "trackIndex": 1,
+            "trackId": "bass",
+            "audible": true,
+            "contentEndBeats": 50.5,
+            "contentEndSeconds": 28.055555555555557,
+            "tailSeconds": 0,
+            "endSeconds": 28.055555555555557
+          },
+          {
+            "trackIndex": 2,
+            "trackId": "guitar",
+            "audible": true,
+            "contentEndBeats": 50.5,
+            "contentEndSeconds": 28.055555555555557,
+            "tailSeconds": 1.6,
+            "endSeconds": 29.65555555555556
+          },
+          {
+            "trackIndex": 3,
+            "trackId": "pad",
+            "audible": true,
+            "contentEndBeats": 50.5,
+            "contentEndSeconds": 28.055555555555557,
+            "tailSeconds": 1.8,
+            "endSeconds": 29.855555555555558
+          },
+          {
+            "trackIndex": 4,
+            "trackId": "drums",
+            "audible": true,
+            "contentEndBeats": 48.25,
+            "contentEndSeconds": 26.805555555555557,
+            "tailSeconds": 0,
+            "endSeconds": 26.805555555555557
+          }
+        ]
+      },
+      "timeline48000": {
+        "sha256": "e62b25b9f59b54bad958418e3cbccf8b33b17fd362dde37f7a5e00d4847fea64",
+        "bytes": 132222
+      },
+      "midi": {
+        "sha256": "8e9ef36d1251c9335f12a40a4a08ee7168b501a68fd86227c5cff79c3121d53c",
+        "bytes": 2510
+      },
+      "audioBuiltin48000": {
+        "sha256": "9ea222a6d2f03dd9e5c09da39b9f0476a41646f60cc3c946447aae34356f86e1",
+        "bytes": 5760044
+      }
+    },
+    {
+      "source": "examples/songs/explainer-upbeat.song.json",
+      "song": {
+        "sha256": "eb52980335588fee567f3a1c5e23d748c62b0db7b90e66baaf57fbe7f8872687",
+        "bytes": 10177
+      },
+      "validation": {
+        "schemaVersion": "1.0.0",
+        "warningCount": 0,
+        "capabilityCheck": "not_checked"
+      },
+      "normalized": {
+        "sha256": "7c8deae4b2bbaf9f5d101c1fe176fdc4b93a20ac943b3a26e0e902eca489bbbb",
+        "bytes": 16087
+      },
+      "duration": {
+        "secondsPerBeat": 0.5357142857142857,
+        "hintSeconds": 30,
+        "lastSoundSeconds": 29.698214285714286,
+        "renderedSeconds": 30,
+        "tracks": [
+          {
+            "trackIndex": 0,
+            "trackId": "keys",
+            "audible": true,
+            "contentEndBeats": 52.45,
+            "contentEndSeconds": 28.098214285714285,
+            "tailSeconds": 1.6,
+            "endSeconds": 29.698214285714286
+          },
+          {
+            "trackIndex": 1,
+            "trackId": "bass",
+            "audible": true,
+            "contentEndBeats": 54,
+            "contentEndSeconds": 28.928571428571427,
+            "tailSeconds": 0,
+            "endSeconds": 28.928571428571427
+          },
+          {
+            "trackIndex": 2,
+            "trackId": "guitar",
+            "audible": true,
+            "contentEndBeats": 52.4,
+            "contentEndSeconds": 28.07142857142857,
+            "tailSeconds": 1.2,
+            "endSeconds": 29.27142857142857
+          },
+          {
+            "trackIndex": 3,
+            "trackId": "pad",
+            "audible": true,
+            "contentEndBeats": 52.4,
+            "contentEndSeconds": 28.07142857142857,
+            "tailSeconds": 1.6,
+            "endSeconds": 29.67142857142857
+          },
+          {
+            "trackIndex": 4,
+            "trackId": "drums",
+            "audible": true,
+            "contentEndBeats": 52.25,
+            "contentEndSeconds": 27.991071428571427,
+            "tailSeconds": 0,
+            "endSeconds": 27.991071428571427
+          }
+        ]
+      },
+      "timeline48000": {
+        "sha256": "ce4f8e873f86e3b99e1eb63b2c252ec7165226e0c25bdc4f95c8679d957afc50",
+        "bytes": 129334
+      },
+      "midi": {
+        "sha256": "50614a7a3464f9c5966a579b8e6f5e3b6360bdb4d83d42736e673719e6e0d572",
+        "bytes": 2433
+      },
+      "audioBuiltin48000": {
+        "sha256": "addadead103762c21a2e2a36784b70006eac0d2162261e60b751d33bdc8355a6",
+        "bytes": 5760044
+      }
+    },
+    {
+      "source": "examples/songs/lofi-coding-bed.song.json",
+      "song": {
+        "sha256": "e40dd6fc3246adee6c22520d766e3328e7311edbcdd52008f195e347839ab933",
+        "bytes": 12190
+      },
+      "validation": {
+        "schemaVersion": "1.0.0",
+        "warningCount": 0,
+        "capabilityCheck": "not_checked"
+      },
+      "normalized": {
+        "sha256": "333e2ea9251df4a2ebc9fb06d1d3e4f1510228a7fbf862ed9dc14191d3f566fa",
+        "bytes": 19320
+      },
+      "duration": {
+        "secondsPerBeat": 0.6666666666666666,
+        "hintSeconds": 45,
+        "lastSoundSeconds": 44.73333333333333,
+        "renderedSeconds": 45,
+        "tracks": [
+          {
+            "trackIndex": 0,
+            "trackId": "keys",
+            "audible": true,
+            "contentEndBeats": 63.5,
+            "contentEndSeconds": 42.33333333333333,
+            "tailSeconds": 2.4,
+            "endSeconds": 44.73333333333333
+          },
+          {
+            "trackIndex": 1,
+            "trackId": "piano",
+            "audible": true,
+            "contentEndBeats": 59,
+            "contentEndSeconds": 39.33333333333333,
+            "tailSeconds": 3,
+            "endSeconds": 42.33333333333333
+          },
+          {
+            "trackIndex": 2,
+            "trackId": "bass",
+            "audible": true,
+            "contentEndBeats": 63,
+            "contentEndSeconds": 42,
+            "tailSeconds": 0,
+            "endSeconds": 42
+          },
+          {
+            "trackIndex": 3,
+            "trackId": "pad",
+            "audible": true,
+            "contentEndBeats": 63.4,
+            "contentEndSeconds": 42.266666666666666,
+            "tailSeconds": 2.4,
+            "endSeconds": 44.666666666666664
+          },
+          {
+            "trackIndex": 4,
+            "trackId": "drums",
+            "audible": true,
+            "contentEndBeats": 55.75,
+            "contentEndSeconds": 37.166666666666664,
+            "tailSeconds": 0,
+            "endSeconds": 37.166666666666664
+          }
+        ]
+      },
+      "timeline48000": {
+        "sha256": "af1280a20c2ca05a636d6a3512afb333c66ae045f63a544e1b7aa0d1e9adf92c",
+        "bytes": 144410
+      },
+      "midi": {
+        "sha256": "eb1c3e9ba0bcb6dc60efbcaffd22290881da72f3fae8dede038e11391e03497c",
+        "bytes": 2654
+      },
+      "audioBuiltin48000": {
+        "sha256": "bf82613f3f494b6e0a1fd35974acc5d5d6ba3eb95b39294482a216edca59c96f",
+        "bytes": 8640044
+      }
+    },
+    {
+      "source": "examples/songs/tension-stinger.song.json",
+      "song": {
+        "sha256": "fbee6bd7db3e5a212f61c445f1306310a7de4c1d983e1958d438a42f51f48dff",
+        "bytes": 4171
+      },
+      "validation": {
+        "schemaVersion": "1.0.0",
+        "warningCount": 0,
+        "capabilityCheck": "not_checked"
+      },
+      "normalized": {
+        "sha256": "909c1fe64ce54dc41edee51ef94b695613560be11861e8f378c3d86ce8a07923",
+        "bytes": 6458
+      },
+      "duration": {
+        "secondsPerBeat": 0.5454545454545454,
+        "hintSeconds": 6,
+        "lastSoundSeconds": 5.654545454545454,
+        "renderedSeconds": 6,
+        "tracks": [
+          {
+            "trackIndex": 0,
+            "trackId": "pulse",
+            "audible": true,
+            "contentEndBeats": 9.5,
+            "contentEndSeconds": 5.181818181818182,
+            "tailSeconds": 0,
+            "endSeconds": 5.181818181818182
+          },
+          {
+            "trackIndex": 1,
+            "trackId": "swell",
+            "audible": true,
+            "contentEndBeats": 8.9,
+            "contentEndSeconds": 4.8545454545454545,
+            "tailSeconds": 0.8,
+            "endSeconds": 5.654545454545454
+          },
+          {
+            "trackIndex": 2,
+            "trackId": "pluck",
+            "audible": true,
+            "contentEndBeats": 8,
+            "contentEndSeconds": 4.363636363636363,
+            "tailSeconds": 0.6,
+            "endSeconds": 4.963636363636363
+          },
+          {
+            "trackIndex": 3,
+            "trackId": "hits",
+            "audible": true,
+            "contentEndBeats": 8.75,
+            "contentEndSeconds": 4.7727272727272725,
+            "tailSeconds": 0,
+            "endSeconds": 4.7727272727272725
+          }
+        ]
+      },
+      "timeline48000": {
+        "sha256": "6338825c558500c80cbd41859d1ba1f2fa1f3f1ad203f48e82b652f992543343",
+        "bytes": 20925
+      },
+      "midi": {
+        "sha256": "9c8306db85235273ba0ffe019f320db72125948b445fa54c7c0a9a141b93abbd",
+        "bytes": 544
+      },
+      "audioBuiltin48000": {
+        "sha256": "d7a2fbb74c8554c9ca1be3693e95ab3d4b13ee727641dc0bc8b5d1eb25468fd6",
+        "bytes": 1152044
+      }
+    },
+    {
+      "source": "packages/engine/test/fixtures/compat/tutorial-45s-90bpm.song.json",
+      "song": {
+        "sha256": "354b8248157c2d130959affb7ac2aea6c888bdd2d0d32e0e9bca888ef42cf665",
+        "bytes": 32430
+      },
+      "validation": {
+        "schemaVersion": "1.0.0",
+        "warningCount": 0,
+        "capabilityCheck": "not_checked"
+      },
+      "normalized": {
+        "sha256": "5ff37241ed937db6e02e2e5681c9f119231e6849334213140445cbfe7bfd54e9",
+        "bytes": 32800
+      },
+      "duration": {
+        "secondsPerBeat": 0.6666666666666666,
+        "hintSeconds": 45,
+        "lastSoundSeconds": 45,
+        "renderedSeconds": 45,
+        "tracks": [
+          {
+            "trackIndex": 0,
+            "trackId": "keys",
+            "audible": true,
+            "contentEndBeats": 64.5,
+            "contentEndSeconds": 43,
+            "tailSeconds": 1.875,
+            "endSeconds": 44.875
+          },
+          {
+            "trackIndex": 1,
+            "trackId": "bass",
+            "audible": true,
+            "contentEndBeats": 65.75,
+            "contentEndSeconds": 43.83333333333333,
+            "tailSeconds": 0,
+            "endSeconds": 43.83333333333333
+          },
+          {
+            "trackIndex": 2,
+            "trackId": "pad",
+            "audible": true,
+            "contentEndBeats": 64.5,
+            "contentEndSeconds": 43,
+            "tailSeconds": 2,
+            "endSeconds": 45
+          },
+          {
+            "trackIndex": 3,
+            "trackId": "drums",
+            "audible": true,
+            "contentEndBeats": 64.25,
+            "contentEndSeconds": 42.83333333333333,
+            "tailSeconds": 0,
+            "endSeconds": 42.83333333333333
+          }
+        ]
+      },
+      "timeline48000": {
+        "sha256": "9d369ab66969ef131e246eb3b26c7de9fd547e11e8954a004a9a91b7745b4aab",
+        "bytes": 113429
+      },
+      "midi": {
+        "sha256": "645f481f4a809bdf8e55290f41a4b21d823b49b6f2735936b73ae01569b71d5f",
+        "bytes": 2586
+      },
+      "audioBuiltin48000": {
+        "sha256": "d2260e7ec4599dde7d86e808ae9970f794ca4fdac0db10955d782c6994bd7f51",
+        "bytes": 8640044
+      },
+      "audioBuiltin44100": {
+        "sha256": "ec0bb57758908e8221e67d869129971eb89b6cae35d564b7ffa490aa66deda66",
+        "bytes": 7938044
+      },
+      "noteNativeFluidSynth48000": {
+        "sha256": "5562ee5555e6cdaee834865b73ee7cc318afa5f36caaeed7c4f262a688920230",
+        "bytes": 8640044,
+        "scope": "same-machine-only"
+      }
+    }
+  ]
+}

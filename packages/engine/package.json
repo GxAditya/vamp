@@ -1,0 +1,41 @@
+{
+  "name": "@gxaditya/vamp-engine",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Vamp deterministic song-to-timeline compiler, Standard MIDI exporter, offline built-in synthesizer, FluidSynth SoundFont backend, shared automation and effects DSP, instrument registry, stem and report artifact rendering, and 16-bit PCM WAV output.",
+  "license": "AGPL-3.0-only",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node ../../scripts/copy-file.mjs ../../THIRD_PARTY_NOTICES.md THIRD_PARTY_NOTICES.md"
+  },
+  "dependencies": {
+    "@gxaditya/vamp-schema": "workspace:*"
+  },
+  "devDependencies": {
+    "midi-file": "1.2.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GxAditya/vamp.git",
+    "directory": "packages/engine"
+  }
+}

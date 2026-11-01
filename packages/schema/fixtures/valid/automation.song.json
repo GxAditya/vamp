@@ -1,0 +1,112 @@
+{
+  "schemaVersion": "1.0.0",
+  "meta": {
+    "title": "Automated Filter Sweep",
+    "bpm": 84,
+    "timeSignature": {
+      "numerator": 4,
+      "denominator": 4
+    },
+    "key": {
+      "tonic": "D",
+      "mode": "minor"
+    },
+    "seed": 7,
+    "durationHint": 24
+  },
+  "tracks": [
+    {
+      "id": "synth",
+      "name": "Automated Synth",
+      "kind": "midi",
+      "channel": 0,
+      "instrument": {
+        "type": "builtin",
+        "id": "pad.warm"
+      },
+      "effects": [
+        {
+          "type": "lowpass",
+          "q": 0.9
+        },
+        {
+          "type": "reverb",
+          "mix": 0.2,
+          "decaySeconds": 2.4
+        }
+      ],
+      "automation": {
+        "volume": {
+          "points": [
+            {
+              "time": 0,
+              "value": 0.6
+            },
+            {
+              "time": 8,
+              "value": 1
+            },
+            {
+              "time": 16,
+              "value": 0
+            }
+          ]
+        },
+        "pan": {
+          "points": [
+            {
+              "time": 0,
+              "value": -0.5
+            },
+            {
+              "time": 16,
+              "value": 0.5
+            }
+          ]
+        },
+        "filterCutoffHz": {
+          "points": [
+            {
+              "time": 0,
+              "value": 400
+            },
+            {
+              "time": 8,
+              "value": 8000
+            },
+            {
+              "time": 16,
+              "value": 1200
+            },
+            {
+              "time": 24,
+              "value": 600
+            }
+          ]
+        }
+      },
+      "notes": [
+        {
+          "pitch": 50,
+          "start": 0,
+          "duration": 8
+        },
+        {
+          "pitch": 53,
+          "start": 0,
+          "duration": 8
+        },
+        {
+          "pitch": 57,
+          "start": 0,
+          "duration": 8
+        },
+        {
+          "pitch": 62,
+          "start": 8,
+          "duration": 8
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "1.0.0",
+  "meta": {
+    "title": "Native Pinned Cue",
+    "bpm": 120,
+    "timeSignature": {
+      "numerator": 4,
+      "denominator": 4
+    },
+    "key": {
+      "tonic": "C",
+      "mode": "major"
+    },
+    "seed": 990142,
+    "durationHint": 4
+  },
+  "tracks": [
+    {
+      "id": "piano",
+      "name": "Piano",
+      "kind": "midi",
+      "channel": 0,
+      "instrument": {
+        "type": "builtin",
+        "id": "piano.soft"
+      },
+      "notes": [
+        {
+          "pitch": 60,
+          "start": 0,
+          "duration": 0.9,
+          "velocity": 108
+        },
+        {
+          "pitch": 64,
+          "start": 0.75,
+          "duration": 0.5,
+          "velocity": 96
+        },
+        {
+          "pitch": 67,
+          "start": 1.5,
+          "duration": 0.5,
+          "velocity": 104
+        }
+      ]
+    },
+    {
+      "id": "drums",
+      "name": "Drums",
+      "kind": "drums",
+      "channel": 9,
+      "instrument": {
+        "type": "builtin",
+        "id": "drums.kit"
+      },
+      "notes": [
+        {
+          "pitch": 36,
+          "start": 0,
+          "duration": 0.25,
+          "velocity": 110
+        },
+        {
+          "pitch": 38,
+          "start": 0.5,
+          "duration": 0.25,
+          "velocity": 100
+        },
+        {
+          "pitch": 42,
+          "start": 0.75,
+          "duration": 0.25,
+          "velocity": 88
+        },
+        {
+          "pitch": 49,
+          "start": 1,
+          "duration": 0.25,
+          "velocity": 96
+        }
+      ]
+    }
+  ]
+}

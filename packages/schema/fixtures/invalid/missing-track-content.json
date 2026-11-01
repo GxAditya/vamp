@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "1.0.0",
+  "meta": {
+    "title": "Track Without Notes or Placements",
+    "bpm": 90,
+    "timeSignature": {
+      "numerator": 4,
+      "denominator": 4
+    },
+    "key": {
+      "tonic": "C",
+      "mode": "major"
+    },
+    "seed": 1,
+    "durationHint": 8
+  },
+  "tracks": [
+    {
+      "id": "empty",
+      "name": "Empty Track",
+      "kind": "midi",
+      "channel": 0,
+      "instrument": {
+        "type": "builtin",
+        "id": "keys.soft"
+      }
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "1.0.0",
+  "meta": {
+    "title": "Quarterly Update Bed",
+    "bpm": 108,
+    "timeSignature": { "numerator": 4, "denominator": 4 },
+    "key": { "tonic": "C", "mode": "major" },
+    "seed": 770429,
+    "durationHint": 54,
+    "mood": "clean, confident",
+    "tags": ["corporate", "background", "bgm", "narration-safe", "30s"]
+  },
+  "patterns": [
+    {
+      "id": "piano-chords",
+      "name": "Piano cycle C Am F G",
+      "lengthBeats": 16,
+      "notes": [
+        { "pitch": 60, "start": 0, "duration": 2.5, "velocity": 84 },
+        { "pitch": 64, "start": 0, "duration": 2.5, "velocity": 80 },
+        { "pitch": 67, "start": 0, "duration": 2.5, "velocity": 74 },
+        { "pitch": 60, "start": 3, "duration": 0.5, "velocity": 62 },
+        { "pitch": 64, "start": 3, "duration": 0.5, "velocity": 58 },
+        { "pitch": 67, "start": 3, "duration": 0.5, "velocity": 56 },
+        { "pitch": 57, "start": 4, "duration": 2.5, "velocity": 82 },
+        { "pitch": 60, "start": 4, "duration": 2.5, "velocity": 78 },
+        { "pitch": 64, "start": 4, "duration": 2.5, "velocity": 72 },
+        { "pitch": 57, "start": 7, "duration": 0.5, "velocity": 60 },
+        { "pitch": 60, "start": 7, "duration": 0.5, "velocity": 58 },
+        { "pitch": 64, "start": 7, "duration": 0.5, "velocity": 54 },
+        { "pitch": 53, "start": 8, "duration": 2.5, "velocity": 84 },
+        { "pitch": 57, "start": 8, "duration": 2.5, "velocity": 78 },
+        { "pitch": 60, "start": 8, "duration": 2.5, "velocity": 72 },
+        { "pitch": 53, "start": 11, "duration": 0.5, "velocity": 60 },
+        { "pitch": 57, "start": 11, "duration": 0.5, "velocity": 58 },
+        { "pitch": 60, "start": 11, "duration": 0.5, "velocity": 54 },
+        { "pitch": 55, "start": 12, "duration": 2.5, "velocity": 82 },
+        { "pitch": 59, "start": 12, "duration": 2.5, "velocity": 78 },
+        { "pitch": 62, "start": 12, "duration": 2.5, "velocity": 72 },
+        { "pitch": 55, "start": 15, "duration": 0.5, "velocity": 62 },
+        { "pitch": 59, "start": 15, "duration": 0.5, "velocity": 58 },
+        { "pitch": 62, "start": 15, "duration": 0.5, "velocity": 56 }
+      ]
+    },
+    {
+      "id": "bass-roots",
+      "name": "Two note root pulse",
+      "lengthBeats": 16,
+      "notes": [
+        { "pitch": 36, "start": 0, "duration": 1.5, "velocity": 92 },
+        { "pitch": 36, "start": 2.5, "duration": 1.25, "velocity": 76 },
+        { "pitch": 33, "start": 4, "duration": 1.5, "velocity": 92 },
+        { "pitch": 33, "start": 6.5, "duration": 1.25, "velocity": 76 },
+        { "pitch": 41, "start": 8, "duration": 1.5, "velocity": 92 },
+        { "pitch": 41, "start": 10.5, "duration": 1.25, "velocity": 76 },
+        { "pitch": 43, "start": 12, "duration": 1.5, "velocity": 92 },
+        { "pitch": 43, "start": 14.5, "duration": 1.25, "velocity": 76 }
+      ]
+    },
+    {
+      "id": "guitar-fig",
+      "name": "Bright arpeggio figure",
+      "lengthBeats": 16,
+      "notes": [
+        { "pitch": 72, "start": 0, "duration": 0.9, "velocity": 76 },
+        { "pitch": 76, "start": 1, "duration": 0.9, "velocity": 70 },
+        { "pitch": 79, "start": 2, "duration": 0.9, "velocity": 74 },
+        { "pitch": 76, "start": 3, "duration": 0.9, "velocity": 66 },
+        { "pitch": 69, "start": 4, "duration": 0.9, "velocity": 76 },
+        { "pitch": 72, "start": 5, "duration": 0.9, "velocity": 70 },
+        { "pitch": 76, "start": 6, "duration": 0.9, "velocity": 74 },
+        { "pitch": 72, "start": 7, "duration": 0.9, "velocity": 66 },
+        { "pitch": 65, "start": 8, "duration": 0.9, "velocity": 76 },
+        { "pitch": 69, "start": 9, "duration": 0.9, "velocity": 70 },
+        { "pitch": 72, "start": 10, "duration": 0.9, "velocity": 74 },
+        { "pitch": 69, "start": 11, "duration": 0.9, "velocity": 66 },
+        { "pitch": 67, "start": 12, "duration": 0.9, "velocity": 76 },
+        { "pitch": 71, "start": 13, "duration": 0.9, "velocity": 70 },
+        { "pitch": 74, "start": 14, "duration": 0.9, "velocity": 74 },
+        { "pitch": 71, "start": 15, "duration": 0.9, "velocity": 66 }
+      ]
+    },
+    {
+      "id": "pad-wash",
+      "name": "Two voice pad wash",
+      "lengthBeats": 32,
+      "notes": [
+        { "pitch": 64, "start": 0, "duration": 15.5, "velocity": 54 },
+        { "pitch": 67, "start": 0, "duration": 15.5, "velocity": 50 },
+        { "pitch": 60, "start": 16, "duration": 15.5, "velocity": 54 },
+        { "pitch": 64, "start": 16, "duration": 15.5, "velocity": 50 }
+      ]
+    },
+    {
+      "id": "drums-clean",
+      "name": "Clean stick bar",
+      "lengthBeats": 4,
+      "notes": [
+        { "pitch": 36, "start": 0, "duration": 0.25, "velocity": 98 },
+        { "pitch": 42, "start": 0.5, "duration": 0.25, "velocity": 46 },
+        { "pitch": 37, "start": 1, "duration": 0.25, "velocity": 74 },
+        { "pitch": 42, "start": 1.5, "duration": 0.25, "velocity": 44 },
+        { "pitch": 42, "start": 2, "duration": 0.25, "velocity": 46 },
+        { "pitch": 36, "start": 2.5, "duration": 0.25, "velocity": 86 },
+        { "pitch": 37, "start": 3, "duration": 0.25, "velocity": 72 },
+        { "pitch": 42, "start": 3.5, "duration": 0.25, "velocity": 48 }
+      ]
+    }
+  ],
+  "tracks": [
+    {
+      "id": "piano",
+      "name": "Soft Piano",
+      "kind": "midi",
+      "channel": 0,
+      "instrument": { "type": "builtin", "id": "piano.soft" },
+      "volume": 0.85,
+      "pan": -0.15,
+      "effects": [
+        { "type": "lowpass", "cutoffHz": 6500, "q": 0.7 },
+        { "type": "reverb", "mix": 0.2, "decaySeconds": 1.8 }
+      ],
+      "placements": [{ "pattern": "piano-chords", "start": 0, "repeat": 3 }],
+      "notes": [
+        { "pitch": 60, "start": 48, "duration": 2.5, "velocity": 86 },
+        { "pitch": 64, "start": 48, "duration": 2.5, "velocity": 80 },
+        { "pitch": 67, "start": 48, "duration": 2.5, "velocity": 76 },
+        { "pitch": 72, "start": 48, "duration": 2.5, "velocity": 70 }
+      ]
+    },
+    {
+      "id": "bass",
+      "name": "Sub Bass",
+      "kind": "midi",
+      "channel": 2,
+      "instrument": { "type": "builtin", "id": "bass.sub" },
+      "volume": 0.92,
+      "pan": 0,
+      "placements": [{ "pattern": "bass-roots", "start": 0, "repeat": 3 }],
+      "notes": [{ "pitch": 36, "start": 48, "duration": 2.5, "velocity": 96 }]
+    },
+    {
+      "id": "guitar",
+      "name": "Clean Electric Guitar",
+      "kind": "midi",
+      "channel": 1,
+      "instrument": { "type": "builtin", "id": "guitar.clean" },
+      "volume": 0.52,
+      "pan": 0.38,
+      "effects": [{ "type": "reverb", "mix": 0.15, "decaySeconds": 1.6 }],
+      "placements": [{ "pattern": "guitar-fig", "start": 16, "repeat": 2 }],
+      "notes": [{ "pitch": 72, "start": 48, "duration": 2.5, "velocity": 74 }]
+    },
+    {
+      "id": "pad",
+      "name": "Warm Pad",
+      "kind": "midi",
+      "channel": 3,
+      "instrument": { "type": "builtin", "id": "pad.warm" },
+      "pan": 0.2,
+      "effects": [{ "type": "reverb", "mix": 0.24, "decaySeconds": 1.8 }],
+      "automation": {
+        "volume": {
+          "points": [
+            { "time": 0, "value": 0.6 },
+            { "time": 16, "value": 0.8 },
+            { "time": 32, "value": 1.0 },
+            { "time": 48, "value": 0.9 }
+          ]
+        }
+      },
+      "placements": [{ "pattern": "pad-wash", "start": 0, "repeat": 1 }],
+      "notes": [
+        { "pitch": 57, "start": 32, "duration": 15.5, "velocity": 52 },
+        { "pitch": 64, "start": 32, "duration": 15.5, "velocity": 48 },
+        { "pitch": 60, "start": 48, "duration": 2.5, "velocity": 56 },
+        { "pitch": 67, "start": 48, "duration": 2.5, "velocity": 52 }
+      ]
+    },
+    {
+      "id": "drums",
+      "name": "Studio Drums",
+      "kind": "drums",
+      "channel": 9,
+      "instrument": { "type": "builtin", "id": "drums.kit" },
+      "volume": 0.48,
+      "pan": 0,
+      "placements": [{ "pattern": "drums-clean", "start": 0, "repeat": 12 }],
+      "notes": [
+        { "pitch": 36, "start": 48, "duration": 0.25, "velocity": 104 },
+        { "pitch": 49, "start": 48, "duration": 0.25, "velocity": 62 }
+      ]
+    }
+  ]
+}

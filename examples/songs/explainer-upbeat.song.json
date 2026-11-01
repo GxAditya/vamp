@@ -1,0 +1,231 @@
+{
+  "schemaVersion": "1.0.0",
+  "meta": {
+    "title": "Sidebar Walkthrough",
+    "bpm": 112,
+    "timeSignature": { "numerator": 4, "denominator": 4 },
+    "key": { "tonic": "G", "mode": "major" },
+    "seed": 31415,
+    "durationHint": 56,
+    "mood": "bright, helpful",
+    "tags": ["tutorial", "explainer", "bgm", "narration-safe", "30s"]
+  },
+  "patterns": [
+    {
+      "id": "keys-stabs",
+      "name": "Quarter stab cycle G Em C D",
+      "lengthBeats": 16,
+      "notes": [
+        { "pitch": 59, "start": 0, "duration": 0.45, "velocity": 86 },
+        { "pitch": 62, "start": 0, "duration": 0.45, "velocity": 82 },
+        { "pitch": 67, "start": 0, "duration": 0.45, "velocity": 78 },
+        { "pitch": 59, "start": 2, "duration": 0.45, "velocity": 72 },
+        { "pitch": 62, "start": 2, "duration": 0.45, "velocity": 70 },
+        { "pitch": 67, "start": 2, "duration": 0.45, "velocity": 66 },
+        { "pitch": 59, "start": 3.5, "duration": 0.45, "velocity": 78 },
+        { "pitch": 62, "start": 3.5, "duration": 0.45, "velocity": 76 },
+        { "pitch": 67, "start": 3.5, "duration": 0.45, "velocity": 72 },
+        { "pitch": 59, "start": 4, "duration": 0.45, "velocity": 84 },
+        { "pitch": 64, "start": 4, "duration": 0.45, "velocity": 80 },
+        { "pitch": 67, "start": 4, "duration": 0.45, "velocity": 76 },
+        { "pitch": 59, "start": 6, "duration": 0.45, "velocity": 70 },
+        { "pitch": 64, "start": 6, "duration": 0.45, "velocity": 68 },
+        { "pitch": 67, "start": 6, "duration": 0.45, "velocity": 64 },
+        { "pitch": 59, "start": 7.5, "duration": 0.45, "velocity": 76 },
+        { "pitch": 64, "start": 7.5, "duration": 0.45, "velocity": 74 },
+        { "pitch": 67, "start": 7.5, "duration": 0.45, "velocity": 70 },
+        { "pitch": 60, "start": 8, "duration": 0.45, "velocity": 86 },
+        { "pitch": 64, "start": 8, "duration": 0.45, "velocity": 82 },
+        { "pitch": 67, "start": 8, "duration": 0.45, "velocity": 78 },
+        { "pitch": 60, "start": 10, "duration": 0.45, "velocity": 72 },
+        { "pitch": 64, "start": 10, "duration": 0.45, "velocity": 70 },
+        { "pitch": 67, "start": 10, "duration": 0.45, "velocity": 66 },
+        { "pitch": 60, "start": 11.5, "duration": 0.45, "velocity": 78 },
+        { "pitch": 64, "start": 11.5, "duration": 0.45, "velocity": 76 },
+        { "pitch": 67, "start": 11.5, "duration": 0.45, "velocity": 72 },
+        { "pitch": 62, "start": 12, "duration": 0.45, "velocity": 84 },
+        { "pitch": 66, "start": 12, "duration": 0.45, "velocity": 80 },
+        { "pitch": 69, "start": 12, "duration": 0.45, "velocity": 76 },
+        { "pitch": 62, "start": 14, "duration": 0.45, "velocity": 70 },
+        { "pitch": 66, "start": 14, "duration": 0.45, "velocity": 68 },
+        { "pitch": 69, "start": 14, "duration": 0.45, "velocity": 64 },
+        { "pitch": 62, "start": 15.5, "duration": 0.45, "velocity": 80 },
+        { "pitch": 66, "start": 15.5, "duration": 0.45, "velocity": 78 },
+        { "pitch": 69, "start": 15.5, "duration": 0.45, "velocity": 74 }
+      ]
+    },
+    {
+      "id": "bass-drive",
+      "name": "Root and fifth drive",
+      "lengthBeats": 16,
+      "notes": [
+        { "pitch": 43, "start": 0, "duration": 0.75, "velocity": 100 },
+        { "pitch": 43, "start": 1.5, "duration": 0.5, "velocity": 84 },
+        { "pitch": 50, "start": 2.5, "duration": 0.5, "velocity": 88 },
+        { "pitch": 40, "start": 4, "duration": 0.75, "velocity": 100 },
+        { "pitch": 40, "start": 5.5, "duration": 0.5, "velocity": 84 },
+        { "pitch": 47, "start": 6.5, "duration": 0.5, "velocity": 88 },
+        { "pitch": 36, "start": 8, "duration": 0.75, "velocity": 100 },
+        { "pitch": 36, "start": 9.5, "duration": 0.5, "velocity": 84 },
+        { "pitch": 43, "start": 10.5, "duration": 0.5, "velocity": 88 },
+        { "pitch": 38, "start": 12, "duration": 0.75, "velocity": 100 },
+        { "pitch": 38, "start": 13.5, "duration": 0.5, "velocity": 84 },
+        { "pitch": 45, "start": 14.5, "duration": 0.5, "velocity": 88 }
+      ]
+    },
+    {
+      "id": "arp-bright",
+      "name": "Clean guitar arpeggio",
+      "lengthBeats": 16,
+      "notes": [
+        { "pitch": 67, "start": 0, "duration": 0.9, "velocity": 78 },
+        { "pitch": 71, "start": 1, "duration": 0.9, "velocity": 72 },
+        { "pitch": 74, "start": 2, "duration": 0.9, "velocity": 76 },
+        { "pitch": 71, "start": 3, "duration": 0.9, "velocity": 68 },
+        { "pitch": 67, "start": 4, "duration": 0.9, "velocity": 78 },
+        { "pitch": 71, "start": 5, "duration": 0.9, "velocity": 72 },
+        { "pitch": 76, "start": 6, "duration": 0.9, "velocity": 76 },
+        { "pitch": 71, "start": 7, "duration": 0.9, "velocity": 68 },
+        { "pitch": 72, "start": 8, "duration": 0.9, "velocity": 80 },
+        { "pitch": 76, "start": 9, "duration": 0.9, "velocity": 74 },
+        { "pitch": 79, "start": 10, "duration": 0.9, "velocity": 78 },
+        { "pitch": 76, "start": 11, "duration": 0.9, "velocity": 70 },
+        { "pitch": 66, "start": 12, "duration": 0.9, "velocity": 78 },
+        { "pitch": 69, "start": 13, "duration": 0.9, "velocity": 72 },
+        { "pitch": 74, "start": 14, "duration": 0.9, "velocity": 76 },
+        { "pitch": 69, "start": 15, "duration": 0.9, "velocity": 68 }
+      ]
+    },
+    {
+      "id": "pad-lift",
+      "name": "Two voice pad lift",
+      "lengthBeats": 16,
+      "notes": [
+        { "pitch": 59, "start": 0, "duration": 7.9, "velocity": 58 },
+        { "pitch": 67, "start": 0, "duration": 7.9, "velocity": 52 },
+        { "pitch": 60, "start": 8, "duration": 7.9, "velocity": 58 },
+        { "pitch": 67, "start": 8, "duration": 7.9, "velocity": 52 }
+      ]
+    },
+    {
+      "id": "drum-light",
+      "name": "Light backbeat",
+      "lengthBeats": 4,
+      "notes": [
+        { "pitch": 36, "start": 0, "duration": 0.25, "velocity": 100 },
+        { "pitch": 42, "start": 1, "duration": 0.25, "velocity": 48 },
+        { "pitch": 38, "start": 2, "duration": 0.25, "velocity": 76 },
+        { "pitch": 42, "start": 3, "duration": 0.25, "velocity": 48 }
+      ]
+    },
+    {
+      "id": "drum-full",
+      "name": "Driving backbeat with pushed kick",
+      "lengthBeats": 4,
+      "notes": [
+        { "pitch": 36, "start": 0, "duration": 0.25, "velocity": 106 },
+        { "pitch": 42, "start": 0.5, "duration": 0.25, "velocity": 54 },
+        { "pitch": 42, "start": 1, "duration": 0.25, "velocity": 50 },
+        { "pitch": 38, "start": 1.5, "duration": 0.25, "velocity": 80 },
+        { "pitch": 36, "start": 2.5, "duration": 0.25, "velocity": 92 },
+        { "pitch": 42, "start": 3, "duration": 0.25, "velocity": 52 },
+        { "pitch": 38, "start": 3.5, "duration": 0.25, "velocity": 74 }
+      ]
+    }
+  ],
+  "tracks": [
+    {
+      "id": "keys",
+      "name": "Soft Electric Keys",
+      "kind": "midi",
+      "channel": 0,
+      "instrument": { "type": "builtin", "id": "keys.soft" },
+      "pan": -0.2,
+      "effects": [{ "type": "reverb", "mix": 0.16, "decaySeconds": 1.6 }],
+      "automation": {
+        "volume": {
+          "points": [
+            { "time": 0, "value": 0.74 },
+            { "time": 16, "value": 0.86 },
+            { "time": 32, "value": 0.98 },
+            { "time": 48, "value": 0.9 }
+          ]
+        }
+      },
+      "placements": [{ "pattern": "keys-stabs", "start": 0, "repeat": 3 }],
+      "notes": [
+        { "pitch": 60, "start": 48, "duration": 0.45, "velocity": 84 },
+        { "pitch": 64, "start": 48, "duration": 0.45, "velocity": 80 },
+        { "pitch": 67, "start": 48, "duration": 0.45, "velocity": 76 },
+        { "pitch": 60, "start": 50, "duration": 0.45, "velocity": 74 },
+        { "pitch": 64, "start": 50, "duration": 0.45, "velocity": 70 },
+        { "pitch": 67, "start": 50, "duration": 0.45, "velocity": 68 },
+        { "pitch": 59, "start": 52, "duration": 0.45, "velocity": 88 },
+        { "pitch": 62, "start": 52, "duration": 0.45, "velocity": 84 },
+        { "pitch": 67, "start": 52, "duration": 0.45, "velocity": 80 }
+      ]
+    },
+    {
+      "id": "bass",
+      "name": "Sub Bass",
+      "kind": "midi",
+      "channel": 2,
+      "instrument": { "type": "builtin", "id": "bass.sub" },
+      "volume": 0.92,
+      "pan": 0,
+      "placements": [{ "pattern": "bass-drive", "start": 16, "repeat": 2 }],
+      "notes": [
+        { "pitch": 36, "start": 48, "duration": 0.75, "velocity": 96 },
+        { "pitch": 43, "start": 49.5, "duration": 0.5, "velocity": 82 },
+        { "pitch": 43, "start": 52, "duration": 2, "velocity": 104 }
+      ]
+    },
+    {
+      "id": "guitar",
+      "name": "Clean Electric Guitar",
+      "kind": "midi",
+      "channel": 1,
+      "instrument": { "type": "builtin", "id": "guitar.clean" },
+      "volume": 0.6,
+      "pan": 0.4,
+      "effects": [
+        { "type": "lowpass", "cutoffHz": 5500, "q": 0.7 },
+        { "type": "reverb", "mix": 0.14, "decaySeconds": 1.2 }
+      ],
+      "placements": [{ "pattern": "arp-bright", "start": 24, "repeat": 1 }],
+      "notes": [{ "pitch": 74, "start": 52, "duration": 0.4, "velocity": 82 }]
+    },
+    {
+      "id": "pad",
+      "name": "Warm Pad",
+      "kind": "midi",
+      "channel": 3,
+      "instrument": { "type": "builtin", "id": "pad.warm" },
+      "volume": 0.8,
+      "pan": 0.25,
+      "effects": [{ "type": "reverb", "mix": 0.2, "decaySeconds": 1.6 }],
+      "placements": [{ "pattern": "pad-lift", "start": 32, "repeat": 1 }],
+      "notes": [
+        { "pitch": 55, "start": 48, "duration": 4.4, "velocity": 56 },
+        { "pitch": 62, "start": 48, "duration": 4.4, "velocity": 50 }
+      ]
+    },
+    {
+      "id": "drums",
+      "name": "Studio Drums",
+      "kind": "drums",
+      "channel": 9,
+      "instrument": { "type": "builtin", "id": "drums.kit" },
+      "volume": 0.5,
+      "pan": 0,
+      "placements": [
+        { "pattern": "drum-light", "start": 0, "repeat": 8 },
+        { "pattern": "drum-full", "start": 32, "repeat": 5 }
+      ],
+      "notes": [
+        { "pitch": 36, "start": 52, "duration": 0.25, "velocity": 108 },
+        { "pitch": 49, "start": 52, "duration": 0.25, "velocity": 78 }
+      ]
+    }
+  ]
+}

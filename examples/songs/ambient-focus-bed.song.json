@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "1.0.0",
+  "meta": {
+    "title": "Deep Work",
+    "bpm": 60,
+    "timeSignature": { "numerator": 4, "denominator": 4 },
+    "key": { "tonic": "A", "mode": "minor" },
+    "seed": 90210,
+    "durationHint": 60,
+    "mood": "patient, unobtrusive",
+    "tags": ["ambient", "focus", "bgm", "loop-bed", "60s"]
+  },
+  "patterns": [
+    {
+      "id": "pad-drift",
+      "name": "Slow three voice pad, two halves",
+      "lengthBeats": 32,
+      "notes": [
+        { "pitch": 45, "start": 0, "duration": 15.5, "velocity": 68 },
+        { "pitch": 52, "start": 0, "duration": 15.5, "velocity": 58 },
+        { "pitch": 57, "start": 0, "duration": 15.5, "velocity": 54 },
+        { "pitch": 41, "start": 16, "duration": 15.5, "velocity": 66 },
+        { "pitch": 48, "start": 16, "duration": 15.5, "velocity": 56 },
+        { "pitch": 53, "start": 16, "duration": 15.5, "velocity": 52 }
+      ]
+    },
+    {
+      "id": "bass-drone",
+      "name": "Sub drone, one pitch per half",
+      "lengthBeats": 32,
+      "notes": [
+        { "pitch": 33, "start": 0, "duration": 15.5, "velocity": 64 },
+        { "pitch": 29, "start": 16, "duration": 15.5, "velocity": 62 }
+      ]
+    }
+  ],
+  "tracks": [
+    {
+      "id": "pad",
+      "name": "Warm Pad",
+      "kind": "midi",
+      "channel": 0,
+      "instrument": { "type": "builtin", "id": "pad.warm" },
+      "volume": 1.3,
+      "effects": [
+        { "type": "lowpass", "q": 0.8 },
+        { "type": "reverb", "mix": 0.28, "decaySeconds": 2.8 }
+      ],
+      "automation": {
+        "pan": {
+          "points": [
+            { "time": 0, "value": -0.45 },
+            { "time": 28, "value": 0.35 },
+            { "time": 56, "value": -0.2 }
+          ]
+        },
+        "filterCutoffHz": {
+          "points": [
+            { "time": 0, "value": 420 },
+            { "time": 16, "value": 1200 },
+            { "time": 32, "value": 620 },
+            { "time": 56, "value": 900 }
+          ]
+        }
+      },
+      "placements": [{ "pattern": "pad-drift", "start": 0, "repeat": 1 }],
+      "notes": [
+        { "pitch": 43, "start": 32, "duration": 12, "velocity": 64 },
+        { "pitch": 50, "start": 32, "duration": 12, "velocity": 56 },
+        { "pitch": 57, "start": 32, "duration": 12, "velocity": 52 },
+        { "pitch": 45, "start": 44, "duration": 13, "velocity": 68 },
+        { "pitch": 52, "start": 44, "duration": 13, "velocity": 58 },
+        { "pitch": 57, "start": 44, "duration": 13, "velocity": 54 }
+      ]
+    },
+    {
+      "id": "drone",
+      "name": "Sub Drone",
+      "kind": "midi",
+      "channel": 1,
+      "instrument": { "type": "builtin", "id": "bass.sub" },
+      "volume": 1.6,
+      "pan": 0,
+      "placements": [{ "pattern": "bass-drone", "start": 0, "repeat": 1 }],
+      "notes": [
+        { "pitch": 31, "start": 32, "duration": 12, "velocity": 62 },
+        { "pitch": 33, "start": 44, "duration": 12, "velocity": 66 }
+      ]
+    },
+    {
+      "id": "bells",
+      "name": "Soft Piano Bells",
+      "kind": "midi",
+      "channel": 2,
+      "instrument": { "type": "builtin", "id": "piano.soft" },
+      "volume": 0.95,
+      "pan": 0.25,
+      "effects": [{ "type": "reverb", "mix": 0.3, "decaySeconds": 3.2 }],
+      "notes": [
+        { "pitch": 76, "start": 4, "duration": 3, "velocity": 62 },
+        { "pitch": 79, "start": 12, "duration": 3, "velocity": 56 },
+        { "pitch": 72, "start": 20, "duration": 3.5, "velocity": 60 },
+        { "pitch": 76, "start": 28, "duration": 4, "velocity": 54 },
+        { "pitch": 74, "start": 36, "duration": 3, "velocity": 58 },
+        { "pitch": 81, "start": 44, "duration": 4, "velocity": 52 },
+        { "pitch": 76, "start": 50, "duration": 3, "velocity": 60 }
+      ]
+    }
+  ]
+}

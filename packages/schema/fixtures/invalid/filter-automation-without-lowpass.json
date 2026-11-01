@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "1.0.0",
+  "meta": {
+    "title": "Filter Automation Without Lowpass",
+    "bpm": 90,
+    "timeSignature": {
+      "numerator": 4,
+      "denominator": 4
+    },
+    "key": {
+      "tonic": "C",
+      "mode": "major"
+    },
+    "seed": 1,
+    "durationHint": 8
+  },
+  "tracks": [
+    {
+      "id": "keys",
+      "name": "Keys",
+      "kind": "midi",
+      "channel": 0,
+      "instrument": {
+        "type": "builtin",
+        "id": "keys.soft"
+      },
+      "automation": {
+        "filterCutoffHz": {
+          "points": [
+            {
+              "time": 0,
+              "value": 800
+            },
+            {
+              "time": 4,
+              "value": 6000
+            }
+          ]
+        }
+      },
+      "notes": [
+        {
+          "pitch": 60,
+          "start": 0,
+          "duration": 4
+        }
+      ]
+    }
+  ]
+}

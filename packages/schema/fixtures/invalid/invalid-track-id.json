@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1.0.0",
+  "meta": {
+    "title": "Invalid Track Identifier",
+    "bpm": 90,
+    "timeSignature": {
+      "numerator": 4,
+      "denominator": 4
+    },
+    "key": {
+      "tonic": "C",
+      "mode": "major"
+    },
+    "seed": 1,
+    "durationHint": 8
+  },
+  "tracks": [
+    {
+      "id": "Lead Synth",
+      "name": "Lead Synth",
+      "kind": "midi",
+      "channel": 0,
+      "instrument": {
+        "type": "builtin",
+        "id": "keys.soft"
+      },
+      "notes": [
+        {
+          "pitch": 60,
+          "start": 0,
+          "duration": 2
+        }
+      ]
+    }
+  ]
+}

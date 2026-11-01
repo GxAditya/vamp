@@ -1,0 +1,74 @@
+{
+  "format": "vamp.benchmark-budgets",
+  "formatVersion": 1,
+  "recordedOn": {
+    "hostname": "aditya-HP-Laptop-15s-du3xxx",
+    "os": "linux 7.0.0-38-generic (Ubuntu 24.04 family)",
+    "cpu": "11th Gen Intel Core i5-1135G7 @ 2.40GHz (8 cores)",
+    "node": "v24.18.0",
+    "commands": "node scripts/benchmark-render.mjs [--rates 44100] [--backend fluidsynth]",
+    "date": "2026-10-29"
+  },
+  "policy": "These are regression budgets for the pinned repository environment only. Each budget is roughly 4-5x the recorded wall time and about 2x the recorded peak RSS on that machine, so ordinary noise never trips them while a real order-of-magnitude performance or memory regression does. They are deliberately not part of pnpm test and must not be used as a universal CI speed gate on heterogeneous runners; CI machines get no timing assertions at all. Run 'pnpm benchmark --check-budgets' only on a machine that matches recordedOn.",
+  "cases": {
+    "explainer-30s": "examples/songs/explainer-upbeat.song.json, 30 s, 5 tracks",
+    "lofi-45s": "examples/songs/lofi-coding-bed.song.json, 45 s, 5 tracks",
+    "explainer-90s": "explainer cue scaled 3x in memory (hint and placement repeats), 90 s continuous content"
+  },
+  "budgets": {
+    "explainer-30s@48000/builtin": {
+      "measuredRenderPlusEncodeMs": 1625,
+      "measuredPeakRssKiB": 180688,
+      "renderPlusEncodeMsBudget": 8000,
+      "peakRssKiBBudget": 400000
+    },
+    "lofi-45s@48000/builtin": {
+      "measuredRenderPlusEncodeMs": 2790,
+      "measuredPeakRssKiB": 202120,
+      "renderPlusEncodeMsBudget": 12000,
+      "peakRssKiBBudget": 450000
+    },
+    "explainer-90s@48000/builtin": {
+      "measuredRenderPlusEncodeMs": 4582,
+      "measuredPeakRssKiB": 291076,
+      "renderPlusEncodeMsBudget": 24000,
+      "peakRssKiBBudget": 620000
+    },
+    "explainer-30s@44100/builtin": {
+      "measuredRenderPlusEncodeMs": 1494,
+      "measuredPeakRssKiB": 163756,
+      "renderPlusEncodeMsBudget": 8000,
+      "peakRssKiBBudget": 400000
+    },
+    "lofi-45s@44100/builtin": {
+      "measuredRenderPlusEncodeMs": 2663,
+      "measuredPeakRssKiB": 196664,
+      "renderPlusEncodeMsBudget": 12000,
+      "peakRssKiBBudget": 450000
+    },
+    "explainer-90s@44100/builtin": {
+      "measuredRenderPlusEncodeMs": 4110,
+      "measuredPeakRssKiB": 279248,
+      "renderPlusEncodeMsBudget": 24000,
+      "peakRssKiBBudget": 620000
+    },
+    "explainer-30s@48000/fluidsynth": {
+      "measuredRenderPlusEncodeMs": 2470,
+      "measuredPeakRssKiB": 209668,
+      "renderPlusEncodeMsBudget": 10000,
+      "peakRssKiBBudget": 450000
+    },
+    "lofi-45s@48000/fluidsynth": {
+      "measuredRenderPlusEncodeMs": 2940,
+      "measuredPeakRssKiB": 243496,
+      "renderPlusEncodeMsBudget": 14000,
+      "peakRssKiBBudget": 520000
+    },
+    "explainer-90s@48000/fluidsynth": {
+      "measuredRenderPlusEncodeMs": 5604,
+      "measuredPeakRssKiB": 361888,
+      "renderPlusEncodeMsBudget": 28000,
+      "peakRssKiBBudget": 760000
+    }
+  }
+}

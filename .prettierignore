@@ -1,0 +1,14 @@
+# Source-of-truth documents are maintained outside Prettier.
+PRD.md
+TASKS_V1.md
+PROGRESS.md
+
+# Generated or third-party files
+packages/schema/src/generated/
+packages/schema/python/
+# Golden baselines are byte-authored by scripts/regenerate-goldens.mjs.
+packages/engine/test/fixtures/golden/
+pnpm-lock.yaml
+node_modules/
+dist/
+coverage/

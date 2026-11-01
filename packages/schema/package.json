@@ -1,0 +1,47 @@
+{
+  "name": "@gxaditya/vamp-schema",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Canonical SongSchemaV1 JSON Schema, generated TypeScript and Python types, structural and semantic validation, normalization, and version dispatch.",
+  "license": "AGPL-3.0-only",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./schema/song.schema.json": "./schema/song.schema.json"
+  },
+  "files": [
+    "dist",
+    "schema",
+    "python",
+    "THIRD_PARTY_NOTICES.md",
+    "!**/__pycache__",
+    "!**/*.py[cod]"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node ../../scripts/copy-file.mjs ../../THIRD_PARTY_NOTICES.md THIRD_PARTY_NOTICES.md",
+    "generate": "node scripts/generate-types.mjs",
+    "generate:check": "node scripts/generate-types.mjs --check",
+    "check:python": "python3 scripts/check_python_types.py"
+  },
+  "dependencies": {
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GxAditya/vamp.git",
+    "directory": "packages/schema"
+  }
+}

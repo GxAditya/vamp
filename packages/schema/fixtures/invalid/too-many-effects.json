@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "1.0.0",
+  "meta": {
+    "title": "Too Many Effects",
+    "bpm": 90,
+    "timeSignature": {
+      "numerator": 4,
+      "denominator": 4
+    },
+    "key": {
+      "tonic": "C",
+      "mode": "major"
+    },
+    "seed": 1,
+    "durationHint": 8
+  },
+  "tracks": [
+    {
+      "id": "keys",
+      "name": "Keys",
+      "kind": "midi",
+      "channel": 0,
+      "instrument": {
+        "type": "builtin",
+        "id": "keys.soft"
+      },
+      "effects": [
+        { "type": "delay" },
+        { "type": "delay" },
+        { "type": "delay" },
+        { "type": "delay" },
+        { "type": "delay" },
+        { "type": "delay" },
+        { "type": "delay" },
+        { "type": "delay" },
+        { "type": "delay" }
+      ],
+      "notes": [
+        {
+          "pitch": 60,
+          "start": 0,
+          "duration": 4
+        }
+      ]
+    }
+  ]
+}

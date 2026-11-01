@@ -1,0 +1,303 @@
+name: CI
+
+# ============================================================================
+# TASK 19 EXECUTION NOTICE (read before interpreting results)
+#
+# This workflow is AUTHORED on a Linux host with no git remote configured.
+# None of the jobs below, including the pre-existing single-OS job, has ever
+# been executed from this checkout. Do not describe any result of this file as
+# "CI passes" until it has actually run on a repository with a remote.
+#
+# Status per job, as of Task 19:
+#   - core-checks (ubuntu-latest):  authored, not executed. The command set it
+#     runs is the exact set executed locally on Linux during Task 19
+#     verification.
+#   - platform-matrix (ubuntu, macOS, Windows): authored; only the Linux step
+#     sequence was executed locally. The macOS and Windows legs are
+#     authored-but-not-executed.
+#   - native-matrix (ubuntu, macOS, Windows): authored; FluidSynth and the
+#     pinned SoundFont ARE provisioned and DO run on this Linux host, but the
+#     workflow itself never ran here. The macOS and Windows provisioning and
+#     smoke steps are authored-but-not-executed and are the remaining
+#     launch-blocking gap for the fully-local cross-platform v1 claim.
+#   - offline-after-provisioning: the `unshare --net` runtime enforcement is
+#     authored for Linux only. On macOS and Windows the offline guarantee is
+#     asserted by the static source scan in test/security-hardening.test.ts,
+#     which executes on all three OSes but is a source-level, not a runtime,
+#     guarantee. This is documented honestly, not papered over.
+#
+# Determinism harness note: vitest keeps the Task 16 settings (forks pool,
+# maxWorkers 4, 30s timeouts). Nothing here adds a wall-clock performance
+# gate; `pnpm benchmark --check-budgets` stays a local, explicitly invoked
+# command and is not wired into CI.
+# ============================================================================
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Pinned native pair for the native jobs. FluidSynth 2.3.x and the byte-
+  # pinned FluidR3 GM SoundFont (MIT, Frank Wen; SHA-256
+  # 74594e8f4250680adf590507a306655a299935343583256f3b722c48a1bc1cb0,
+  # 148398306 bytes). The SoundFont is provisioned, never committed.
+  FLUIDSYNTH_PIN: '2.3.x'
+  FLUIDR3_GM_SHA256: 74594e8f4250680adf590507a306655a299935343583256f3b722c48a1bc1cb0
+  FLUIDR3_GM_URL: https://deb.debian.org/debian/pool/main/f/fluid-soundfont/fluid-soundfont_3.1.orig.tar.gz
+
+jobs:
+  # --------------------------------------------------------------------------
+  # Full deterministic gate on Linux. This mirrors exactly the command set
+  # that was executed locally on the Linux verification host, so its steps are
+  # the best-supported leg of this workflow (still authored-not-executed here,
+  # because no remote exists to push to).
+  # --------------------------------------------------------------------------
+  core-checks:
+    name: Core checks (Linux)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.15.1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies from lockfile
+        run: pnpm install --frozen-lockfile
+
+      - name: Check generated schema types
+        run: pnpm check:generated
+
+      - name: Check generated Python schema types
+        run: pnpm check:python-types
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Check formatting
+        run: pnpm format:check
+
+      - name: Build
+        run: pnpm build
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Fast regression suite
+        run: pnpm test:fast
+
+      - name: Security suite
+        run: pnpm test:security
+
+  # --------------------------------------------------------------------------
+  # Cross-platform workspace gate. Per OS: frozen-lockfile install, schema and
+  # Python type drift, build, lint, typecheck, fast suite, security suite,
+  # and package-build smoke (every workspace package builds and the CLI and
+  # MCP binaries execute on the built output). Formatting is checked only on
+  # Linux to avoid line-ending churn; the Linux core-checks job gates it.
+  # --------------------------------------------------------------------------
+  platform-matrix:
+    name: Platform checks (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.15.1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies from lockfile
+        run: pnpm install --frozen-lockfile
+
+      - name: Check generated schema types
+        run: pnpm check:generated
+
+      - name: Check generated Python schema types
+        run: pnpm check:python-types
+
+      - name: Build workspace packages
+        run: pnpm build
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Fast regression suite
+        run: pnpm test:fast
+
+      - name: Security suite
+        run: pnpm test:security
+
+      # Package builds: the workspace emits dist output plus the CLI and MCP
+      # entrypoints. Task 21 adds installable distribution artifacts; this
+      # smoke proves the built entrypoints run on each OS without a registry.
+      - name: CLI package build smoke
+        run: |
+          node packages/cli/bin/vamp.js --version
+          node packages/cli/bin/vamp.js --help
+          node packages/cli/bin/vamp.js validate examples/songs/tension-stinger.song.json --json
+          node packages/cli/bin/vamp.js info examples/songs/tension-stinger.song.json --json
+
+      - name: MCP package build smoke
+        run: node packages/mcp-server/bin/vamp-mcp.js --version
+
+      - name: Built-in render smoke (offline, no native dependency)
+        shell: bash
+        run: |
+          node packages/cli/bin/vamp.js render examples/songs/tension-stinger.song.json \
+            --out ./smoke-builtin --json
+          test -f ./smoke-builtin/master.wav
+          test -f ./smoke-builtin/report.json
+
+  # --------------------------------------------------------------------------
+  # Native jobs. Provisioning may use the network; every test and smoke after
+  # provisioning runs offline, and on Linux the offline smoke additionally
+  # runs inside a network-free namespace (`unshare --net`) so any attempted
+  # application network access fails immediately rather than silently.
+  #
+  # The pinned SoundFont (FluidR3 GM, MIT) is downloaded and verified against
+  # its SHA-256 and exact byte size via `pnpm verify:soundfont`. It is never
+  # committed to the repository.
+  # --------------------------------------------------------------------------
+  native-matrix:
+    name: Native FluidSynth (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.15.1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies from lockfile
+        run: pnpm install --frozen-lockfile
+
+      - name: Build workspace packages
+        run: pnpm build
+
+      # ---- Linux provisioning (executed as an equivalent flow on this host;
+      # ---- the workflow step itself is authored-not-executed) ---------------
+      - name: Provision FluidSynth and FluidR3 GM (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fluidsynth fluid-soundfont-gm
+          fluidsynth --version
+          echo "VAMP_FLUIDSYNTH_PATH=/usr/bin/fluidsynth" >> "$GITHUB_ENV"
+          echo "VAMP_SOUNDFONT_PATH=/usr/share/sounds/sf2/FluidR3_GM.sf2" >> "$GITHUB_ENV"
+
+      # ---- macOS provisioning (AUTHORED BUT NOT EXECUTED: no macOS host is
+      # ---- available for Task 19). Homebrew provides a current FluidSynth
+      # ---- 2.x; the SoundFont comes from the Debian orig tarball for
+      # ---- fluid-soundfont 3.1-5 and is verified before use. ----------------
+      - name: Provision FluidSynth and FluidR3 GM (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          brew install fluidsynth
+          mkdir -p "$RUNNER_TEMP/sf"
+          curl -fsSL "$FLUIDR3_GM_URL" -o "$RUNNER_TEMP/sf/fluid-soundfont.tar.gz"
+          tar -xzf "$RUNNER_TEMP/sf/fluid-soundfont.tar.gz" -C "$RUNNER_TEMP/sf"
+          SF2=$(find "$RUNNER_TEMP/sf" -name FluidR3_GM.sf2 -print -quit)
+          echo "$FLUIDR3_GM_SHA256  $SF2" | shasum -a 256 -c -
+          echo "VAMP_FLUIDSYNTH_PATH=$(command -v fluidsynth)" >> "$GITHUB_ENV"
+          echo "VAMP_SOUNDFONT_PATH=$SF2" >> "$GITHUB_ENV"
+
+      # ---- Windows provisioning (AUTHORED BUT NOT EXECUTED: no Windows host
+      # ---- is available for Task 19). This is the least-verified step in the
+      # ---- workflow: it assumes Chocolatey exposes a FluidSynth 2.x package
+      # ---- on the runner image. If that assumption fails, the v1 "native on
+      # ---- Windows" claim is a launch-blocking gap and must be recorded as
+      # ---- such. SoundFont download uses the same
+      # ---- pinned Debian orig tarball and is hash-verified. ------------------
+      - name: Provision FluidSynth and FluidR3 GM (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          choco install fluidsynth -y --no-progress
+          $fs = (Get-Command fluidsynth.exe -ErrorAction Stop).Source
+          New-Item -ItemType Directory -Force "$env:RUNNER_TEMP\sf" | Out-Null
+          curl.exe -fsSL $env:FLUIDR3_GM_URL -o "$env:RUNNER_TEMP\sf\fluid-soundfont.tar.gz"
+          tar -xzf "$env:RUNNER_TEMP\sf\fluid-soundfont.tar.gz" -C "$env:RUNNER_TEMP\sf"
+          $sf2 = (Get-ChildItem -Recurse -Filter FluidR3_GM.sf2 "$env:RUNNER_TEMP\sf" | Select-Object -First 1).FullName
+          $hash = (Get-FileHash -Algorithm SHA256 $sf2).Hash.ToLower()
+          if ($hash -ne $env:FLUIDR3_GM_SHA256) { throw "FluidR3_GM.sf2 hash mismatch: $hash" }
+          "VAMP_FLUIDSYNTH_PATH=$fs" | Out-File -FilePath $env:GITHUB_ENV -Append
+          "VAMP_SOUNDFONT_PATH=$sf2" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+      - name: Verify the pinned SoundFont without network
+        shell: bash
+        run: node scripts/verify-soundfont.mjs "$VAMP_SOUNDFONT_PATH"
+
+      # After this point no step may reach the network. The native suite and
+      # the smoke renders below use only the provisioned local files.
+      - name: Native and pinned test suite
+        run: pnpm test:native
+
+      - name: CLI native render smoke (offline)
+        shell: bash
+        run: |
+          node packages/cli/bin/vamp.js render examples/songs/tension-stinger.song.json \
+            --out ./smoke-native --backend fluidsynth --verify-soundfont --json
+          test -f ./smoke-native/master.wav
+          test -f ./smoke-native/song.mid
+          test -f ./smoke-native/report.json
+
+      # ---- Offline-after-provisioning enforcement (Linux runtime proof) -----
+      # `unshare --net` gives the child process no network namespace beyond
+      # loopback-without-connectivity: any attempted application network
+      # access fails immediately. The render must still succeed. On macOS and
+      # Windows this runtime proof is not available as written (recorded as a
+      # gap); the cross-OS static scan in the security suite is the fallback.
+      - name: Offline enforcement smoke (Linux, network-free namespace)
+        if: runner.os == 'Linux'
+        run: |
+          sudo unshare --net -- bash -c \
+            'node packages/cli/bin/vamp.js render examples/songs/lofi-coding-bed.song.json \
+               --out ./smoke-offline --sample-rate 48000 --json && test -f ./smoke-offline/master.wav'
+
+      - name: Offline enforcement gap notice (macOS and Windows)
+        if: runner.os != 'Linux'
+        run: |
+          echo "::notice::Offline-after-provisioning is enforced at runtime only on Linux (unshare --net). This OS relies on the static source scan (test/security-hardening.test.ts)."

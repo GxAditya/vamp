@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1.0.0",
+  "meta": {
+    "title": "GM Instrument on Drum Track",
+    "bpm": 90,
+    "timeSignature": {
+      "numerator": 4,
+      "denominator": 4
+    },
+    "key": {
+      "tonic": "C",
+      "mode": "major"
+    },
+    "seed": 1,
+    "durationHint": 8
+  },
+  "tracks": [
+    {
+      "id": "drums",
+      "name": "Drums",
+      "kind": "drums",
+      "channel": 9,
+      "instrument": {
+        "type": "gm",
+        "program": 0
+      },
+      "notes": [
+        {
+          "pitch": 36,
+          "start": 0,
+          "duration": 0.25
+        }
+      ]
+    }
+  ]
+}

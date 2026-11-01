@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "1.0.0",
+  "meta": {
+    "title": "Instrument Reference Variants",
+    "bpm": 88,
+    "timeSignature": {
+      "numerator": 3,
+      "denominator": 4
+    },
+    "key": {
+      "tonic": "E",
+      "mode": "minor"
+    },
+    "seed": 31415,
+    "durationHint": 12
+  },
+  "tracks": [
+    {
+      "id": "piano",
+      "name": "GM Piano",
+      "kind": "midi",
+      "channel": 0,
+      "instrument": {
+        "type": "gm",
+        "program": 0,
+        "bank": 0
+      },
+      "notes": [
+        {
+          "pitch": 64,
+          "start": 0,
+          "duration": 3
+        },
+        {
+          "pitch": 68,
+          "start": 0,
+          "duration": 3
+        },
+        {
+          "pitch": 71,
+          "start": 0,
+          "duration": 3
+        }
+      ]
+    },
+    {
+      "id": "strings",
+      "name": "SoundFont Strings",
+      "kind": "midi",
+      "channel": 1,
+      "instrument": {
+        "type": "soundfont",
+        "path": "assets/strings/warm-ensemble.sf2",
+        "program": 48,
+        "bank": 0
+      },
+      "notes": [
+        {
+          "pitch": 52,
+          "start": 0,
+          "duration": 6
+        },
+        {
+          "pitch": 59,
+          "start": 0,
+          "duration": 6
+        }
+      ]
+    },
+    {
+      "id": "flute",
+      "name": "SFZ Flute",
+      "kind": "midi",
+      "channel": 2,
+      "instrument": {
+        "type": "sfz",
+        "path": "assets/flute/air.sfz"
+      },
+      "notes": [
+        {
+          "pitch": 76,
+          "start": 3,
+          "duration": 3
+        },
+        {
+          "pitch": 78,
+          "start": 6,
+          "duration": 3
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "1.0.0",
+  "meta": {
+    "title": "Full v1 Effects Chain",
+    "bpm": 96,
+    "timeSignature": {
+      "numerator": 6,
+      "denominator": 8
+    },
+    "key": {
+      "tonic": "F",
+      "mode": "major"
+    },
+    "seed": 99,
+    "durationHint": 24,
+    "mood": "open",
+    "tags": ["explainer", "clean"]
+  },
+  "tracks": [
+    {
+      "id": "guitar",
+      "name": "Clean Guitar",
+      "kind": "midi",
+      "channel": 2,
+      "instrument": {
+        "type": "builtin",
+        "id": "guitar.clean"
+      },
+      "volume": 0.75,
+      "pan": 0.15,
+      "effects": [
+        {
+          "type": "eq",
+          "lowGainDb": -2,
+          "midGainDb": 1.5,
+          "highGainDb": 2
+        },
+        {
+          "type": "lowpass",
+          "cutoffHz": 4200,
+          "q": 0.7
+        },
+        {
+          "type": "delay",
+          "timeMs": 375,
+          "feedback": 0.3,
+          "mix": 0.18
+        },
+        {
+          "type": "reverb",
+          "mix": 0.22,
+          "decaySeconds": 2.2
+        }
+      ],
+      "notes": [
+        {
+          "pitch": 60,
+          "start": 0,
+          "duration": 1
+        },
+        {
+          "pitch": 64,
+          "start": 1,
+          "duration": 1
+        },
+        {
+          "pitch": 67,
+          "start": 2,
+          "duration": 2
+        },
+        {
+          "pitch": 65,
+          "start": 4,
+          "duration": 1.5
+        }
+      ]
+    }
+  ]
+}

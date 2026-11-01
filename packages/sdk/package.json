@@ -1,0 +1,40 @@
+{
+  "name": "@gxaditya/vamp-sdk",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Vamp thin typed TypeScript SDK: a local client facade over the shared schema, engine, and project libraries.",
+  "license": "AGPL-3.0-only",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node ../../scripts/copy-file.mjs ../../THIRD_PARTY_NOTICES.md THIRD_PARTY_NOTICES.md"
+  },
+  "dependencies": {
+    "@gxaditya/vamp-engine": "workspace:*",
+    "@gxaditya/vamp-project": "workspace:*",
+    "@gxaditya/vamp-schema": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GxAditya/vamp.git",
+    "directory": "packages/sdk"
+  }
+}

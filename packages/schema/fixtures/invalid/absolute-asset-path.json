@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "1.0.0",
+  "meta": {
+    "title": "Absolute Asset Path",
+    "bpm": 90,
+    "timeSignature": {
+      "numerator": 4,
+      "denominator": 4
+    },
+    "key": {
+      "tonic": "C",
+      "mode": "major"
+    },
+    "seed": 1,
+    "durationHint": 8
+  },
+  "tracks": [
+    {
+      "id": "piano",
+      "name": "Piano",
+      "kind": "midi",
+      "channel": 0,
+      "instrument": {
+        "type": "soundfont",
+        "path": "/opt/soundfonts/piano.sf2",
+        "program": 0
+      },
+      "notes": [
+        {
+          "pitch": 60,
+          "start": 0,
+          "duration": 2
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "schemaVersion": "1.0.0",
+  "meta": {
+    "title": "Builtin 45 Second Cue",
+    "bpm": 90,
+    "timeSignature": {
+      "numerator": 4,
+      "denominator": 4
+    },
+    "key": {
+      "tonic": "C",
+      "mode": "major"
+    },
+    "seed": 20261028,
+    "durationHint": 67.5,
+    "mood": "warm, focused",
+    "tags": ["builtin", "cue", "test"]
+  },
+  "patterns": [
+    {
+      "id": "keys-bed",
+      "name": "Keys bed",
+      "lengthBeats": 16,
+      "notes": [
+        { "pitch": 48, "start": 0, "duration": 3.8 },
+        { "pitch": 52, "start": 0, "duration": 3.8 },
+        { "pitch": 55, "start": 0, "duration": 3.8 },
+        { "pitch": 59, "start": 0, "duration": 3.8 },
+        { "pitch": 45, "start": 4, "duration": 3.8 },
+        { "pitch": 48, "start": 4, "duration": 3.8 },
+        { "pitch": 52, "start": 4, "duration": 3.8 },
+        { "pitch": 55, "start": 4, "duration": 3.8 },
+        { "pitch": 41, "start": 8, "duration": 3.8 },
+        { "pitch": 45, "start": 8, "duration": 3.8 },
+        { "pitch": 48, "start": 8, "duration": 3.8 },
+        { "pitch": 52, "start": 8, "duration": 3.8 },
+        { "pitch": 43, "start": 12, "duration": 3.8 },
+        { "pitch": 47, "start": 12, "duration": 3.8 },
+        { "pitch": 50, "start": 12, "duration": 3.8 },
+        { "pitch": 53, "start": 12, "duration": 3.8 }
+      ]
+    },
+    {
+      "id": "bass-line",
+      "name": "Bass line",
+      "lengthBeats": 16,
+      "notes": [
+        { "pitch": 36, "start": 0, "duration": 1.8 },
+        { "pitch": 36, "start": 2, "duration": 1.8 },
+        { "pitch": 33, "start": 4, "duration": 1.8 },
+        { "pitch": 33, "start": 6, "duration": 1.8 },
+        { "pitch": 29, "start": 8, "duration": 1.8 },
+        { "pitch": 29, "start": 10, "duration": 1.8 },
+        { "pitch": 31, "start": 12, "duration": 1.8 },
+        { "pitch": 31, "start": 14, "duration": 1.8 }
+      ]
+    },
+    {
+      "id": "pad-bed",
+      "name": "Warm pad",
+      "lengthBeats": 16,
+      "notes": [
+        { "pitch": 48, "start": 0, "duration": 3.9 },
+        { "pitch": 55, "start": 0, "duration": 3.9 },
+        { "pitch": 64, "start": 0, "duration": 3.9 },
+        { "pitch": 45, "start": 4, "duration": 3.9 },
+        { "pitch": 52, "start": 4, "duration": 3.9 },
+        { "pitch": 60, "start": 4, "duration": 3.9 },
+        { "pitch": 41, "start": 8, "duration": 3.9 },
+        { "pitch": 48, "start": 8, "duration": 3.9 },
+        { "pitch": 57, "start": 8, "duration": 3.9 },
+        { "pitch": 43, "start": 12, "duration": 3.9 },
+        { "pitch": 50, "start": 12, "duration": 3.9 },
+        { "pitch": 59, "start": 12, "duration": 3.9 }
+      ]
+    },
+    {
+      "id": "piano-line",
+      "name": "Piano line",
+      "lengthBeats": 16,
+      "notes": [
+        { "pitch": 72, "start": 0, "duration": 1.5 },
+        { "pitch": 76, "start": 1.5, "duration": 0.5 },
+        { "pitch": 79, "start": 2, "duration": 1.8 },
+        { "pitch": 76, "start": 4, "duration": 0.5 },
+        { "pitch": 74, "start": 4.5, "duration": 1.5 },
+        { "pitch": 72, "start": 6, "duration": 1.8 },
+        { "pitch": 69, "start": 8, "duration": 1.5 },
+        { "pitch": 72, "start": 9.5, "duration": 1 },
+        { "pitch": 76, "start": 10.5, "duration": 1.5 },
+        { "pitch": 74, "start": 12, "duration": 2 },
+        { "pitch": 71, "start": 14, "duration": 1.5 }
+      ]
+    },
+    {
+      "id": "drum-groove",
+      "name": "Drum groove",
+      "lengthBeats": 4,
+      "notes": [
+        { "pitch": 36, "start": 0, "duration": 0.25, "velocity": 112 },
+        { "pitch": 42, "start": 0, "duration": 0.25 },
+        { "pitch": 42, "start": 0.5, "duration": 0.25 },
+        { "pitch": 38, "start": 1, "duration": 0.25, "velocity": 104 },
+        { "pitch": 42, "start": 1, "duration": 0.25 },
+        { "pitch": 42, "start": 1.5, "duration": 0.25 },
+        { "pitch": 36, "start": 2, "duration": 0.25, "velocity": 108 },
+        { "pitch": 42, "start": 2, "duration": 0.25 },
+        { "pitch": 42, "start": 2.5, "duration": 0.25 },
+        { "pitch": 38, "start": 3, "duration": 0.25, "velocity": 104 },
+        { "pitch": 42, "start": 3, "duration": 0.25 },
+        { "pitch": 46, "start": 3.5, "duration": 0.25, "velocity": 92 }
+      ]
+    }
+  ],
+  "tracks": [
+    {
+      "id": "keys",
+      "name": "Soft Keys",
+      "kind": "midi",
+      "channel": 0,
+      "instrument": { "type": "builtin", "id": "keys.soft" },
+      "volume": 0.5,
+      "pan": -0.2,
+      "placements": [{ "pattern": "keys-bed", "start": 0, "repeat": 4 }]
+    },
+    {
+      "id": "piano",
+      "name": "Soft Piano",
+      "kind": "midi",
+      "channel": 1,
+      "instrument": { "type": "builtin", "id": "piano.soft" },
+      "volume": 0.35,
+      "pan": 0.3,
+      "placements": [{ "pattern": "piano-line", "start": 0, "repeat": 4 }]
+    },
+    {
+      "id": "bass",
+      "name": "Sub Bass",
+      "kind": "midi",
+      "channel": 2,
+      "instrument": { "type": "builtin", "id": "bass.sub" },
+      "volume": 0.6,
+      "pan": 0,
+      "placements": [{ "pattern": "bass-line", "start": 0, "repeat": 4 }]
+    },
+    {
+      "id": "pad",
+      "name": "Warm Pad",
+      "kind": "midi",
+      "channel": 3,
+      "instrument": { "type": "builtin", "id": "pad.warm" },
+      "volume": 0.25,
+      "pan": 0.35,
+      "placements": [{ "pattern": "pad-bed", "start": 0, "repeat": 4 }]
+    },
+    {
+      "id": "drums",
+      "name": "Builtin Kit",
+      "kind": "drums",
+      "channel": 9,
+      "instrument": { "type": "builtin", "id": "drums.kit" },
+      "volume": 0.45,
+      "pan": 0,
+      "notes": [{ "pitch": 49, "start": 0, "duration": 2, "velocity": 84 }],
+      "placements": [{ "pattern": "drum-groove", "start": 0, "repeat": 16 }]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "1.0.0",
+  "meta": {
+    "title": "Golden Regression Cue",
+    "bpm": 120,
+    "timeSignature": { "numerator": 4, "denominator": 4 },
+    "key": { "tonic": "C", "mode": "minor" },
+    "seed": 771018,
+    "durationHint": 4,
+    "mood": "fixture",
+    "tags": ["golden", "regression", "task-18"]
+  },
+  "patterns": [
+    {
+      "id": "arp-up",
+      "name": "Arpeggio up",
+      "lengthBeats": 4,
+      "notes": [
+        { "pitch": 60, "start": 0, "duration": 0.9, "velocity": 104 },
+        { "pitch": 63, "start": 1, "duration": 0.9, "velocity": 96 },
+        { "pitch": 67, "start": 2, "duration": 0.9, "velocity": 100 },
+        { "pitch": 70, "start": 3, "duration": 0.9, "velocity": 92 }
+      ]
+    }
+  ],
+  "tracks": [
+    {
+      "id": "keys",
+      "name": "Keys",
+      "kind": "midi",
+      "channel": 0,
+      "instrument": { "type": "builtin", "id": "keys.soft" },
+      "volume": 0.8,
+      "pan": -0.3,
+      "effects": [{ "type": "delay", "timeMs": 250, "feedback": 0.5, "mix": 0.35 }],
+      "placements": [{ "pattern": "arp-up", "start": 0, "repeat": 2 }]
+    },
+    {
+      "id": "pad",
+      "name": "Pad",
+      "kind": "midi",
+      "channel": 1,
+      "instrument": { "type": "builtin", "id": "pad.warm" },
+      "pan": 0.25,
+      "automation": {
+        "volume": {
+          "points": [
+            { "time": 0, "value": 0.4 },
+            { "time": 2, "value": 0.9 }
+          ]
+        },
+        "filterCutoffHz": {
+          "points": [
+            { "time": 0, "value": 800 },
+            { "time": 2, "value": 6000 },
+            { "time": 4, "value": 900 }
+          ]
+        }
+      },
+      "effects": [
+        { "type": "lowpass", "q": 0.9 },
+        { "type": "reverb", "decaySeconds": 1.2, "mix": 0.3 }
+      ],
+      "notes": [
+        { "pitch": 57, "start": 0, "duration": 3.9, "velocity": 88 },
+        { "pitch": 60, "start": 2, "duration": 1.9, "velocity": 80 },
+        { "pitch": 64, "start": 3, "duration": 0.9, "velocity": 76 }
+      ]
+    },
+    {
+      "id": "hits",
+      "name": "Hits",
+      "kind": "drums",
+      "channel": 9,
+      "instrument": { "type": "builtin", "id": "drums.kit" },
+      "volume": 0.9,
+      "notes": [
+        { "pitch": 36, "start": 0, "duration": 0.25, "velocity": 110 },
+        { "pitch": 42, "start": 1, "duration": 0.25, "velocity": 84 },
+        { "pitch": 38, "start": 2, "duration": 0.25, "velocity": 102 },
+        { "pitch": 49, "start": 3.5, "duration": 0.25, "velocity": 96 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "name": "@gxaditya/vamp-mcp-server",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Vamp stdio MCP server with protocol-safe lifecycle, health and discovery tools over the shared schema, engine, and project APIs.",
+  "license": "AGPL-3.0-only",
+  "bin": {
+    "vamp-mcp": "./bin/vamp-mcp.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "bin",
+    "dist",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node ../../scripts/copy-file.mjs ../../docs/schema-guide.md dist/schema-guide.md && node ../../scripts/copy-file.mjs ../../THIRD_PARTY_NOTICES.md THIRD_PARTY_NOTICES.md && node ../../scripts/make-executable.mjs dist/main.js && node ../../scripts/make-executable.mjs bin/vamp-mcp.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "@gxaditya/vamp-engine": "workspace:*",
+    "@gxaditya/vamp-project": "workspace:*",
+    "@gxaditya/vamp-schema": "workspace:*",
+    "zod": "^3.25.76"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GxAditya/vamp.git",
+    "directory": "packages/mcp-server"
+  }
+}

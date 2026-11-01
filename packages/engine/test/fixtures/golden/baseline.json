@@ -1,0 +1,55 @@
+{
+  "format": "vamp.golden-baseline",
+  "formatVersion": 1,
+  "song": "../../golden-song.song.json",
+  "regenerate": "pnpm golden:regenerate (after pnpm build)",
+  "policy": "Regenerate only for reviewed, intentional engine or fixture changes. A golden mismatch is a signal to investigate, not to re-baseline blindly.",
+  "determinismScope": "Built-in entries are byte-deterministic for this engine build and platform. The fluidsynth entry is same-machine only.",
+  "entries": {
+    "midi.48000": {
+      "description": "SHA-256 of the Type 1 MIDI bytes exported from the 48 kHz golden timeline with default exportMidi options.",
+      "sha256": "0e6d76aa2146c0fa904e9bef462be3370cc7a093e2e5e258f91829624daeb6f6",
+      "bytes": 289
+    },
+    "pcm.builtin.44100": {
+      "description": "SHA-256 of the concatenated Float32 little-endian left and right channels at 44.1 kHz.",
+      "sha256": "39cd6e20e1d42d44f23c56912017a3d2795cfa7453f837ac9082c9506fffbd44",
+      "bytes": 2275560
+    },
+    "pcm.builtin.48000": {
+      "description": "SHA-256 of the concatenated Float32 little-endian left and right channels at 48 kHz.",
+      "sha256": "0871d5b8688ed2735e3ffa56ae83e9478828253c8e173a08956b6575092999e8",
+      "bytes": 2476800
+    },
+    "timeline.44100.json": {
+      "description": "SHA-256 of the serialized canonical SongTimeline at 44.1 kHz (the document itself is not committed to keep the baseline small).",
+      "sha256": "a83893a1b1fbdba7c61887b33d409861d1369018fc94755a604627363e8b7464",
+      "bytes": 9958
+    },
+    "timeline.48000.json": {
+      "description": "Full canonical SongTimeline for golden-song.song.json at 48 kHz, byte-compared as JSON text and deep-compared as data.",
+      "file": "golden-song.timeline-48000.json",
+      "sha256": "aabbb2a31ee585706eb278b8965b0f9678ff44738b494e0654b2b9914bb11274",
+      "bytes": 9958
+    },
+    "wav.builtin.44100": {
+      "description": "SHA-256 of the built-in backend WAV bytes at 44.1 kHz. Byte-deterministic for this engine build and platform.",
+      "sha256": "a35e1214135e525f96c2d7cf0fb300b0d1c80a5440831615b45d3e15dbe29c7e",
+      "bytes": 1137824
+    },
+    "wav.builtin.48000": {
+      "description": "SHA-256 of the built-in backend WAV bytes at 48 kHz. Byte-deterministic for this engine build and platform.",
+      "sha256": "db1bbe2baed3e1d5efc72a3ec70ca8c28b8c684f545c260c54eab4306fb8ade1",
+      "bytes": 1238444
+    },
+    "wav.fluidsynth.48000": {
+      "description": "SHA-256 of a two-second, two-track render through the pinned FluidSynth backend at 48 kHz. Valid on this machine, this FluidSynth version, and this byte-identical SoundFont only. Same-machine scope; never a cross-platform claim.",
+      "sha256": "ea151ab89f6294e64910571bc2e66881a81cee0eb798aff3be01ddf680704c33",
+      "bytes": 384044,
+      "scope": "same-machine-only",
+      "songFile": "native-song.song.json",
+      "fluidSynth": "/usr/bin/fluidsynth",
+      "soundFontSha256": "74594e8f4250680adf590507a306655a299935343583256f3b722c48a1bc1cb0"
+    }
+  }
+}

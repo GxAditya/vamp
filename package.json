@@ -1,0 +1,47 @@
+{
+  "name": "vamp",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Local-first, headless music generation for coding agents (work in progress).",
+  "license": "AGPL-3.0-only",
+  "packageManager": "pnpm@10.15.1",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "build": "pnpm -r run build",
+    "check": "pnpm lint && pnpm typecheck && pnpm test",
+    "check:generated": "pnpm --filter @gxaditya/vamp-schema run generate:check",
+    "check:python-types": "pnpm --filter @gxaditya/vamp-schema run check:python",
+    "clean": "node scripts/clean.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "generate:types": "pnpm --filter @gxaditya/vamp-schema run generate",
+    "golden:regenerate": "pnpm run build && node scripts/regenerate-goldens.mjs",
+    "lint": "eslint .",
+    "test": "pnpm run build && vitest run",
+    "test:fast": "pnpm run build && vitest run --config vitest.fast.config.ts",
+    "test:native": "pnpm run build && vitest run --config vitest.native.config.ts",
+    "test:security": "pnpm run build && vitest run test/security-hardening.test.ts packages/project/test/security-adversarial.test.ts packages/project/test/security-platform.test.ts",
+    "benchmark": "node scripts/benchmark-render.mjs",
+    "compat:freeze": "pnpm run build && node scripts/freeze-compat-fixtures.mjs",
+    "rehearsal:v1": "pnpm run build && node packages/mcp-server/scripts/v1-exit-rehearsal.mjs",
+    "typecheck": "pnpm run build && tsc -p tsconfig.json",
+    "verify:soundfont": "node scripts/verify-soundfont.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^22.0.0",
+    "@gxaditya/vamp-cli": "workspace:*",
+    "@gxaditya/vamp-mcp-server": "workspace:*",
+    "@gxaditya/vamp-sdk": "workspace:*",
+    "eslint": "^10.13.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.13.0",
+    "prettier": "^3.9.10",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.72.1",
+    "vitest": "^5.0.5"
+  }
+}

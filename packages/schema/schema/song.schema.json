@@ -1,0 +1,935 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:vamp:schema:song:1.0.0",
+  "title": "Vamp Song Schema v1.0.0",
+  "description": "Canonical structural contract for a Vamp song, identified by schemaVersion 1.0.0. This document validates structure, ranges, and discriminated variants only. Cross-item rules such as unique IDs, unique MIDI channels, resolved pattern references, GM drum pitches, expansion limits, and rendered duration limits require the semantic validation documented in docs/schema-guide.md. All time values are quarter-note beats. The schema never applies defaults or injects timestamps or seeds.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "meta", "tracks"],
+  "properties": {
+    "schemaVersion": {
+      "description": "Exact schema version of this document. Vamp v1 accepts only \"1.0.0\"; version dispatch and migrations are separate from package SemVer.",
+      "const": "1.0.0"
+    },
+    "meta": {
+      "description": "Song-wide metadata. Required fields describe tempo, meter, key, determinism, and the requested length.",
+      "$ref": "#/$defs/meta"
+    },
+    "patterns": {
+      "description": "Reusable note patterns referenced by track placements. Pattern IDs must be unique; uniqueness is a semantic check because JSON Schema cannot compare array items. An empty or absent list means the song has no reusable patterns.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/pattern"
+      },
+      "maxItems": 64
+    },
+    "tracks": {
+      "description": "Song tracks in stable authoring and mix order. Track IDs and melodic MIDI channels must be unique, which is a semantic check. A v1 song has 1 to 16 tracks and at most one drums track.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/track"
+      },
+      "minItems": 1,
+      "maxItems": 16,
+      "contains": {
+        "type": "object",
+        "required": ["kind"],
+        "properties": {
+          "kind": {
+            "const": "drums"
+          }
+        }
+      },
+      "minContains": 0,
+      "maxContains": 1
+    }
+  },
+  "$defs": {
+    "id": {
+      "title": "Stable identifier",
+      "description": "Lowercase ASCII identifier used for track and pattern identities. It starts with a letter and contains letters, digits, underscores, or hyphens, with single separators between alphanumeric groups. IDs are stable references and must be unique within their kind, which is a semantic check for arrays.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "pattern": "^[a-z][a-z0-9]*(?:[-_][a-z0-9]+)*$"
+    },
+    "meta": {
+      "title": "Song metadata",
+      "description": "Song-wide metadata. Defaults such as velocity or volume are never applied here; missing fields are resolved only during later normalization.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "bpm", "timeSignature", "key", "seed", "durationHint"],
+      "properties": {
+        "title": {
+          "description": "Human-readable song title, 1 to 200 characters. It is metadata and does not affect rendering.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "bpm": {
+          "description": "Constant tempo in quarter-note beats per minute, from 20 to 300. BPM always counts quarter notes, even in meters such as 6/8. Tempo maps and fractional BPM are not part of v1.",
+          "type": "integer",
+          "minimum": 20,
+          "maximum": 300
+        },
+        "timeSignature": {
+          "description": "Notated meter. It controls bar grouping and MIDI time-signature metadata. It does not change the meaning of a beat, which is always a quarter note, and it does not restrict note placement.",
+          "$ref": "#/$defs/timeSignature"
+        },
+        "key": {
+          "description": "Tonal center metadata used for documentation and MIDI key-signature export. It does not restrict the pitches that may appear.",
+          "$ref": "#/$defs/key"
+        },
+        "seed": {
+          "description": "Explicit 32-bit unsigned seed, from 0 to 4294967295, that identifies a deterministic rendering. Identical song data and seed must render identically. The seed is never generated or injected implicitly, and authored note data is never randomized.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "durationHint": {
+          "description": "Requested song length in quarter-note beats, greater than 0 and at most 12000. It is a lower bound for audio length, not a hard cutoff: the rendered length is max(hint length, last audible content plus effect tail). See docs/schema-guide.md for the exact formula.",
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 12000
+        },
+        "mood": {
+          "description": "Optional short free-form mood or style label, 1 to 100 characters. It is descriptive metadata only and never changes rendering.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "tags": {
+          "description": "Optional up to 20 unique descriptive tags, each 1 to 50 characters. Tags are metadata only and never change rendering.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50
+          },
+          "maxItems": 20,
+          "uniqueItems": true
+        },
+        "createdAt": {
+          "description": "Optional RFC 3339 date-time string recording when the author created the song. Tools must never inject the current time implicitly, and this field does not affect determinism.",
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "timeSignature": {
+      "title": "Time signature",
+      "description": "Musical meter expressed as a numerator and a power-of-two denominator. One bar lasts numerator * 4 / denominator quarter-note beats. The lower number is not limited to common note values beyond the listed powers of two.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["numerator", "denominator"],
+      "properties": {
+        "numerator": {
+          "description": "Number of denominator-note units per bar, from 1 to 32.",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 32
+        },
+        "denominator": {
+          "description": "Note value that receives one beat in the meter, as a power of two from 1 to 32. For example 4 means a quarter note and 8 means an eighth note.",
+          "type": "integer",
+          "enum": [1, 2, 4, 8, 16, 32]
+        }
+      }
+    },
+    "key": {
+      "title": "Tonal center",
+      "description": "A pitch-class tonic plus major or minor mode. Enharmonic spellings use the sharp form, for example A# rather than Bb. v1 does not model modal scales; the field is metadata and MIDI export converts it to a conventional key signature.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tonic", "mode"],
+      "properties": {
+        "tonic": {
+          "description": "Pitch-class tonic using sharp note names, from C through B. There is no octave component.",
+          "type": "string",
+          "enum": ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
+        },
+        "mode": {
+          "description": "Major or minor mode of the tonal center. Other modes are not represented in v1.",
+          "type": "string",
+          "enum": ["major", "minor"]
+        }
+      }
+    },
+    "track": {
+      "title": "Track",
+      "description": "One instrument track. Tracks contain free-form notes, pattern placements, or both. Audio processing order is instrument voices, then volume, then pan, then the track-local effect chain, then the master sum. At most one track in the song may be a drums track.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "kind", "channel", "instrument"],
+      "properties": {
+        "id": {
+          "description": "Stable track identifier, unique among tracks as a semantic check. It is used by stems, reports, and edit tools.",
+          "$ref": "#/$defs/id"
+        },
+        "name": {
+          "description": "Human-readable track name, 1 to 100 characters. It is used for display and sanitized stem filenames, not as an identifier.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "kind": {
+          "description": "Track kind. midi tracks use melodic channels and can use any instrument variant. drums tracks use MIDI channel 9, expect the GM percussion map, and cannot use the gm instrument variant.",
+          "type": "string",
+          "enum": ["midi", "drums"]
+        },
+        "channel": {
+          "description": "Zero-based MIDI channel from 0 to 15. Melodic tracks use channels 0 to 8 or 10 to 15 and must use distinct channels, which is a semantic check. drums tracks must use channel 9, which is MIDI channel 10 in one-based notation. Channel 9 is reserved and cannot be used by a midi track.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 15
+        },
+        "instrument": {
+          "description": "Instrument reference. Exactly one variant is allowed. Unknown built-in IDs and variants unsupported by the selected renderer backend must produce an explicit capability error, never a silent substitution.",
+          "$ref": "#/$defs/instrument"
+        },
+        "volume": {
+          "description": "Static track gain as a linear amplitude from 0 to 2, where 1 is unity and 2 is about +6.02 dB. Default 1, applied only during normalization. Omit volume when volume automation is present.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 2,
+          "default": 1
+        },
+        "pan": {
+          "description": "Static stereo position from -1 (hard left) through 0 (center) to 1 (hard right), using an equal-power law. Default 0, applied only during normalization. Omit pan when pan automation is present.",
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1,
+          "default": 0
+        },
+        "mute": {
+          "description": "When true, the track is silent. Mute wins over solo. Default false, applied only during normalization.",
+          "type": "boolean",
+          "default": false
+        },
+        "solo": {
+          "description": "When any track has solo true, only non-muted solo tracks are audible. Default false, applied only during normalization.",
+          "type": "boolean",
+          "default": false
+        },
+        "notes": {
+          "description": "Free-form note events played at song-relative beats. A track must contain notes, placements, or both. Free notes are merged with expanded placements during timeline compilation.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/note"
+          },
+          "minItems": 1,
+          "maxItems": 2048
+        },
+        "placements": {
+          "description": "Placements of song-level patterns. Each placement starts at a song beat and plays its pattern a whole number of times. A track must contain notes, placements, or both.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/placement"
+          },
+          "minItems": 1,
+          "maxItems": 256
+        },
+        "automation": {
+          "description": "Optional track automation for volume, pan, or low-pass cutoff. Each target is an absolute value curve with linear interpolation and constant holds outside its first and last point. Automation points are applied per sample during audio rendering. Omit the matching static volume, pan, or low-pass cutoff when automation is present.",
+          "$ref": "#/$defs/automation"
+        },
+        "effects": {
+          "description": "Track-local effects in processing order, after track volume and pan and before the master sum. At most eight effects and at most one low-pass are allowed. There are no master effects or sends in v1. Effects are audio-only and do not appear in MIDI export.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/effect"
+          },
+          "maxItems": 8,
+          "contains": {
+            "type": "object",
+            "required": ["type"],
+            "properties": {
+              "type": {
+                "const": "lowpass"
+              }
+            }
+          },
+          "minContains": 0,
+          "maxContains": 1
+        }
+      },
+      "anyOf": [
+        {
+          "type": "object",
+          "required": ["notes"],
+          "properties": {
+            "notes": {}
+          }
+        },
+        {
+          "type": "object",
+          "required": ["placements"],
+          "properties": {
+            "placements": {}
+          }
+        }
+      ],
+      "allOf": [
+        {
+          "if": {
+            "type": "object",
+            "required": ["kind"],
+            "properties": {
+              "kind": {
+                "const": "drums"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "channel": {
+                "const": 9
+              },
+              "instrument": {
+                "not": {
+                  "type": "object",
+                  "required": ["type"],
+                  "properties": {
+                    "type": {
+                      "const": "gm"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "type": "object",
+            "required": ["kind"],
+            "properties": {
+              "kind": {
+                "const": "midi"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "channel": {
+                "not": {
+                  "const": 9
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "type": "object",
+            "required": ["automation"],
+            "properties": {
+              "automation": {
+                "type": "object",
+                "required": ["volume"],
+                "properties": {
+                  "volume": {}
+                }
+              }
+            }
+          },
+          "then": {
+            "not": {
+              "type": "object",
+              "required": ["volume"],
+              "properties": {
+                "volume": {}
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "type": "object",
+            "required": ["automation"],
+            "properties": {
+              "automation": {
+                "type": "object",
+                "required": ["pan"],
+                "properties": {
+                  "pan": {}
+                }
+              }
+            }
+          },
+          "then": {
+            "not": {
+              "type": "object",
+              "required": ["pan"],
+              "properties": {
+                "pan": {}
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "type": "object",
+            "required": ["automation"],
+            "properties": {
+              "automation": {
+                "type": "object",
+                "required": ["filterCutoffHz"],
+                "properties": {
+                  "filterCutoffHz": {}
+                }
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": ["effects"],
+            "properties": {
+              "effects": {
+                "type": "array",
+                "contains": {
+                  "type": "object",
+                  "required": ["type"],
+                  "properties": {
+                    "type": {
+                      "const": "lowpass"
+                    }
+                  }
+                },
+                "minContains": 1,
+                "maxContains": 1,
+                "items": {
+                  "if": {
+                    "type": "object",
+                    "required": ["type"],
+                    "properties": {
+                      "type": {
+                        "const": "lowpass"
+                      }
+                    }
+                  },
+                  "then": {
+                    "not": {
+                      "type": "object",
+                      "required": ["cutoffHz"],
+                      "properties": {
+                        "cutoffHz": {}
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "instrument": {
+      "title": "Instrument reference",
+      "description": "A discriminated instrument reference. Exactly one of builtin, gm, soundfont, or sfz applies. Asset paths are lexical relative paths only; project-root resolution, symlink confinement, file existence, and backend capability are checked later.",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/builtinInstrument"
+        },
+        {
+          "$ref": "#/$defs/gmInstrument"
+        },
+        {
+          "$ref": "#/$defs/soundfontInstrument"
+        },
+        {
+          "$ref": "#/$defs/sfzInstrument"
+        }
+      ]
+    },
+    "builtinInstrument": {
+      "title": "Built-in instrument reference",
+      "description": "A registry-defined built-in instrument. This schema validates the ID shape only; the authoritative instrument registry, not this schema, defines which IDs exist and which backend supplies them. Unknown IDs are hard validation or capability errors.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "id"],
+      "properties": {
+        "type": {
+          "description": "Instrument reference discriminator. Always \"builtin\" for this variant.",
+          "const": "builtin"
+        },
+        "id": {
+          "description": "Built-in instrument ID such as piano.soft, bass.sub, drums.kit, or pad.warm. Lowercase segments are separated by dots or hyphens. The ID list is owned by the instrument registry, not enumerated in this v1 schema.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*$"
+        }
+      }
+    },
+    "gmInstrument": {
+      "title": "General MIDI program reference",
+      "description": "A zero-based General MIDI program and bank selection. This variant is for melodic tracks only and requires a backend with a General MIDI compatible SoundFont. It is not allowed on drums tracks because GM percussion program selection is not portable.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "program"],
+      "properties": {
+        "type": {
+          "description": "Instrument reference discriminator. Always \"gm\" for this variant.",
+          "const": "gm"
+        },
+        "program": {
+          "description": "Zero-based GM program number from 0 to 127. Program 0 is Acoustic Grand Piano, 32 is Acoustic Bass, and 89 is Warm Pad in the General MIDI sound set.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 127
+        },
+        "bank": {
+          "description": "Zero-based MIDI bank number from 0 to 127. Default 0, applied only during normalization. Nonzero banks are backend and SoundFont dependent.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 127,
+          "default": 0
+        }
+      }
+    },
+    "soundfontInstrument": {
+      "title": "SoundFont asset reference",
+      "description": "A SoundFont 2 file in the project plus a zero-based preset selection. Supported by a FluidSynth sample backend when selected. The path is relative to the configured project root and must pass the lexical confinement rules described on the path property. File existence, checksums, and symlink safety are checked by the project and renderer layers.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "path", "program"],
+      "properties": {
+        "type": {
+          "description": "Instrument reference discriminator. Always \"soundfont\" for this variant.",
+          "const": "soundfont"
+        },
+        "path": {
+          "description": "Relative path to a lowercase .sf2 asset, for example assets/piano/soft.sf2. Forward slashes only; no absolute path, drive letter, backslash, empty segment, dot segment, or parent traversal. Maximum 512 characters.",
+          "allOf": [
+            {
+              "$ref": "#/$defs/assetPath"
+            },
+            {
+              "type": "string",
+              "pattern": "\\.sf2$"
+            }
+          ]
+        },
+        "program": {
+          "description": "Zero-based SoundFont preset program number from 0 to 127. Required so the selected preset is explicit and never guessed.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 127
+        },
+        "bank": {
+          "description": "Zero-based SoundFont preset bank from 0 to 128. Default 0, applied only during normalization. Bank 128 is the conventional SoundFont percussion bank; drum kit assets normally use it.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 128,
+          "default": 0
+        }
+      }
+    },
+    "sfzInstrument": {
+      "title": "SFZ asset reference",
+      "description": "An SFZ instrument file in the project. Supported by an sfizz sample backend when selected. SFZ files define their own key and velocity mapping, so no program or bank fields are accepted and none can be silently ignored. The path is relative to the configured project root.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "path"],
+      "properties": {
+        "type": {
+          "description": "Instrument reference discriminator. Always \"sfz\" for this variant.",
+          "const": "sfz"
+        },
+        "path": {
+          "description": "Relative path to a lowercase .sfz asset, for example assets/pads/warm.sfz. Forward slashes only; no absolute path, drive letter, backslash, empty segment, dot segment, or parent traversal. Maximum 512 characters.",
+          "allOf": [
+            {
+              "$ref": "#/$defs/assetPath"
+            },
+            {
+              "type": "string",
+              "pattern": "\\.sfz$"
+            }
+          ]
+        }
+      }
+    },
+    "assetPath": {
+      "title": "Confined relative asset path",
+      "description": "Portable project-relative asset path. It uses forward slashes, is not absolute, has no drive prefix, no backslash, no empty or dot segment, no parent traversal, no trailing slash, no control character, and none of the characters < > : | ? *. It may contain spaces and Unicode. These are lexical rules only; the project layer must additionally resolve against the project root and reject symlink escapes.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512,
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*[<>:|?*])(?!.*\\\\)(?!.*//)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*[\\u0000-\\u001F])(?!.*/$).+$"
+    },
+    "note": {
+      "title": "Note event",
+      "description": "One note event. Pitch and velocity follow MIDI conventions. Start and duration are quarter-note beats. Notes may overlap, including notes at the same pitch; the engine must handle overlapping note lifetimes deterministically. Zero or negative durations are structurally invalid.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pitch", "start", "duration"],
+      "properties": {
+        "pitch": {
+          "description": "Zero-based MIDI key number from 0 to 127, where 60 is middle C (C4). On drums tracks the pitch is a GM percussion key; v1 semantic validation restricts drum pitches to the GM percussion range 35 to 81.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 127
+        },
+        "start": {
+          "description": "Note start in quarter-note beats from the start of the song for free notes, or from the start of the pattern for pattern notes. Must be at least 0 and at most 12000.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 12000
+        },
+        "duration": {
+          "description": "Sounding note length in quarter-note beats, greater than 0 and at most 12000. start plus duration must not exceed 12000 beats; that sum is checked semantically. The renderer applies its own release envelope after the notated end.",
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 12000
+        },
+        "velocity": {
+          "description": "MIDI note-on velocity from 1 to 127. Default 100, applied only during normalization. Zero is not a valid note-on velocity in this schema.",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 127,
+          "default": 100
+        }
+      }
+    },
+    "pattern": {
+      "title": "Reusable note pattern",
+      "description": "A named, reusable sequence of note events with pattern-local timing. Patterns contain notes only and cannot contain placements, so pattern nesting is not possible in v1. A placement repeats a pattern by its effective length, which is the explicit lengthBeats or, when omitted, the maximum note end in the pattern.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "notes"],
+      "properties": {
+        "id": {
+          "description": "Stable pattern identifier, unique among patterns as a semantic check and referenced by placements.",
+          "$ref": "#/$defs/id"
+        },
+        "name": {
+          "description": "Optional human-readable pattern name, 1 to 100 characters. It is descriptive only.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "lengthBeats": {
+          "description": "Optional explicit pattern length in quarter-note beats, greater than 0 and at most 12000. Every pattern note must end at or before this length, which is a semantic check. When omitted, normalization uses the maximum note end as the effective length.",
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 12000
+        },
+        "notes": {
+          "description": "Pattern-local note events. At least one note is required. All note starts are relative to the pattern origin, and note ends must lie within the effective pattern length.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/note"
+          },
+          "minItems": 1,
+          "maxItems": 256
+        }
+      }
+    },
+    "placement": {
+      "title": "Pattern placement",
+      "description": "Plays one pattern on the containing track, starting at a song beat. repeat is the total number of plays including the first. Play r starts at start + r * effectivePatternLength for r from 0 to repeat - 1. Placements do not support transposition, per-placement gain, velocity scaling, or pattern nesting in v1.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pattern", "start"],
+      "properties": {
+        "pattern": {
+          "description": "ID of a pattern defined in the root patterns array. The reference must resolve, which is a semantic check.",
+          "$ref": "#/$defs/id"
+        },
+        "start": {
+          "description": "Song-relative start of the first play, in quarter-note beats from 0 to 12000.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 12000
+        },
+        "repeat": {
+          "description": "Total number of consecutive plays of the pattern, including the first, from 1 to 256. Default 1, applied only during normalization. Repeats tile with no gap or overlap beyond notes that overlap inside the pattern.",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 256,
+          "default": 1
+        }
+      }
+    },
+    "automation": {
+      "title": "Track automation",
+      "description": "Optional absolute-value automation curves for a track. Each target appears at most once because targets are object keys. Curves use linear interpolation between points and hold the first or last value before or after their endpoints. A target list applies for the whole song and replaces the corresponding static value, so static volume, pan, or low-pass cutoff must be omitted when that target is automated.",
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "volume": {
+          "description": "Absolute linear amplitude automation. Replaces the static track volume. Values range from 0 to 2.",
+          "$ref": "#/$defs/volumeAutomation"
+        },
+        "pan": {
+          "description": "Absolute stereo position automation from -1 to 1. Replaces the static track pan.",
+          "$ref": "#/$defs/panAutomation"
+        },
+        "filterCutoffHz": {
+          "description": "Absolute low-pass cutoff frequency automation in hertz. Requires exactly one lowpass effect on the track and requires that effect to omit cutoffHz. Other filter types are not automated in v1.",
+          "$ref": "#/$defs/filterAutomation"
+        }
+      }
+    },
+    "volumeAutomation": {
+      "title": "Volume automation",
+      "description": "A volume curve in linear amplitude. Points must be sorted by strictly increasing time, which is a semantic check. Before the first point the first value holds; after the last point the last value holds.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["points"],
+      "properties": {
+        "points": {
+          "description": "One or more volume keyframes in ascending time order. At most 512 points.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/volumePoint"
+          },
+          "minItems": 1,
+          "maxItems": 512
+        }
+      }
+    },
+    "panAutomation": {
+      "title": "Pan automation",
+      "description": "A pan curve from hard left to hard right. Points must be sorted by strictly increasing time, which is a semantic check. Before the first point the first value holds; after the last point the last value holds.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["points"],
+      "properties": {
+        "points": {
+          "description": "One or more pan keyframes in ascending time order. At most 512 points.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/panPoint"
+          },
+          "minItems": 1,
+          "maxItems": 512
+        }
+      }
+    },
+    "filterAutomation": {
+      "title": "Low-pass cutoff automation",
+      "description": "A cutoff-frequency curve in hertz. Interpolation is linear in hertz, not logarithmic. Points must be sorted by strictly increasing time, which is a semantic check. Before the first point the first value holds; after the last point the last value holds.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["points"],
+      "properties": {
+        "points": {
+          "description": "One or more cutoff keyframes in ascending time order. At most 512 points.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/filterPoint"
+          },
+          "minItems": 1,
+          "maxItems": 512
+        }
+      }
+    },
+    "volumePoint": {
+      "title": "Volume keyframe",
+      "description": "One absolute volume value at a song-relative beat.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["time", "value"],
+      "properties": {
+        "time": {
+          "description": "Keyframe time in quarter-note beats from 0 to 12000. Times must be strictly increasing within a target and are checked semantically.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 12000
+        },
+        "value": {
+          "description": "Linear amplitude from 0 to 2, where 1 is unity.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 2
+        }
+      }
+    },
+    "panPoint": {
+      "title": "Pan keyframe",
+      "description": "One absolute pan position at a song-relative beat.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["time", "value"],
+      "properties": {
+        "time": {
+          "description": "Keyframe time in quarter-note beats from 0 to 12000. Times must be strictly increasing within a target and are checked semantically.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 12000
+        },
+        "value": {
+          "description": "Pan position from -1 (hard left) through 0 (center) to 1 (hard right).",
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        }
+      }
+    },
+    "filterPoint": {
+      "title": "Low-pass cutoff keyframe",
+      "description": "One absolute low-pass cutoff frequency at a song-relative beat.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["time", "value"],
+      "properties": {
+        "time": {
+          "description": "Keyframe time in quarter-note beats from 0 to 12000. Times must be strictly increasing within a target and are checked semantically.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 12000
+        },
+        "value": {
+          "description": "Low-pass cutoff frequency in hertz from 20 to 20000.",
+          "type": "number",
+          "minimum": 20,
+          "maximum": 20000
+        }
+      }
+    },
+    "effect": {
+      "title": "Track effect",
+      "description": "One track-local effect. The v1 vocabulary is deliberately limited to reverb, delay, equalization, and low-pass filtering. Effects run in array order after volume and pan, are initialized with empty state and fixed parameters, and have no random modulation. Reverb and delay can extend audio beyond the last note; their tails contribute to the rendered duration as documented in docs/schema-guide.md.",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/reverbEffect"
+        },
+        {
+          "$ref": "#/$defs/delayEffect"
+        },
+        {
+          "$ref": "#/$defs/eqEffect"
+        },
+        {
+          "$ref": "#/$defs/lowpassEffect"
+        }
+      ]
+    },
+    "reverbEffect": {
+      "title": "Reverb effect",
+      "description": "A deterministic reverb with a wet/dry mix and a decay time. The decay time is the approximate RT60 and is used as the reverb tail estimate. Reverb state starts empty and the algorithm must not use random modulation.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "description": "Effect discriminator. Always \"reverb\" for this effect.",
+          "const": "reverb"
+        },
+        "mix": {
+          "description": "Wet/dry mix from 0 (fully dry) to 1 (fully wet). Default 0.25, applied only during normalization.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.25
+        },
+        "decaySeconds": {
+          "description": "Approximate RT60 decay time in seconds from 0.2 to 10. Default 1.8, applied only during normalization. Also the reverb tail estimate used by the duration formula.",
+          "type": "number",
+          "minimum": 0.2,
+          "maximum": 10,
+          "default": 1.8
+        }
+      }
+    },
+    "delayEffect": {
+      "title": "Delay effect",
+      "description": "A deterministic delay with a fixed time, feedback, and wet/dry mix. Feedback is bounded to keep the tail finite. The tail estimate is one delay period when feedback is 0, otherwise delay seconds times ceil(ln(0.001) / ln(feedback)), capped with the per-track 30 second tail cap documented in the schema guide.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "description": "Effect discriminator. Always \"delay\" for this effect.",
+          "const": "delay"
+        },
+        "timeMs": {
+          "description": "Delay period in milliseconds from 10 to 2000. Default 375, applied only during normalization.",
+          "type": "number",
+          "minimum": 10,
+          "maximum": 2000,
+          "default": 375
+        },
+        "feedback": {
+          "description": "Linear feedback amount from 0 to 0.9. Default 0.35, applied only during normalization. Higher values produce longer tails and are never unbounded.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.9,
+          "default": 0.35
+        },
+        "mix": {
+          "description": "Wet/dry mix from 0 (fully dry) to 1 (fully wet). Default 0.25, applied only during normalization.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.25
+        }
+      }
+    },
+    "eqEffect": {
+      "title": "Equalizer effect",
+      "description": "A deliberately limited three-band equalizer. Gains are in decibels and default to 0. The band design is fixed: a low shelf at 250 Hz, a peaking band at 1 kHz with Q 1, and a high shelf at 4 kHz. Frequencies and Q are not configurable in v1. EQ has no audible tail.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "description": "Effect discriminator. Always \"eq\" for this effect.",
+          "const": "eq"
+        },
+        "lowGainDb": {
+          "description": "Low-shelf gain in decibels from -18 to 18. Default 0, applied only during normalization.",
+          "type": "number",
+          "minimum": -18,
+          "maximum": 18,
+          "default": 0
+        },
+        "midGainDb": {
+          "description": "Peaking-band gain in decibels from -18 to 18. Default 0, applied only during normalization.",
+          "type": "number",
+          "minimum": -18,
+          "maximum": 18,
+          "default": 0
+        },
+        "highGainDb": {
+          "description": "High-shelf gain in decibels from -18 to 18. Default 0, applied only during normalization.",
+          "type": "number",
+          "minimum": -18,
+          "maximum": 18,
+          "default": 0
+        }
+      }
+    },
+    "lowpassEffect": {
+      "title": "Low-pass filter effect",
+      "description": "A second-order resonant low-pass filter with a fixed cutoff or cutoff automation. Only one low-pass effect is allowed per track so that filterCutoffHz automation has an unambiguous target. Low-pass filtering has no audible tail in the duration model.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "description": "Effect discriminator. Always \"lowpass\" for this effect.",
+          "const": "lowpass"
+        },
+        "cutoffHz": {
+          "description": "Static cutoff frequency in hertz from 20 to 20000. Default 20000, applied only during normalization when filterCutoffHz automation is absent. Omit cutoffHz when cutoff automation is present.",
+          "type": "number",
+          "minimum": 20,
+          "maximum": 20000,
+          "default": 20000
+        },
+        "q": {
+          "description": "Resonance quality factor from 0.1 to 10. Default 1, applied only during normalization. 0.7071 is approximately Butterworth response.",
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 10,
+          "default": 1
+        }
+      }
+    }
+  }
+}

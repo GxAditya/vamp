@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "1.0.0",
+  "meta": {
+    "title": "Drum Kit Bed",
+    "bpm": 120,
+    "timeSignature": {
+      "numerator": 4,
+      "denominator": 4
+    },
+    "key": {
+      "tonic": "C",
+      "mode": "minor"
+    },
+    "seed": 5,
+    "durationHint": 8
+  },
+  "tracks": [
+    {
+      "id": "drums",
+      "name": "Drum Kit",
+      "kind": "drums",
+      "channel": 9,
+      "instrument": {
+        "type": "soundfont",
+        "path": "assets/drums/studio-kit.sf2",
+        "program": 0,
+        "bank": 128
+      },
+      "volume": 0.9,
+      "notes": [
+        {
+          "pitch": 36,
+          "start": 0,
+          "duration": 0.25,
+          "velocity": 112
+        },
+        {
+          "pitch": 42,
+          "start": 0.5,
+          "duration": 0.25
+        },
+        {
+          "pitch": 38,
+          "start": 1,
+          "duration": 0.25,
+          "velocity": 104
+        },
+        {
+          "pitch": 42,
+          "start": 1.5,
+          "duration": 0.25
+        },
+        {
+          "pitch": 36,
+          "start": 2,
+          "duration": 0.25,
+          "velocity": 112
+        },
+        {
+          "pitch": 42,
+          "start": 2.5,
+          "duration": 0.25
+        },
+        {
+          "pitch": 38,
+          "start": 3,
+          "duration": 0.25,
+          "velocity": 104
+        },
+        {
+          "pitch": 46,
+          "start": 3.5,
+          "duration": 0.25,
+          "velocity": 88
+        }
+      ]
+    }
+  ]
+}

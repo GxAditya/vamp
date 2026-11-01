@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "1.0.0",
+  "meta": {
+    "title": "Free Notes and Overlaps",
+    "bpm": 100,
+    "timeSignature": {
+      "numerator": 4,
+      "denominator": 4
+    },
+    "key": {
+      "tonic": "G",
+      "mode": "major"
+    },
+    "seed": 42,
+    "durationHint": 16,
+    "mood": "calm",
+    "tags": ["tutorial", "minimal"],
+    "createdAt": "2026-10-28T12:00:00Z"
+  },
+  "tracks": [
+    {
+      "id": "lead",
+      "name": "Soft Lead",
+      "kind": "midi",
+      "channel": 0,
+      "instrument": {
+        "type": "builtin",
+        "id": "keys.soft"
+      },
+      "volume": 0.8,
+      "pan": -0.25,
+      "solo": true,
+      "notes": [
+        {
+          "pitch": 67,
+          "start": 0,
+          "duration": 2,
+          "velocity": 96
+        },
+        {
+          "pitch": 67,
+          "start": 1,
+          "duration": 2,
+          "velocity": 72
+        },
+        {
+          "pitch": 71,
+          "start": 2,
+          "duration": 2
+        },
+        {
+          "pitch": 74,
+          "start": 4,
+          "duration": 3.5
+        }
+      ]
+    },
+    {
+      "id": "pad",
+      "name": "Quiet Pad",
+      "kind": "midi",
+      "channel": 1,
+      "instrument": {
+        "type": "builtin",
+        "id": "pad.warm"
+      },
+      "volume": 0.6,
+      "pan": 0.3,
+      "mute": true,
+      "solo": false,
+      "notes": [
+        {
+          "pitch": 55,
+          "start": 0,
+          "duration": 8
+        },
+        {
+          "pitch": 59,
+          "start": 0,
+          "duration": 8
+        },
+        {
+          "pitch": 62,
+          "start": 0,
+          "duration": 8
+        }
+      ]
+    }
+  ]
+}

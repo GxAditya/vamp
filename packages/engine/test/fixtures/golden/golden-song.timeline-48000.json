@@ -1,0 +1,467 @@
+{
+  "format": "vamp.timeline",
+  "formatVersion": 1,
+  "schemaVersion": "1.0.0",
+  "sampleRate": 48000,
+  "beatsPerBar": 4,
+  "secondsPerBeat": 0.5,
+  "hintSeconds": 2,
+  "lastSoundSeconds": 6.45,
+  "renderedSeconds": 6.45,
+  "renderedSamples": 309600,
+  "meta": {
+    "title": "Golden Regression Cue",
+    "bpm": 120,
+    "timeSignature": {
+      "numerator": 4,
+      "denominator": 4
+    },
+    "key": {
+      "tonic": "C",
+      "mode": "minor"
+    },
+    "seed": 771018,
+    "durationHintBeats": 4,
+    "mood": "fixture",
+    "tags": [
+      "golden",
+      "regression",
+      "task-18"
+    ]
+  },
+  "tracks": [
+    {
+      "index": 0,
+      "id": "keys",
+      "name": "Keys",
+      "kind": "midi",
+      "channel": 0,
+      "instrument": {
+        "type": "builtin",
+        "id": "keys.soft"
+      },
+      "audible": true,
+      "mute": false,
+      "solo": false,
+      "volume": 0.8,
+      "pan": -0.3,
+      "automation": {},
+      "effects": [
+        {
+          "type": "delay",
+          "timeMs": 250,
+          "feedback": 0.5,
+          "mix": 0.35
+        }
+      ],
+      "contentEndBeats": 7.9,
+      "contentEndSeconds": 3.95,
+      "tailSeconds": 2.5,
+      "endSeconds": 6.45,
+      "eventCount": 8
+    },
+    {
+      "index": 1,
+      "id": "pad",
+      "name": "Pad",
+      "kind": "midi",
+      "channel": 1,
+      "instrument": {
+        "type": "builtin",
+        "id": "pad.warm"
+      },
+      "audible": true,
+      "mute": false,
+      "solo": false,
+      "volume": 1,
+      "pan": 0.25,
+      "automation": {
+        "volume": [
+          {
+            "timeBeats": 0,
+            "timeSeconds": 0,
+            "value": 0.4
+          },
+          {
+            "timeBeats": 2,
+            "timeSeconds": 1,
+            "value": 0.9
+          }
+        ],
+        "filterCutoffHz": [
+          {
+            "timeBeats": 0,
+            "timeSeconds": 0,
+            "value": 800
+          },
+          {
+            "timeBeats": 2,
+            "timeSeconds": 1,
+            "value": 6000
+          },
+          {
+            "timeBeats": 4,
+            "timeSeconds": 2,
+            "value": 900
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "lowpass",
+          "q": 0.9
+        },
+        {
+          "type": "reverb",
+          "mix": 0.3,
+          "decaySeconds": 1.2
+        }
+      ],
+      "contentEndBeats": 3.9,
+      "contentEndSeconds": 1.95,
+      "tailSeconds": 1.2,
+      "endSeconds": 3.15,
+      "eventCount": 3
+    },
+    {
+      "index": 2,
+      "id": "hits",
+      "name": "Hits",
+      "kind": "drums",
+      "channel": 9,
+      "instrument": {
+        "type": "builtin",
+        "id": "drums.kit"
+      },
+      "audible": true,
+      "mute": false,
+      "solo": false,
+      "volume": 0.9,
+      "pan": 0,
+      "automation": {},
+      "effects": [],
+      "contentEndBeats": 3.75,
+      "contentEndSeconds": 1.875,
+      "tailSeconds": 0,
+      "endSeconds": 1.875,
+      "eventCount": 4
+    }
+  ],
+  "events": [
+    {
+      "id": "keys:placement:0:0:0",
+      "trackIndex": 0,
+      "trackId": "keys",
+      "pitch": 60,
+      "velocity": 104,
+      "startBeat": 0,
+      "durationBeats": 0.9,
+      "endBeat": 0.9,
+      "startSeconds": 0,
+      "endSeconds": 0.45,
+      "startSample": 0,
+      "endSample": 21600,
+      "audible": true,
+      "source": {
+        "type": "pattern",
+        "patternId": "arp-up",
+        "placementIndex": 0,
+        "playIndex": 0,
+        "noteIndex": 0
+      }
+    },
+    {
+      "id": "pad:free:0",
+      "trackIndex": 1,
+      "trackId": "pad",
+      "pitch": 57,
+      "velocity": 88,
+      "startBeat": 0,
+      "durationBeats": 3.9,
+      "endBeat": 3.9,
+      "startSeconds": 0,
+      "endSeconds": 1.95,
+      "startSample": 0,
+      "endSample": 93600,
+      "audible": true,
+      "source": {
+        "type": "note",
+        "noteIndex": 0
+      }
+    },
+    {
+      "id": "hits:free:0",
+      "trackIndex": 2,
+      "trackId": "hits",
+      "pitch": 36,
+      "velocity": 110,
+      "startBeat": 0,
+      "durationBeats": 0.25,
+      "endBeat": 0.25,
+      "startSeconds": 0,
+      "endSeconds": 0.125,
+      "startSample": 0,
+      "endSample": 6000,
+      "audible": true,
+      "source": {
+        "type": "note",
+        "noteIndex": 0
+      }
+    },
+    {
+      "id": "keys:placement:0:0:1",
+      "trackIndex": 0,
+      "trackId": "keys",
+      "pitch": 63,
+      "velocity": 96,
+      "startBeat": 1,
+      "durationBeats": 0.9,
+      "endBeat": 1.9,
+      "startSeconds": 0.5,
+      "endSeconds": 0.95,
+      "startSample": 24000,
+      "endSample": 45600,
+      "audible": true,
+      "source": {
+        "type": "pattern",
+        "patternId": "arp-up",
+        "placementIndex": 0,
+        "playIndex": 0,
+        "noteIndex": 1
+      }
+    },
+    {
+      "id": "hits:free:1",
+      "trackIndex": 2,
+      "trackId": "hits",
+      "pitch": 42,
+      "velocity": 84,
+      "startBeat": 1,
+      "durationBeats": 0.25,
+      "endBeat": 1.25,
+      "startSeconds": 0.5,
+      "endSeconds": 0.625,
+      "startSample": 24000,
+      "endSample": 30000,
+      "audible": true,
+      "source": {
+        "type": "note",
+        "noteIndex": 1
+      }
+    },
+    {
+      "id": "keys:placement:0:0:2",
+      "trackIndex": 0,
+      "trackId": "keys",
+      "pitch": 67,
+      "velocity": 100,
+      "startBeat": 2,
+      "durationBeats": 0.9,
+      "endBeat": 2.9,
+      "startSeconds": 1,
+      "endSeconds": 1.45,
+      "startSample": 48000,
+      "endSample": 69600,
+      "audible": true,
+      "source": {
+        "type": "pattern",
+        "patternId": "arp-up",
+        "placementIndex": 0,
+        "playIndex": 0,
+        "noteIndex": 2
+      }
+    },
+    {
+      "id": "pad:free:1",
+      "trackIndex": 1,
+      "trackId": "pad",
+      "pitch": 60,
+      "velocity": 80,
+      "startBeat": 2,
+      "durationBeats": 1.9,
+      "endBeat": 3.9,
+      "startSeconds": 1,
+      "endSeconds": 1.95,
+      "startSample": 48000,
+      "endSample": 93600,
+      "audible": true,
+      "source": {
+        "type": "note",
+        "noteIndex": 1
+      }
+    },
+    {
+      "id": "hits:free:2",
+      "trackIndex": 2,
+      "trackId": "hits",
+      "pitch": 38,
+      "velocity": 102,
+      "startBeat": 2,
+      "durationBeats": 0.25,
+      "endBeat": 2.25,
+      "startSeconds": 1,
+      "endSeconds": 1.125,
+      "startSample": 48000,
+      "endSample": 54000,
+      "audible": true,
+      "source": {
+        "type": "note",
+        "noteIndex": 2
+      }
+    },
+    {
+      "id": "keys:placement:0:0:3",
+      "trackIndex": 0,
+      "trackId": "keys",
+      "pitch": 70,
+      "velocity": 92,
+      "startBeat": 3,
+      "durationBeats": 0.9,
+      "endBeat": 3.9,
+      "startSeconds": 1.5,
+      "endSeconds": 1.95,
+      "startSample": 72000,
+      "endSample": 93600,
+      "audible": true,
+      "source": {
+        "type": "pattern",
+        "patternId": "arp-up",
+        "placementIndex": 0,
+        "playIndex": 0,
+        "noteIndex": 3
+      }
+    },
+    {
+      "id": "pad:free:2",
+      "trackIndex": 1,
+      "trackId": "pad",
+      "pitch": 64,
+      "velocity": 76,
+      "startBeat": 3,
+      "durationBeats": 0.9,
+      "endBeat": 3.9,
+      "startSeconds": 1.5,
+      "endSeconds": 1.95,
+      "startSample": 72000,
+      "endSample": 93600,
+      "audible": true,
+      "source": {
+        "type": "note",
+        "noteIndex": 2
+      }
+    },
+    {
+      "id": "hits:free:3",
+      "trackIndex": 2,
+      "trackId": "hits",
+      "pitch": 49,
+      "velocity": 96,
+      "startBeat": 3.5,
+      "durationBeats": 0.25,
+      "endBeat": 3.75,
+      "startSeconds": 1.75,
+      "endSeconds": 1.875,
+      "startSample": 84000,
+      "endSample": 90000,
+      "audible": true,
+      "source": {
+        "type": "note",
+        "noteIndex": 3
+      }
+    },
+    {
+      "id": "keys:placement:0:1:0",
+      "trackIndex": 0,
+      "trackId": "keys",
+      "pitch": 60,
+      "velocity": 104,
+      "startBeat": 4,
+      "durationBeats": 0.9,
+      "endBeat": 4.9,
+      "startSeconds": 2,
+      "endSeconds": 2.45,
+      "startSample": 96000,
+      "endSample": 117600,
+      "audible": true,
+      "source": {
+        "type": "pattern",
+        "patternId": "arp-up",
+        "placementIndex": 0,
+        "playIndex": 1,
+        "noteIndex": 0
+      }
+    },
+    {
+      "id": "keys:placement:0:1:1",
+      "trackIndex": 0,
+      "trackId": "keys",
+      "pitch": 63,
+      "velocity": 96,
+      "startBeat": 5,
+      "durationBeats": 0.9,
+      "endBeat": 5.9,
+      "startSeconds": 2.5,
+      "endSeconds": 2.95,
+      "startSample": 120000,
+      "endSample": 141600,
+      "audible": true,
+      "source": {
+        "type": "pattern",
+        "patternId": "arp-up",
+        "placementIndex": 0,
+        "playIndex": 1,
+        "noteIndex": 1
+      }
+    },
+    {
+      "id": "keys:placement:0:1:2",
+      "trackIndex": 0,
+      "trackId": "keys",
+      "pitch": 67,
+      "velocity": 100,
+      "startBeat": 6,
+      "durationBeats": 0.9,
+      "endBeat": 6.9,
+      "startSeconds": 3,
+      "endSeconds": 3.45,
+      "startSample": 144000,
+      "endSample": 165600,
+      "audible": true,
+      "source": {
+        "type": "pattern",
+        "patternId": "arp-up",
+        "placementIndex": 0,
+        "playIndex": 1,
+        "noteIndex": 2
+      }
+    },
+    {
+      "id": "keys:placement:0:1:3",
+      "trackIndex": 0,
+      "trackId": "keys",
+      "pitch": 70,
+      "velocity": 92,
+      "startBeat": 7,
+      "durationBeats": 0.9,
+      "endBeat": 7.9,
+      "startSeconds": 3.5,
+      "endSeconds": 3.95,
+      "startSample": 168000,
+      "endSample": 189600,
+      "audible": true,
+      "source": {
+        "type": "pattern",
+        "patternId": "arp-up",
+        "placementIndex": 0,
+        "playIndex": 1,
+        "noteIndex": 3
+      }
+    }
+  ],
+  "stats": {
+    "trackCount": 3,
+    "authoredNoteCount": 11,
+    "expandedNoteCount": 15,
+    "audibleEventCount": 15
+  }
+}
