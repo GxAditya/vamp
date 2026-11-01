@@ -28,10 +28,28 @@ render time.
 
 ## Status
 
-v1 is feature complete and CI-verified on Linux, macOS, and Windows. The
-packages are prepared for npm as `@gxaditya/vamp-*` but are not yet published;
-build from source below. WAV is the only render format — MP3 export and
-playback are not implemented.
+v1 is published on npm at version `0.1.0` and CI-verified on Linux, macOS, and
+Windows. WAV is the only render format — MP3 export and playback are not
+implemented.
+
+## Install
+
+```sh
+npm i -g @gxaditya/vamp
+vamp --version
+vamp doctor        # reports FluidSynth + SoundFont provisioning
+```
+
+Or without a global install:
+
+```sh
+npx -y @gxaditya/vamp-cli --version
+npx -y @gxaditya/vamp-mcp-server --project-root "$PWD/vamp-projects"
+```
+
+The rest of this README covers the development workspace — for the published
+packages' tool contracts see [`docs/api.md`](./docs/api.md) and
+[`docs/mcp.md`](./docs/mcp.md).
 
 ## Requirements
 
