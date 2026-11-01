@@ -11,7 +11,14 @@
  * requested duration. No clock, network, or random source is used.
  */
 
-import type { Effect, GmInstrument, Note, SongKey, SongSchemaV1, Track } from '@gxaditya/vamp-schema';
+import type {
+  Effect,
+  GmInstrument,
+  Note,
+  SongKey,
+  SongSchemaV1,
+  Track,
+} from '@gxaditya/vamp-schema';
 
 import { GM_DRUM_NOTE_MAP, type GmDrumAlias } from './instruments.js';
 

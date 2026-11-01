@@ -53,7 +53,7 @@ import { createAudioIssue, normalizeAudioIssues, type AudioIssue } from './error
 /** Default subprocess timeout for one track render. */
 export const FLUIDSYNTH_DEFAULT_TIMEOUT_MS = 30_000;
 
-/** Bounded timeout for the advisory `--version` probe used by render reports. */
+/** Bounded timeout for the advisory `-V` probe used by render reports. */
 export const FLUIDSYNTH_VERSION_PROBE_TIMEOUT_MS = 3_000;
 
 /** Default captured stdout and stderr ceilings per process. */
@@ -1369,11 +1369,13 @@ export async function isFluidSynthBinaryAvailable(binaryPath = 'fluidsynth'): Pr
 /**
  * Probe the FluidSynth executable version for report metadata.
  *
- * Runs `fluidsynth --version` with an argument array (never a shell), a
- * minimal sanitized environment, a 3 second default timeout, and an 8 KiB
- * output ceiling. Any missing executable, timeout, nonzero exit, or
- * unparsable output returns null. This function never downloads, writes, or
- * throws for expected probe failures.
+ * Runs `fluidsynth -V` with an argument array (never a shell), a minimal
+ * sanitized environment, a 3 second default timeout, and an 8 KiB output
+ * ceiling. The short option is required: Windows builds are compiled without
+ * getopt support and reject long options like `--version` outright. Any
+ * missing executable, timeout, nonzero exit, or unparsable output returns
+ * null. This function never downloads, writes, or throws for expected probe
+ * failures.
  */
 export async function probeFluidSynthVersion(
   binaryPath = 'fluidsynth',
@@ -1392,7 +1394,7 @@ export async function probeFluidSynthVersion(
       ? Math.round(requestedTimeout)
       : FLUIDSYNTH_VERSION_PROBE_TIMEOUT_MS;
   const cwd = tmpdir();
-  const outcome = await runFluidSynth(binaryPath, ['--version'], {
+  const outcome = await runFluidSynth(binaryPath, ['-V'], {
     cwd,
     env: { ...baseEnvironment(cwd), ...options.environment },
     timeoutMs,

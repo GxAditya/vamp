@@ -20,7 +20,12 @@ import {
   createPresetSong,
   selectAutomaticBackend,
 } from '@gxaditya/vamp-engine';
-import type { ProjectError, ProjectSnapshot, ProjectStore, ProjectSummary } from '@gxaditya/vamp-project';
+import type {
+  ProjectError,
+  ProjectSnapshot,
+  ProjectStore,
+  ProjectSummary,
+} from '@gxaditya/vamp-project';
 import { validateSong, SONG_SCHEMA_VERSION, type ValidationIssue } from '@gxaditya/vamp-schema';
 import type { Instrument, Note, Pattern, Track } from '@gxaditya/vamp-schema';
 import type { CallToolResult } from '@modelcontextprotocol/sdk/types.js';

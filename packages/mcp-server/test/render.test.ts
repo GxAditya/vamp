@@ -18,6 +18,7 @@ import {
   mkdtempSync,
   readFileSync,
   readdirSync,
+  realpathSync,
   rmSync,
   symlinkSync,
   writeFileSync,
@@ -51,7 +52,7 @@ const TUTORIAL_LENGTH_BEATS = 67.5;
 const temporaryDirectories: string[] = [];
 
 function tempDirectory(prefix = 'vamp-render-test-'): string {
-  const directory = mkdtempSync(join(tmpdir(), prefix));
+  const directory = realpathSync(mkdtempSync(join(tmpdir(), prefix)));
   temporaryDirectories.push(directory);
   return directory;
 }

@@ -53,6 +53,14 @@ const FLUID_BINARY = process.env.VAMP_FLUIDSYNTH_PATH ?? '/usr/bin/fluidsynth';
 const FLUID_SOUNDFONT = process.env.VAMP_SOUNDFONT_PATH ?? '/usr/share/sounds/sf2/FluidR3_GM.sf2';
 const NATIVE_AVAILABLE = existsSync(FLUID_BINARY) && existsSync(FLUID_SOUNDFONT);
 
+// The FluidSynth note digest is byte-exact only on the machine that froze it
+// (identical FluidSynth build and floating-point path). CI provisions a
+// different build per OS, so there the note is compared without its digest;
+// the frame-count byte length and scope still hold on every machine. Set
+// VAMP_ENFORCE_SAME_MACHINE_PINS=1 to force the digest check anywhere.
+const ENFORCE_SAME_MACHINE_PIN =
+  process.env.VAMP_ENFORCE_SAME_MACHINE_PINS === '1' || process.env.CI === undefined;
+
 interface Digest {
   readonly sha256: string;
   readonly bytes: number;
@@ -202,7 +210,23 @@ describe('v1 compatibility freeze (schema/API/MIDI/audio)', () => {
   for (const entry of frozen.songs) {
     it(`reproduces the frozen v1 pipeline output for ${entry.source}`, async () => {
       const recomputed = await recompute(entry);
-      expect(recomputed).toEqual(entry);
+      const frozenNote = entry.noteNativeFluidSynth48000;
+      if (frozenNote === undefined || ENFORCE_SAME_MACHINE_PIN) {
+        expect(recomputed).toEqual(entry);
+        return;
+      }
+      // Off the pinning machine the FluidSynth note still renders but its WAV
+      // digest differs by build; compare everything else exactly, then the
+      // note's deterministic fields (scope and byte length).
+      expect(recomputed.noteNativeFluidSynth48000).toMatchObject({
+        scope: frozenNote.scope,
+        bytes: frozenNote.bytes,
+      });
+      const recomputedRest: SongEntry = { ...recomputed };
+      const expectedRest: SongEntry = { ...entry };
+      delete recomputedRest.noteNativeFluidSynth48000;
+      delete expectedRest.noteNativeFluidSynth48000;
+      expect(recomputedRest).toEqual(expectedRest);
     });
   }
 

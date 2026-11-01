@@ -1,0 +1,16 @@
+# Normalize text files to LF on every platform. Without this, Git on Windows
+# checks out CRLF, which breaks the byte-pinned fixture and schema digests in
+# the compatibility/golden suites and the generated-types drift check.
+* text=auto eol=lf
+
+# Rendered and sample payloads must never be line-ending normalized.
+*.sf2 binary
+*.wav binary
+*.mid binary
+*.mp3 binary
+*.ogg binary
+*.flac binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.zip binary

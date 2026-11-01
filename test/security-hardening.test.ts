@@ -337,7 +337,7 @@ describe('native subprocess shell-injection and environment safety (POSIX)', () 
         const version = await backend.probeVersion?.();
         expect(version).toBe('9.9.9');
         const argv = readFileSync(join(capture, 'argv.txt'), 'utf8').trim().split('\n');
-        expect(argv).toEqual(['--version']);
+        expect(argv).toEqual(['-V']);
         const envDump = readFileSync(join(capture, 'env.txt'), 'utf8');
         expect(envDump).not.toContain('VAMP_SECURITY_PARENT_SECRET');
         expect(envDump).not.toContain(secretToken);

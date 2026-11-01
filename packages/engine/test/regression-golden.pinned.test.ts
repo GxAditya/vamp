@@ -46,6 +46,14 @@ const FLUID_BINARY = process.env.VAMP_FLUIDSYNTH_PATH ?? '/usr/bin/fluidsynth';
 const FLUID_SOUNDFONT = process.env.VAMP_SOUNDFONT_PATH ?? '/usr/share/sounds/sf2/FluidR3_GM.sf2';
 const NATIVE_AVAILABLE = existsSync(FLUID_BINARY) && existsSync(FLUID_SOUNDFONT);
 
+// The pinned FluidSynth WAV digest is byte-exact only on the machine that
+// froze it (identical FluidSynth build and floating-point path). CI provisions
+// a different build per OS, so the digest assertion is skipped there; repeat
+// identity and the frame count still hold on every machine. Set
+// VAMP_ENFORCE_SAME_MACHINE_PINS=1 to force the digest check anywhere.
+const ENFORCE_SAME_MACHINE_PIN =
+  process.env.VAMP_ENFORCE_SAME_MACHINE_PINS === '1' || process.env.CI === undefined;
+
 interface BaselineEntry {
   readonly description: string;
   readonly sha256: string;
@@ -332,7 +340,9 @@ describe.skipIf(!NATIVE_AVAILABLE)(
       // A mismatch here means the FluidSynth version, SoundFont bytes, or
       // machine differ from the pinned environment. This pin is explicitly
       // same-machine only and is never a cross-platform claim.
-      expect(sha256(encoded.bytes)).toBe(entry.sha256);
+      if (ENFORCE_SAME_MACHINE_PIN) {
+        expect(sha256(encoded.bytes)).toBe(entry.sha256);
+      }
       expect(encoded.bytes.byteLength).toBe(entry.bytes);
       const parsed = parseWav(encoded.bytes);
       expect(parsed.frameCount).toBe(first.timeline.renderedSamples);

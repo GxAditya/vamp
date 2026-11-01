@@ -1,0 +1,1533 @@
+{
+  "schemaVersion": "1.0.0",
+  "meta": {
+    "title": "Product explainer, 20 s, logo hit at 16 s",
+    "bpm": 120,
+    "timeSignature": {
+      "numerator": 4,
+      "denominator": 4
+    },
+    "key": {
+      "tonic": "G",
+      "mode": "major"
+    },
+    "seed": 2026,
+    "durationHint": 40,
+    "mood": "bright, confident, speech-friendly",
+    "tags": ["explainer", "narration", "logo-hit"]
+  },
+  "patterns": [
+    {
+      "id": "keys-g",
+      "name": "Keys comp g",
+      "lengthBeats": 4,
+      "notes": [
+        {
+          "pitch": 55,
+          "start": 0,
+          "duration": 1.4,
+          "velocity": 78
+        },
+        {
+          "pitch": 59,
+          "start": 0,
+          "duration": 1.4,
+          "velocity": 76
+        },
+        {
+          "pitch": 62,
+          "start": 0,
+          "duration": 1.4,
+          "velocity": 74
+        },
+        {
+          "pitch": 69,
+          "start": 0,
+          "duration": 1.4,
+          "velocity": 72
+        },
+        {
+          "pitch": 55,
+          "start": 1.5,
+          "duration": 0.45,
+          "velocity": 62
+        },
+        {
+          "pitch": 59,
+          "start": 1.5,
+          "duration": 0.45,
+          "velocity": 60
+        },
+        {
+          "pitch": 62,
+          "start": 1.5,
+          "duration": 0.45,
+          "velocity": 58
+        },
+        {
+          "pitch": 69,
+          "start": 1.5,
+          "duration": 0.45,
+          "velocity": 56
+        },
+        {
+          "pitch": 55,
+          "start": 2,
+          "duration": 1.4,
+          "velocity": 72
+        },
+        {
+          "pitch": 59,
+          "start": 2,
+          "duration": 1.4,
+          "velocity": 70
+        },
+        {
+          "pitch": 62,
+          "start": 2,
+          "duration": 1.4,
+          "velocity": 68
+        },
+        {
+          "pitch": 69,
+          "start": 2,
+          "duration": 1.4,
+          "velocity": 66
+        },
+        {
+          "pitch": 55,
+          "start": 3.5,
+          "duration": 0.45,
+          "velocity": 58
+        },
+        {
+          "pitch": 59,
+          "start": 3.5,
+          "duration": 0.45,
+          "velocity": 56
+        },
+        {
+          "pitch": 62,
+          "start": 3.5,
+          "duration": 0.45,
+          "velocity": 54
+        },
+        {
+          "pitch": 69,
+          "start": 3.5,
+          "duration": 0.45,
+          "velocity": 52
+        }
+      ]
+    },
+    {
+      "id": "bass-g",
+      "name": "Bass g",
+      "lengthBeats": 4,
+      "notes": [
+        {
+          "pitch": 43,
+          "start": 0,
+          "duration": 0.9,
+          "velocity": 92
+        },
+        {
+          "pitch": 43,
+          "start": 1.5,
+          "duration": 0.4,
+          "velocity": 72
+        },
+        {
+          "pitch": 50,
+          "start": 2,
+          "duration": 0.9,
+          "velocity": 84
+        },
+        {
+          "pitch": 55,
+          "start": 3.5,
+          "duration": 0.4,
+          "velocity": 68
+        }
+      ]
+    },
+    {
+      "id": "pluck-g",
+      "name": "Pluck ostinato g",
+      "lengthBeats": 4,
+      "notes": [
+        {
+          "pitch": 67,
+          "start": 0.0,
+          "duration": 0.4,
+          "velocity": 58
+        },
+        {
+          "pitch": 74,
+          "start": 0.5,
+          "duration": 0.4,
+          "velocity": 42
+        },
+        {
+          "pitch": 71,
+          "start": 1.0,
+          "duration": 0.4,
+          "velocity": 50
+        },
+        {
+          "pitch": 74,
+          "start": 1.5,
+          "duration": 0.4,
+          "velocity": 44
+        },
+        {
+          "pitch": 67,
+          "start": 2.0,
+          "duration": 0.4,
+          "velocity": 54
+        },
+        {
+          "pitch": 74,
+          "start": 2.5,
+          "duration": 0.4,
+          "velocity": 42
+        },
+        {
+          "pitch": 71,
+          "start": 3.0,
+          "duration": 0.4,
+          "velocity": 48
+        },
+        {
+          "pitch": 74,
+          "start": 3.5,
+          "duration": 0.4,
+          "velocity": 46
+        }
+      ]
+    },
+    {
+      "id": "keys-d",
+      "name": "Keys comp d",
+      "lengthBeats": 4,
+      "notes": [
+        {
+          "pitch": 57,
+          "start": 0,
+          "duration": 1.4,
+          "velocity": 78
+        },
+        {
+          "pitch": 62,
+          "start": 0,
+          "duration": 1.4,
+          "velocity": 76
+        },
+        {
+          "pitch": 66,
+          "start": 0,
+          "duration": 1.4,
+          "velocity": 74
+        },
+        {
+          "pitch": 69,
+          "start": 0,
+          "duration": 1.4,
+          "velocity": 72
+        },
+        {
+          "pitch": 57,
+          "start": 1.5,
+          "duration": 0.45,
+          "velocity": 62
+        },
+        {
+          "pitch": 62,
+          "start": 1.5,
+          "duration": 0.45,
+          "velocity": 60
+        },
+        {
+          "pitch": 66,
+          "start": 1.5,
+          "duration": 0.45,
+          "velocity": 58
+        },
+        {
+          "pitch": 69,
+          "start": 1.5,
+          "duration": 0.45,
+          "velocity": 56
+        },
+        {
+          "pitch": 57,
+          "start": 2,
+          "duration": 1.4,
+          "velocity": 72
+        },
+        {
+          "pitch": 62,
+          "start": 2,
+          "duration": 1.4,
+          "velocity": 70
+        },
+        {
+          "pitch": 66,
+          "start": 2,
+          "duration": 1.4,
+          "velocity": 68
+        },
+        {
+          "pitch": 69,
+          "start": 2,
+          "duration": 1.4,
+          "velocity": 66
+        },
+        {
+          "pitch": 57,
+          "start": 3.5,
+          "duration": 0.45,
+          "velocity": 58
+        },
+        {
+          "pitch": 62,
+          "start": 3.5,
+          "duration": 0.45,
+          "velocity": 56
+        },
+        {
+          "pitch": 66,
+          "start": 3.5,
+          "duration": 0.45,
+          "velocity": 54
+        },
+        {
+          "pitch": 69,
+          "start": 3.5,
+          "duration": 0.45,
+          "velocity": 52
+        }
+      ]
+    },
+    {
+      "id": "bass-d",
+      "name": "Bass d",
+      "lengthBeats": 4,
+      "notes": [
+        {
+          "pitch": 42,
+          "start": 0,
+          "duration": 0.9,
+          "velocity": 92
+        },
+        {
+          "pitch": 42,
+          "start": 1.5,
+          "duration": 0.4,
+          "velocity": 72
+        },
+        {
+          "pitch": 45,
+          "start": 2,
+          "duration": 0.9,
+          "velocity": 84
+        },
+        {
+          "pitch": 54,
+          "start": 3.5,
+          "duration": 0.4,
+          "velocity": 68
+        }
+      ]
+    },
+    {
+      "id": "pluck-d",
+      "name": "Pluck ostinato d",
+      "lengthBeats": 4,
+      "notes": [
+        {
+          "pitch": 66,
+          "start": 0.0,
+          "duration": 0.4,
+          "velocity": 58
+        },
+        {
+          "pitch": 74,
+          "start": 0.5,
+          "duration": 0.4,
+          "velocity": 42
+        },
+        {
+          "pitch": 69,
+          "start": 1.0,
+          "duration": 0.4,
+          "velocity": 50
+        },
+        {
+          "pitch": 74,
+          "start": 1.5,
+          "duration": 0.4,
+          "velocity": 44
+        },
+        {
+          "pitch": 66,
+          "start": 2.0,
+          "duration": 0.4,
+          "velocity": 54
+        },
+        {
+          "pitch": 74,
+          "start": 2.5,
+          "duration": 0.4,
+          "velocity": 42
+        },
+        {
+          "pitch": 69,
+          "start": 3.0,
+          "duration": 0.4,
+          "velocity": 48
+        },
+        {
+          "pitch": 74,
+          "start": 3.5,
+          "duration": 0.4,
+          "velocity": 46
+        }
+      ]
+    },
+    {
+      "id": "keys-em",
+      "name": "Keys comp em",
+      "lengthBeats": 4,
+      "notes": [
+        {
+          "pitch": 55,
+          "start": 0,
+          "duration": 1.4,
+          "velocity": 78
+        },
+        {
+          "pitch": 59,
+          "start": 0,
+          "duration": 1.4,
+          "velocity": 76
+        },
+        {
+          "pitch": 62,
+          "start": 0,
+          "duration": 1.4,
+          "velocity": 74
+        },
+        {
+          "pitch": 64,
+          "start": 0,
+          "duration": 1.4,
+          "velocity": 72
+        },
+        {
+          "pitch": 55,
+          "start": 1.5,
+          "duration": 0.45,
+          "velocity": 62
+        },
+        {
+          "pitch": 59,
+          "start": 1.5,
+          "duration": 0.45,
+          "velocity": 60
+        },
+        {
+          "pitch": 62,
+          "start": 1.5,
+          "duration": 0.45,
+          "velocity": 58
+        },
+        {
+          "pitch": 64,
+          "start": 1.5,
+          "duration": 0.45,
+          "velocity": 56
+        },
+        {
+          "pitch": 55,
+          "start": 2,
+          "duration": 1.4,
+          "velocity": 72
+        },
+        {
+          "pitch": 59,
+          "start": 2,
+          "duration": 1.4,
+          "velocity": 70
+        },
+        {
+          "pitch": 62,
+          "start": 2,
+          "duration": 1.4,
+          "velocity": 68
+        },
+        {
+          "pitch": 64,
+          "start": 2,
+          "duration": 1.4,
+          "velocity": 66
+        },
+        {
+          "pitch": 55,
+          "start": 3.5,
+          "duration": 0.45,
+          "velocity": 58
+        },
+        {
+          "pitch": 59,
+          "start": 3.5,
+          "duration": 0.45,
+          "velocity": 56
+        },
+        {
+          "pitch": 62,
+          "start": 3.5,
+          "duration": 0.45,
+          "velocity": 54
+        },
+        {
+          "pitch": 64,
+          "start": 3.5,
+          "duration": 0.45,
+          "velocity": 52
+        }
+      ]
+    },
+    {
+      "id": "bass-em",
+      "name": "Bass em",
+      "lengthBeats": 4,
+      "notes": [
+        {
+          "pitch": 40,
+          "start": 0,
+          "duration": 0.9,
+          "velocity": 92
+        },
+        {
+          "pitch": 40,
+          "start": 1.5,
+          "duration": 0.4,
+          "velocity": 72
+        },
+        {
+          "pitch": 47,
+          "start": 2,
+          "duration": 0.9,
+          "velocity": 84
+        },
+        {
+          "pitch": 52,
+          "start": 3.5,
+          "duration": 0.4,
+          "velocity": 68
+        }
+      ]
+    },
+    {
+      "id": "pluck-em",
+      "name": "Pluck ostinato em",
+      "lengthBeats": 4,
+      "notes": [
+        {
+          "pitch": 67,
+          "start": 0.0,
+          "duration": 0.4,
+          "velocity": 58
+        },
+        {
+          "pitch": 71,
+          "start": 0.5,
+          "duration": 0.4,
+          "velocity": 42
+        },
+        {
+          "pitch": 64,
+          "start": 1.0,
+          "duration": 0.4,
+          "velocity": 50
+        },
+        {
+          "pitch": 71,
+          "start": 1.5,
+          "duration": 0.4,
+          "velocity": 44
+        },
+        {
+          "pitch": 67,
+          "start": 2.0,
+          "duration": 0.4,
+          "velocity": 54
+        },
+        {
+          "pitch": 71,
+          "start": 2.5,
+          "duration": 0.4,
+          "velocity": 42
+        },
+        {
+          "pitch": 64,
+          "start": 3.0,
+          "duration": 0.4,
+          "velocity": 48
+        },
+        {
+          "pitch": 71,
+          "start": 3.5,
+          "duration": 0.4,
+          "velocity": 46
+        }
+      ]
+    },
+    {
+      "id": "keys-c",
+      "name": "Keys comp c",
+      "lengthBeats": 4,
+      "notes": [
+        {
+          "pitch": 55,
+          "start": 0,
+          "duration": 1.4,
+          "velocity": 78
+        },
+        {
+          "pitch": 60,
+          "start": 0,
+          "duration": 1.4,
+          "velocity": 76
+        },
+        {
+          "pitch": 62,
+          "start": 0,
+          "duration": 1.4,
+          "velocity": 74
+        },
+        {
+          "pitch": 64,
+          "start": 0,
+          "duration": 1.4,
+          "velocity": 72
+        },
+        {
+          "pitch": 55,
+          "start": 1.5,
+          "duration": 0.45,
+          "velocity": 62
+        },
+        {
+          "pitch": 60,
+          "start": 1.5,
+          "duration": 0.45,
+          "velocity": 60
+        },
+        {
+          "pitch": 62,
+          "start": 1.5,
+          "duration": 0.45,
+          "velocity": 58
+        },
+        {
+          "pitch": 64,
+          "start": 1.5,
+          "duration": 0.45,
+          "velocity": 56
+        },
+        {
+          "pitch": 55,
+          "start": 2,
+          "duration": 1.4,
+          "velocity": 72
+        },
+        {
+          "pitch": 60,
+          "start": 2,
+          "duration": 1.4,
+          "velocity": 70
+        },
+        {
+          "pitch": 62,
+          "start": 2,
+          "duration": 1.4,
+          "velocity": 68
+        },
+        {
+          "pitch": 64,
+          "start": 2,
+          "duration": 1.4,
+          "velocity": 66
+        },
+        {
+          "pitch": 55,
+          "start": 3.5,
+          "duration": 0.45,
+          "velocity": 58
+        },
+        {
+          "pitch": 60,
+          "start": 3.5,
+          "duration": 0.45,
+          "velocity": 56
+        },
+        {
+          "pitch": 62,
+          "start": 3.5,
+          "duration": 0.45,
+          "velocity": 54
+        },
+        {
+          "pitch": 64,
+          "start": 3.5,
+          "duration": 0.45,
+          "velocity": 52
+        }
+      ]
+    },
+    {
+      "id": "bass-c",
+      "name": "Bass c",
+      "lengthBeats": 4,
+      "notes": [
+        {
+          "pitch": 36,
+          "start": 0,
+          "duration": 0.9,
+          "velocity": 92
+        },
+        {
+          "pitch": 36,
+          "start": 1.5,
+          "duration": 0.4,
+          "velocity": 72
+        },
+        {
+          "pitch": 43,
+          "start": 2,
+          "duration": 0.9,
+          "velocity": 84
+        },
+        {
+          "pitch": 48,
+          "start": 3.5,
+          "duration": 0.4,
+          "velocity": 68
+        }
+      ]
+    },
+    {
+      "id": "pluck-c",
+      "name": "Pluck ostinato c",
+      "lengthBeats": 4,
+      "notes": [
+        {
+          "pitch": 67,
+          "start": 0.0,
+          "duration": 0.4,
+          "velocity": 58
+        },
+        {
+          "pitch": 72,
+          "start": 0.5,
+          "duration": 0.4,
+          "velocity": 42
+        },
+        {
+          "pitch": 64,
+          "start": 1.0,
+          "duration": 0.4,
+          "velocity": 50
+        },
+        {
+          "pitch": 72,
+          "start": 1.5,
+          "duration": 0.4,
+          "velocity": 44
+        },
+        {
+          "pitch": 67,
+          "start": 2.0,
+          "duration": 0.4,
+          "velocity": 54
+        },
+        {
+          "pitch": 72,
+          "start": 2.5,
+          "duration": 0.4,
+          "velocity": 42
+        },
+        {
+          "pitch": 64,
+          "start": 3.0,
+          "duration": 0.4,
+          "velocity": 48
+        },
+        {
+          "pitch": 72,
+          "start": 3.5,
+          "duration": 0.4,
+          "velocity": 46
+        }
+      ]
+    },
+    {
+      "id": "groove",
+      "name": "Light groove",
+      "lengthBeats": 4,
+      "notes": [
+        {
+          "pitch": 36,
+          "start": 0,
+          "duration": 0.5,
+          "velocity": 94
+        },
+        {
+          "pitch": 36,
+          "start": 2,
+          "duration": 0.5,
+          "velocity": 86
+        },
+        {
+          "pitch": 36,
+          "start": 2.75,
+          "duration": 0.5,
+          "velocity": 58
+        },
+        {
+          "pitch": 37,
+          "start": 1,
+          "duration": 0.25,
+          "velocity": 60
+        },
+        {
+          "pitch": 37,
+          "start": 3,
+          "duration": 0.25,
+          "velocity": 64
+        },
+        {
+          "pitch": 42,
+          "start": 0.5,
+          "duration": 0.25,
+          "velocity": 40
+        },
+        {
+          "pitch": 42,
+          "start": 1.5,
+          "duration": 0.25,
+          "velocity": 34
+        },
+        {
+          "pitch": 42,
+          "start": 2.5,
+          "duration": 0.25,
+          "velocity": 44
+        },
+        {
+          "pitch": 42,
+          "start": 3.5,
+          "duration": 0.25,
+          "velocity": 36
+        }
+      ]
+    }
+  ],
+  "tracks": [
+    {
+      "id": "keys",
+      "name": "Soft EP",
+      "kind": "midi",
+      "channel": 0,
+      "instrument": {
+        "type": "gm",
+        "program": 5,
+        "bank": 0
+      },
+      "pan": -0.2,
+      "automation": {
+        "volume": {
+          "points": [
+            {
+              "time": 0,
+              "value": 0.85
+            },
+            {
+              "time": 3.5,
+              "value": 0.85
+            },
+            {
+              "time": 4,
+              "value": 0.5
+            },
+            {
+              "time": 31,
+              "value": 0.5
+            },
+            {
+              "time": 32,
+              "value": 0.9
+            }
+          ]
+        }
+      },
+      "placements": [
+        {
+          "pattern": "keys-g",
+          "start": 0
+        },
+        {
+          "pattern": "keys-d",
+          "start": 4
+        },
+        {
+          "pattern": "keys-em",
+          "start": 8
+        },
+        {
+          "pattern": "keys-c",
+          "start": 12
+        },
+        {
+          "pattern": "keys-g",
+          "start": 16
+        },
+        {
+          "pattern": "keys-d",
+          "start": 20
+        },
+        {
+          "pattern": "keys-em",
+          "start": 24
+        },
+        {
+          "pattern": "keys-c",
+          "start": 28
+        }
+      ],
+      "notes": [
+        {
+          "pitch": 55,
+          "start": 32,
+          "duration": 4.5,
+          "velocity": 80
+        },
+        {
+          "pitch": 59,
+          "start": 32,
+          "duration": 4.5,
+          "velocity": 77
+        },
+        {
+          "pitch": 62,
+          "start": 32,
+          "duration": 4.5,
+          "velocity": 74
+        },
+        {
+          "pitch": 67,
+          "start": 32,
+          "duration": 4.5,
+          "velocity": 71
+        },
+        {
+          "pitch": 69,
+          "start": 32,
+          "duration": 4.5,
+          "velocity": 68
+        }
+      ],
+      "effects": [
+        {
+          "type": "eq",
+          "lowGainDb": -2,
+          "midGainDb": -3,
+          "highGainDb": -1.5
+        },
+        {
+          "type": "reverb",
+          "mix": 0.14,
+          "decaySeconds": 1.6
+        }
+      ]
+    },
+    {
+      "id": "pad",
+      "name": "Strings pad",
+      "kind": "midi",
+      "channel": 1,
+      "instrument": {
+        "type": "gm",
+        "program": 48,
+        "bank": 0
+      },
+      "volume": 0.42,
+      "pan": 0.15,
+      "automation": {
+        "filterCutoffHz": {
+          "points": [
+            {
+              "time": 0,
+              "value": 2400
+            },
+            {
+              "time": 24,
+              "value": 2400
+            },
+            {
+              "time": 28,
+              "value": 3600
+            },
+            {
+              "time": 30,
+              "value": 5600
+            },
+            {
+              "time": 31.5,
+              "value": 9000
+            },
+            {
+              "time": 32,
+              "value": 5000
+            }
+          ]
+        }
+      },
+      "notes": [
+        {
+          "pitch": 50,
+          "start": 0,
+          "duration": 3.9,
+          "velocity": 54
+        },
+        {
+          "pitch": 55,
+          "start": 0,
+          "duration": 3.9,
+          "velocity": 54
+        },
+        {
+          "pitch": 59,
+          "start": 0,
+          "duration": 3.9,
+          "velocity": 54
+        },
+        {
+          "pitch": 50,
+          "start": 4,
+          "duration": 3.9,
+          "velocity": 58
+        },
+        {
+          "pitch": 54,
+          "start": 4,
+          "duration": 3.9,
+          "velocity": 58
+        },
+        {
+          "pitch": 57,
+          "start": 4,
+          "duration": 3.9,
+          "velocity": 58
+        },
+        {
+          "pitch": 52,
+          "start": 8,
+          "duration": 3.9,
+          "velocity": 54
+        },
+        {
+          "pitch": 55,
+          "start": 8,
+          "duration": 3.9,
+          "velocity": 54
+        },
+        {
+          "pitch": 59,
+          "start": 8,
+          "duration": 3.9,
+          "velocity": 54
+        },
+        {
+          "pitch": 48,
+          "start": 12,
+          "duration": 3.9,
+          "velocity": 58
+        },
+        {
+          "pitch": 52,
+          "start": 12,
+          "duration": 3.9,
+          "velocity": 58
+        },
+        {
+          "pitch": 55,
+          "start": 12,
+          "duration": 3.9,
+          "velocity": 58
+        },
+        {
+          "pitch": 50,
+          "start": 16,
+          "duration": 3.9,
+          "velocity": 54
+        },
+        {
+          "pitch": 55,
+          "start": 16,
+          "duration": 3.9,
+          "velocity": 54
+        },
+        {
+          "pitch": 59,
+          "start": 16,
+          "duration": 3.9,
+          "velocity": 54
+        },
+        {
+          "pitch": 50,
+          "start": 20,
+          "duration": 3.9,
+          "velocity": 58
+        },
+        {
+          "pitch": 54,
+          "start": 20,
+          "duration": 3.9,
+          "velocity": 58
+        },
+        {
+          "pitch": 57,
+          "start": 20,
+          "duration": 3.9,
+          "velocity": 58
+        },
+        {
+          "pitch": 52,
+          "start": 24,
+          "duration": 3.9,
+          "velocity": 54
+        },
+        {
+          "pitch": 55,
+          "start": 24,
+          "duration": 3.9,
+          "velocity": 54
+        },
+        {
+          "pitch": 59,
+          "start": 24,
+          "duration": 3.9,
+          "velocity": 54
+        },
+        {
+          "pitch": 48,
+          "start": 28,
+          "duration": 3.9,
+          "velocity": 58
+        },
+        {
+          "pitch": 52,
+          "start": 28,
+          "duration": 3.9,
+          "velocity": 58
+        },
+        {
+          "pitch": 55,
+          "start": 28,
+          "duration": 3.9,
+          "velocity": 58
+        },
+        {
+          "pitch": 43,
+          "start": 32,
+          "duration": 3.8,
+          "velocity": 62
+        },
+        {
+          "pitch": 50,
+          "start": 32,
+          "duration": 3.8,
+          "velocity": 62
+        },
+        {
+          "pitch": 55,
+          "start": 32,
+          "duration": 3.8,
+          "velocity": 62
+        },
+        {
+          "pitch": 59,
+          "start": 32,
+          "duration": 3.8,
+          "velocity": 62
+        }
+      ],
+      "effects": [
+        {
+          "type": "lowpass",
+          "q": 0.8
+        },
+        {
+          "type": "reverb",
+          "mix": 0.22,
+          "decaySeconds": 2.0
+        }
+      ]
+    },
+    {
+      "id": "bass",
+      "name": "Picked bass",
+      "kind": "midi",
+      "channel": 2,
+      "instrument": {
+        "type": "gm",
+        "program": 34,
+        "bank": 0
+      },
+      "volume": 0.85,
+      "placements": [
+        {
+          "pattern": "bass-em",
+          "start": 8
+        },
+        {
+          "pattern": "bass-c",
+          "start": 12
+        },
+        {
+          "pattern": "bass-g",
+          "start": 16
+        },
+        {
+          "pattern": "bass-d",
+          "start": 20
+        },
+        {
+          "pattern": "bass-em",
+          "start": 24
+        },
+        {
+          "pattern": "bass-c",
+          "start": 28
+        }
+      ],
+      "notes": [
+        {
+          "pitch": 31,
+          "start": 32,
+          "duration": 3.5,
+          "velocity": 100
+        }
+      ]
+    },
+    {
+      "id": "pluck",
+      "name": "Muted guitar ostinato",
+      "kind": "midi",
+      "channel": 3,
+      "instrument": {
+        "type": "gm",
+        "program": 28,
+        "bank": 0
+      },
+      "volume": 0.5,
+      "pan": 0.45,
+      "placements": [
+        {
+          "pattern": "pluck-em",
+          "start": 8
+        },
+        {
+          "pattern": "pluck-c",
+          "start": 12
+        },
+        {
+          "pattern": "pluck-g",
+          "start": 16
+        },
+        {
+          "pattern": "pluck-d",
+          "start": 20
+        },
+        {
+          "pattern": "pluck-em",
+          "start": 24
+        }
+      ],
+      "effects": [
+        {
+          "type": "eq",
+          "midGainDb": -2,
+          "highGainDb": -2
+        },
+        {
+          "type": "delay",
+          "timeMs": 375,
+          "feedback": 0.25,
+          "mix": 0.15
+        }
+      ]
+    },
+    {
+      "id": "harp",
+      "name": "Harp sparkle",
+      "kind": "midi",
+      "channel": 4,
+      "instrument": {
+        "type": "gm",
+        "program": 46,
+        "bank": 0
+      },
+      "volume": 0.55,
+      "pan": 0.3,
+      "notes": [
+        {
+          "pitch": 62,
+          "start": 0.0,
+          "duration": 1.2,
+          "velocity": 44
+        },
+        {
+          "pitch": 67,
+          "start": 0.25,
+          "duration": 1.2,
+          "velocity": 48
+        },
+        {
+          "pitch": 71,
+          "start": 0.5,
+          "duration": 1.2,
+          "velocity": 52
+        },
+        {
+          "pitch": 74,
+          "start": 0.75,
+          "duration": 1.2,
+          "velocity": 56
+        },
+        {
+          "pitch": 67,
+          "start": 30.0,
+          "duration": 0.6,
+          "velocity": 50
+        },
+        {
+          "pitch": 69,
+          "start": 30.25,
+          "duration": 0.6,
+          "velocity": 54
+        },
+        {
+          "pitch": 71,
+          "start": 30.5,
+          "duration": 0.6,
+          "velocity": 58
+        },
+        {
+          "pitch": 74,
+          "start": 30.75,
+          "duration": 0.6,
+          "velocity": 62
+        },
+        {
+          "pitch": 76,
+          "start": 31.0,
+          "duration": 0.6,
+          "velocity": 66
+        },
+        {
+          "pitch": 79,
+          "start": 31.25,
+          "duration": 0.6,
+          "velocity": 70
+        }
+      ],
+      "effects": [
+        {
+          "type": "reverb",
+          "mix": 0.3,
+          "decaySeconds": 2.2
+        }
+      ]
+    },
+    {
+      "id": "drums",
+      "name": "Drums",
+      "kind": "drums",
+      "channel": 9,
+      "instrument": {
+        "type": "builtin",
+        "id": "drums.kit"
+      },
+      "volume": 0.6,
+      "placements": [
+        {
+          "pattern": "groove",
+          "start": 8,
+          "repeat": 5
+        }
+      ],
+      "notes": [
+        {
+          "pitch": 70,
+          "start": 24.0,
+          "duration": 0.2,
+          "velocity": 36
+        },
+        {
+          "pitch": 70,
+          "start": 24.25,
+          "duration": 0.2,
+          "velocity": 25
+        },
+        {
+          "pitch": 70,
+          "start": 24.5,
+          "duration": 0.2,
+          "velocity": 32
+        },
+        {
+          "pitch": 70,
+          "start": 24.75,
+          "duration": 0.2,
+          "velocity": 29
+        },
+        {
+          "pitch": 70,
+          "start": 25.0,
+          "duration": 0.2,
+          "velocity": 40
+        },
+        {
+          "pitch": 70,
+          "start": 25.25,
+          "duration": 0.2,
+          "velocity": 29
+        },
+        {
+          "pitch": 70,
+          "start": 25.5,
+          "duration": 0.2,
+          "velocity": 36
+        },
+        {
+          "pitch": 70,
+          "start": 25.75,
+          "duration": 0.2,
+          "velocity": 33
+        },
+        {
+          "pitch": 70,
+          "start": 26.0,
+          "duration": 0.2,
+          "velocity": 44
+        },
+        {
+          "pitch": 70,
+          "start": 26.25,
+          "duration": 0.2,
+          "velocity": 33
+        },
+        {
+          "pitch": 70,
+          "start": 26.5,
+          "duration": 0.2,
+          "velocity": 40
+        },
+        {
+          "pitch": 70,
+          "start": 26.75,
+          "duration": 0.2,
+          "velocity": 37
+        },
+        {
+          "pitch": 70,
+          "start": 27.0,
+          "duration": 0.2,
+          "velocity": 48
+        },
+        {
+          "pitch": 70,
+          "start": 27.25,
+          "duration": 0.2,
+          "velocity": 37
+        },
+        {
+          "pitch": 70,
+          "start": 27.5,
+          "duration": 0.2,
+          "velocity": 44
+        },
+        {
+          "pitch": 70,
+          "start": 27.75,
+          "duration": 0.2,
+          "velocity": 41
+        },
+        {
+          "pitch": 38,
+          "start": 29,
+          "duration": 0.2,
+          "velocity": 50
+        },
+        {
+          "pitch": 38,
+          "start": 29.5,
+          "duration": 0.2,
+          "velocity": 54
+        },
+        {
+          "pitch": 38,
+          "start": 30,
+          "duration": 0.2,
+          "velocity": 58
+        },
+        {
+          "pitch": 38,
+          "start": 30.5,
+          "duration": 0.2,
+          "velocity": 62
+        },
+        {
+          "pitch": 38,
+          "start": 30.75,
+          "duration": 0.2,
+          "velocity": 66
+        },
+        {
+          "pitch": 38,
+          "start": 31,
+          "duration": 0.2,
+          "velocity": 70
+        },
+        {
+          "pitch": 38,
+          "start": 31.25,
+          "duration": 0.2,
+          "velocity": 76
+        },
+        {
+          "pitch": 36,
+          "start": 28,
+          "duration": 0.5,
+          "velocity": 92
+        },
+        {
+          "pitch": 36,
+          "start": 32,
+          "duration": 1,
+          "velocity": 110
+        },
+        {
+          "pitch": 49,
+          "start": 32,
+          "duration": 2,
+          "velocity": 84
+        }
+      ]
+    }
+  ]
+}

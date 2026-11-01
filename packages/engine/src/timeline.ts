@@ -1,4 +1,9 @@
-import type { NormalizedEffect, NormalizedInstrument, SongKey, TimeSignature } from '@gxaditya/vamp-schema';
+import type {
+  NormalizedEffect,
+  NormalizedInstrument,
+  SongKey,
+  TimeSignature,
+} from '@gxaditya/vamp-schema';
 
 import type { SampleRate } from './time.js';
 

@@ -832,7 +832,12 @@ validation warnings when validation succeeded. The result is JSON serializable.
 ### Audio rendering API
 
 ```ts
-import { compileSong, encodeWav, renderSongToWav, renderTimelineAudio } from '@gxaditya/vamp-engine';
+import {
+  compileSong,
+  encodeWav,
+  renderSongToWav,
+  renderTimelineAudio,
+} from '@gxaditya/vamp-engine';
 
 const wav = await renderSongToWav(input, { sampleRate: 48000 });
 // On success: wav.bytes (Uint8Array WAV), wav.report, wav.stats, wav.timeline.

@@ -5,8 +5,8 @@ network, no audio device, no interactive step.
 
 ## Packages
 
-| Package            | Responsibility                                                                 |
-| ------------------ | ------------------------------------------------------------------------------ |
+| Package                     | Responsibility                                                                 |
+| --------------------------- | ------------------------------------------------------------------------------ |
 | `@gxaditya/vamp-schema`     | SongSchemaV1, generated types, validation, normalization, duration estimates   |
 | `@gxaditya/vamp-engine`     | Timeline compilation, MIDI export, the two backends, mix, effects, artifacts   |
 | `@gxaditya/vamp-project`    | Filesystem project storage with revisions, atomic writes, and path confinement |

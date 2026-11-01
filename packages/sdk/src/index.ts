@@ -154,7 +154,12 @@ export type {
  * Project storage contracts (direct from @gxaditya/vamp-project)
  * ------------------------------------------------------------------ */
 
-export { ProjectStore, PROJECT_ERROR_CODES, PROJECT_LAYOUT, isValidProjectId } from '@gxaditya/vamp-project';
+export {
+  ProjectStore,
+  PROJECT_ERROR_CODES,
+  PROJECT_LAYOUT,
+  isValidProjectId,
+} from '@gxaditya/vamp-project';
 
 export type {
   ProjectResult,

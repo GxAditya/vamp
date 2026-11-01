@@ -6,6 +6,7 @@ import {
   mkdtempSync,
   readFileSync,
   readdirSync,
+  realpathSync,
   rmSync,
   statSync,
   symlinkSync,
@@ -30,7 +31,7 @@ const nativeAvailable = existsSync(nativeBinary) && existsSync(nativeSoundFont);
 const temporaryDirectories: string[] = [];
 
 function tempDirectory(prefix = 'vamp-cli-render-'): string {
-  const directory = mkdtempSync(join(tmpdir(), prefix));
+  const directory = realpathSync(mkdtempSync(join(tmpdir(), prefix)));
   temporaryDirectories.push(directory);
   return directory;
 }
