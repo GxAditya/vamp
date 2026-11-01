@@ -93,6 +93,28 @@ and a mid-tier model can start from a preset.
 > files; `pnpm -r publish`, name verification, and git tagging remain the final
 > manual steps.
 
+## Install from npm
+
+The umbrella package `@gxaditya/vamp` pulls in everything — the `vamp` CLI, the
+`vamp-mcp` stdio MCP server, and the SDK:
+
+```sh
+npm i -g @gxaditya/vamp
+vamp --version
+vamp doctor        # reports the FluidSynth + SoundFont provisioning status
+```
+
+Or use the packages individually without a global install:
+
+```sh
+npx -y @gxaditya/vamp-cli --version
+npx -y @gxaditya/vamp-mcp-server --project-root "$PWD/vamp-projects"
+```
+
+Everything past this point in the README documents the development workspace —
+skip to [Run the local MCP server](#run-the-local-mcp-server) or
+[docs/mcp.md](./docs/mcp.md) if you only consume the published packages.
+
 ## Prerequisites
 
 - Node.js 22 LTS or newer, with at least 22.13 within the 22.x line for the

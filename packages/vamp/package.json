@@ -1,0 +1,47 @@
+{
+  "name": "@gxaditya/vamp",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Vamp umbrella package: one install for the vamp CLI, the vamp-mcp stdio MCP server, and the typed SDK over the local music engine.",
+  "license": "AGPL-3.0-only",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js",
+      "default": "./index.js"
+    }
+  },
+  "bin": {
+    "vamp": "./bin/vamp.js",
+    "vamp-mcp": "./bin/vamp-mcp.js"
+  },
+  "files": [
+    "bin",
+    "index.js",
+    "index.d.ts",
+    "README.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GxAditya/vamp.git",
+    "directory": "packages/vamp"
+  },
+  "dependencies": {
+    "@gxaditya/vamp-cli": "workspace:*",
+    "@gxaditya/vamp-engine": "workspace:*",
+    "@gxaditya/vamp-mcp-server": "workspace:*",
+    "@gxaditya/vamp-project": "workspace:*",
+    "@gxaditya/vamp-schema": "workspace:*",
+    "@gxaditya/vamp-sdk": "workspace:*"
+  }
+}

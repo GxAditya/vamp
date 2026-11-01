@@ -51,6 +51,10 @@ Pin a version with `npx -y @gxaditya/vamp-mcp-server@0.1.0` when reproducibility
 matters. The optional flags and environment variables are identical on both
 paths.
 
+The umbrella package `@gxaditya/vamp` exposes the same `vamp-mcp` bin plus the
+`vamp` CLI and the SDK under one name: `npm i -g @gxaditya/vamp`, or
+`npx -p @gxaditya/vamp vamp-mcp --project-root <dir>` in a client config.
+
 ## Generic stdio client configuration
 
 Use absolute paths. A generic MCP client configuration can launch the built

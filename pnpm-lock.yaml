@@ -112,6 +112,27 @@ importers:
         specifier: workspace:*
         version: link:../schema
 
+  packages/vamp:
+    dependencies:
+      '@gxaditya/vamp-cli':
+        specifier: workspace:*
+        version: link:../cli
+      '@gxaditya/vamp-engine':
+        specifier: workspace:*
+        version: link:../engine
+      '@gxaditya/vamp-mcp-server':
+        specifier: workspace:*
+        version: link:../mcp-server
+      '@gxaditya/vamp-project':
+        specifier: workspace:*
+        version: link:../project
+      '@gxaditya/vamp-schema':
+        specifier: workspace:*
+        version: link:../schema
+      '@gxaditya/vamp-sdk':
+        specifier: workspace:*
+        version: link:../sdk
+
 packages:
 
   '@cacheable/memory@2.2.0':
